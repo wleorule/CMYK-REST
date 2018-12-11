@@ -1,11 +1,13 @@
 package com.cmykui.framework.cmykui;
 
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.cmykui.framework.cmykui.component.ButtonComponent;
 import com.cmykui.framework.cmykui.layout.TagLayout;
 
 
@@ -16,15 +18,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TagLayout tagLayout = (TagLayout) findViewById(R.id.tagLayout);
+        ConstraintLayout L = findViewById(R.id.layout);
         LayoutInflater layoutInflater = getLayoutInflater();
-        String tag;
-        for (int i = 0; i <= 20; i++) {
-            tag = "#tag" + i;
-            View tagView = layoutInflater.inflate(R.layout.tagview, null, false);
-            TextView tagTextView = (TextView) tagView.findViewById(R.id.tagTextView);
-            tagTextView.setText(tag);
-            tagLayout.addView(tagView);
-        }
+        ButtonComponent C = new ButtonComponent(this);
+        L.addView(C);
     }
 }
