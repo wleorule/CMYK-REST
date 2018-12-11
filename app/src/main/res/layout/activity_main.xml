@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/layout"
-    tools:context=".MainActivity">
+
+    tools:context=".MainActivity"
+    android:id="@+id/layout">
+
 
 
     <com.cmykui.framework.cmykui.layout.InboxView
         android:id="@+id/inboxView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 
 
 </android.support.constraint.ConstraintLayout>
