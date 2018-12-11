@@ -10,19 +10,19 @@ import android.view.WindowManager;
 
 import com.cmykui.framework.cmykui.base.LayoutInterface;
 
-public class TagLayout extends ViewGroup implements LayoutInterface   {
+public class InboxLayout extends ViewGroup implements LayoutInterface {
 
     int deviceWidth;
     int deviceHeight;
 
-    public TagLayout(Context context) {
+    public InboxLayout(Context context) {
         super(context);
     }
 
-    public TagLayout(Context context, AttributeSet attrs) {
+    public InboxLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
-    public TagLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public InboxLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
@@ -76,8 +76,8 @@ public class TagLayout extends ViewGroup implements LayoutInterface   {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int count = getChildCount();
         // Measurement will ultimately be computing these values.
-        int maxHeight = 0;
-        int maxWidth = 0;
+        int maxHeight = 50 * count;
+        int maxWidth = LayoutParams.MATCH_PARENT;
         int childState = 0;
         int mLeftWidth = 0;
         int rowCount = 0;
@@ -87,16 +87,7 @@ public class TagLayout extends ViewGroup implements LayoutInterface   {
             final View child = getChildAt(i);
             if (child.getVisibility() == GONE)
                 continue;
-            // Measure the child.
-            measureChild(child, widthMeasureSpec, heightMeasureSpec);
-            maxWidth += Math.max(maxWidth, child.getMeasuredWidth());
-            mLeftWidth += child.getMeasuredWidth();
-            if ((mLeftWidth / deviceWidth) > rowCount) {
-                maxHeight += child.getMeasuredHeight();
-                rowCount++;
-            } else {
-                maxHeight = Math.max(maxHeight, child.getMeasuredHeight());
-            }
+
             childState = combineMeasuredStates(childState, child.getMeasuredState());
         }
         // Check against our minimum height and width
@@ -104,7 +95,8 @@ public class TagLayout extends ViewGroup implements LayoutInterface   {
         maxWidth = Math.max(maxWidth, getSuggestedMinimumWidth());
         // Report our final dimensions.
         setMeasuredDimension(resolveSizeAndState(maxWidth, widthMeasureSpec, childState),
-                resolveSizeAndState(maxHeight, heightMeasureSpec, childState << MEASURED_HEIGHT_STATE_SHIFT));
+        resolveSizeAndState(maxHeight, heightMeasureSpec, childState << MEASURED_HEIGHT_STATE_SHIFT));
     }
+
 
 }
