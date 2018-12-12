@@ -10,11 +10,6 @@
 
 
 
-    <com.cmykui.framework.cmykui.layout.InboxView
-        android:id="@+id/inboxView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
 
 
 </android.support.constraint.ConstraintLayout>

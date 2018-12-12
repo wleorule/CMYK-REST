@@ -25,27 +25,24 @@ public class ButtonComponent extends RelativeLayout implements ComponentInterfac
     }
 
     public ButtonComponent(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        super(context, attrs);init(context);
     }
 
     public ButtonComponent(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+        super(context, attrs, defStyleAttr);init(context);
     }
 
     public void init(Context context){
 
         inflate(getContext(), R.layout.button_component, this);
-        Button componentButton=findViewById(R.id.Component_button);
-        TextView probniTextView=findViewById(R.id.Component_textView);
+        Button componentButton= this.findViewById(R.id.Component_button);
+        TextView probniTextView= this.findViewById(R.id.Component_textView);
 
-        componentButton= new Button(context);
-        probniTextView = new TextView(context);
-
-        probniTextView.setVisibility(View.INVISIBLE);
+        probniTextView.setVisibility(View.GONE);
         componentButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setVisibility(View.INVISIBLE);
+                v.setVisibility(View.GONE);
                 TextView probniTextView=findViewById(R.id.Component_textView);
                 probniTextView.setVisibility(View.VISIBLE);
 

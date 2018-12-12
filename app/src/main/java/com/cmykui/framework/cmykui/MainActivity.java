@@ -1,25 +1,21 @@
 package com.cmykui.framework.cmykui;
 
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
-
+import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.Button;
 
 
+import com.cmykui.framework.cmykui.base.OnClick;
 import com.cmykui.framework.cmykui.component.ButtonComponent;
+import com.cmykui.framework.cmykui.layout.InboxViewItem;
 
-import com.cmykui.framework.cmykui.layout.InboxLayout;
-import com.cmykui.framework.cmykui.layout.InboxView;
-
-import com.cmykui.framework.cmykui.layout.TagLayout;
+import java.util.concurrent.Callable;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
         ConstraintLayout L = findViewById(R.id.layout);
         LayoutInflater layoutInflater = getLayoutInflater();
         ButtonComponent C = new ButtonComponent(this);
-        L.addView(C);
+
+
+
+        //L.addView(C);
 
 
         //InboxLayout tagLayout = (InboxLayout) findViewById(R.id.inboxLayout);
@@ -41,8 +40,19 @@ public class MainActivity extends AppCompatActivity {
 
         ConstraintLayout layout = findViewById(R.id.layout) ;
 
-        InboxView iv = new InboxView(this);
+        InboxViewItem iv = new InboxViewItem(this);
+
+        iv.itemTitle.setText("Leo Leo Leo");
+
+        iv.setOnClickListener(new OnClick<Void>() {
+            public Void onClick() {
+                mojaMetoda(MainActivity.this);
+                return null;
+            }});
+
         layout.addView(iv);
+
+
 
 /*
         View view1 = layoutInflater.inflate(R.layout.inbox_item, null, false );
@@ -52,5 +62,15 @@ public class MainActivity extends AppCompatActivity {
         tv.setText("Test");
         tagLayout.addView(view1);*/
 
+    }
+
+    public Void mojaMetoda(Context ctx){
+        AlertDialog.Builder dlgAlert = new AlertDialog.Builder(ctx);
+        dlgAlert.setMessage("JEBI SEEe!");
+        dlgAlert.setTitle("Layout");
+        dlgAlert.setPositiveButton("OK", null);
+        dlgAlert.setCancelable(true);
+        dlgAlert.create().show();
+        return null;
     }
 }
