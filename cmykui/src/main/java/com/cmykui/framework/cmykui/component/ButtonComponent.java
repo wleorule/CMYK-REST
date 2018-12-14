@@ -62,11 +62,9 @@ public class ButtonComponent extends RelativeLayout implements ComponentInterfac
             }
             ButtonComponent.this.onClick(v.getContext());
         }
-
-
-
-
     };
+
+
     private void startLoading() {
         ButtonTextView.setVisibility(View.VISIBLE);
         ButtonButton.setVisibility(View.GONE);
