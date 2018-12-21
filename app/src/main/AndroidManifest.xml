@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".JerkoPlayground" />
-        <activity android:name=".MatijaPlayground"></activity>
+        <activity android:name=".MatijaPlayground" />
+        <activity android:name=".NikoPlayground"></activity>
     </application>
 
 </manifest>

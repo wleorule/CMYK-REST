@@ -23,5 +23,10 @@
             android:layout_height="match_parent"
             android:id="@+id/MatijaPlayground"/>
 
+        <com.cmykui.framework.cmykui.layout.InboxViewItem
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/NikoPlayground"/>
+
     </com.cmykui.framework.cmykui.layout.InboxLayout>
 </android.support.constraint.ConstraintLayout>
