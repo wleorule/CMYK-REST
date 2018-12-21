@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     InboxViewItem JerkoPlaygroundMenuItem;
+    InboxViewItem MatijaPlaygroundMenuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         JerkoPlaygroundMenuItem = findViewById(R.id.JerkoPlayground);
+        MatijaPlaygroundMenuItem = findViewById(R.id.MatijaPlayground);
 
         // JerkoPlaygroundMenuItem
         JerkoPlaygroundMenuItem.setTitle("Jerko playgorund");
@@ -38,6 +40,20 @@ public class MainActivity extends AppCompatActivity {
                 return null;
             }
         });
+
+
+        // MatijaPlaygroundMenuItem
+        JerkoPlaygroundMenuItem.setTitle("Matija playgorund");
+        JerkoPlaygroundMenuItem.setOnClickListener(new OnClick<Void>() {
+            @Override
+            public Void onClick() throws Exception {
+                Intent transfer = new Intent(MainActivity.this, MatijaPlayground.class);
+                startActivity(transfer);
+
+                return null;
+            }
+        });
+
 
 
     }

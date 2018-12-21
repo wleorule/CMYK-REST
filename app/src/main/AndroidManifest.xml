@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".JerkoPlayground"></activity>
+        <activity android:name=".JerkoPlayground" />
+        <activity android:name=".MatijaPlayground"></activity>
     </application>
 
 </manifest>
