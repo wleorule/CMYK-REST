@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // NikoPlaygroundMenuItem
-        NikoPlaygroundMenuItem.setTitle("Matija playgorund");
+        NikoPlaygroundMenuItem.setTitle("Niko playgorund");
         NikoPlaygroundMenuItem.setOnClickListener(new OnClick<Void>() {
             @Override
             public Void onClick() throws Exception {
