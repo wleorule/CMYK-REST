@@ -2,18 +2,30 @@ package com.cmykui.framework.cmykui.layout;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import com.cmykui.framework.cmykui.R;
 import com.cmykui.framework.cmykui.base.LayoutInterface;
 
 public class InboxLayout extends ViewGroup implements LayoutInterface {
 
     int deviceWidth;
     int deviceHeight;
+
+    TextView TitleText;
+    TextView SearchText;
+    EditText SearchInput;
+
+    private boolean SearchON = false;
+    private float scale = getResources().getDisplayMetrics().density;
 
     public InboxLayout(Context context) {
         super(context);
@@ -33,6 +45,73 @@ public class InboxLayout extends ViewGroup implements LayoutInterface {
         display.getSize(deviceDisplay);
         deviceWidth = deviceDisplay.x;
         deviceHeight = deviceDisplay.y;
+
+        inflate(getContext(), R.layout.inbox_layout, this);
+
+        TitleText = findViewById(R.id.TitleText);
+        SearchText = findViewById(R.id.SearchText);
+        SearchInput = findViewById(R.id.SearchInput);
+
+        SearchInput.setVisibility(View.GONE);
+
+        SearchText.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToggleShowSearch();
+            }
+        });
+
+        SearchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                searchChild();
+            }
+        });
+    }
+
+    private void searchChild() {
+
+        final int count = getChildCount();
+        String seachText = SearchInput.getText().toString();
+
+        for(int i = 0; i < count; i++){
+            View temp = getChildAt(i);
+
+            if(temp instanceof InboxViewItem){
+                InboxViewItem child = (InboxViewItem) getChildAt(i);
+
+                if(!child.getTitle().toLowerCase().contains(seachText.toLowerCase())){
+                    child.setVisibility(View.GONE);
+                }
+                else{
+                    child.setVisibility(View.VISIBLE);
+                }
+            }
+        }
+
+    }
+
+    private void ToggleShowSearch() {
+        if(SearchON){
+            SearchON = false;
+            SearchText.setPadding(0,0,0,(int) (10 * scale + 0.5f));
+            SearchInput.setVisibility(View.GONE);
+        }
+        else {
+            SearchON = true;
+            SearchText.setPadding(0,0,0,0);
+            SearchInput.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

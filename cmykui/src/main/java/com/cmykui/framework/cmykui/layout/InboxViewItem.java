@@ -56,6 +56,8 @@ public class InboxViewItem extends RelativeLayout {
     public void setTitle(String title){
         itemTitle.setText(title);
     }
+    public String getTitle() { return itemTitle.getText().toString(); }
+
 
     private View.OnClickListener localOnClick = new View.OnClickListener()
      {
