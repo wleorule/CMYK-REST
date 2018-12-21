@@ -9,13 +9,17 @@
     tools:context=".MainActivity">
 
 
-    <com.cmykui.framework.cmykui.layout.InboxLayout
+    <com.cmykui.framework.cmykui.component.ButtonComponent
+        android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
 
-        <com.cmykui.framework.cmykui.layout.InboxViewItem
+        <com.cmykui.framework.cmykui.component.FloatLabelText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/JerkoPlayground"/>
-    </com.cmykui.framework.cmykui.layout.InboxLayout>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="88dp" />
+    </com.cmykui.framework.cmykui.component.ButtonComponent>
 </android.support.constraint.ConstraintLayout>

@@ -53,6 +53,10 @@ public class InboxViewItem extends RelativeLayout {
         setOnClickListener(localOnClick);
     }
 
+    public void setTitle(String title){
+        itemTitle.setText(title);
+    }
+
     private View.OnClickListener localOnClick = new View.OnClickListener()
      {
         @Override
