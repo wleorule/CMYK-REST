@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+<com.cmykui.framework.cmykui.layout.ImageLayoutItem
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -26,7 +39,13 @@
         <com.cmykui.framework.cmykui.layout.InboxViewItem
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/NikoPlayground"/>
+            android:id="@+id/NikoPlayground">
+
+        </com.cmykui.framework.cmykui.layout.InboxViewItem>
 
     </com.cmykui.framework.cmykui.layout.InboxLayout>
+
+
 </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>
