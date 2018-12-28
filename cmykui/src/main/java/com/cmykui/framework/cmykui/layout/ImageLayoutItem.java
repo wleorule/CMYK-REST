@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class ImageLayoutItem extends RelativeLayout {
     public ImageView itemImage;
     public TextView itemTitle;
     public ImageView itemArrow;
+    public Boolean ImageZoom = true;
 
     private OnClick<Void> metoda;
     private Boolean override = false;
@@ -26,6 +28,8 @@ public class ImageLayoutItem extends RelativeLayout {
     private Boolean blurred = false;
     private Bitmap  oldImage;
     private Bitmap  blurredImage;
+    private  LinearLayout.LayoutParams blurredLayoutParams;
+    private  LinearLayout.LayoutParams oldLayoutParams;
 
 
     public ImageLayoutItem(Context context) {
@@ -65,19 +69,40 @@ public class ImageLayoutItem extends RelativeLayout {
         @Override
         public void onClick(View v) {
 
+
+
             //Bluranje
             if(oldImage == null){
                 itemImage.buildDrawingCache();
                 oldImage = itemImage.getDrawingCache();
+
+                int w = (int) Math.round(oldImage.getWidth());
+                int h = (int) Math.round(oldImage.getHeight());
+
+                oldLayoutParams = new LinearLayout.LayoutParams(w, h);
             }
 
             if(blurred){
+                if(ImageZoom) {
+                    itemImage.setLayoutParams(oldLayoutParams);
+                }
                 itemImage.setImageBitmap(oldImage);
                 blurred = false;
             }
             else {
                 if(blurredImage == null) {
-                    blurredImage = BlurBuilder.blur(v.getContext(), oldImage);
+
+                    blurredImage = BlurBuilder.blur(v.getContext(),oldImage);
+
+                    int w = (int) Math.round(oldImage.getWidth() * 1.2);
+                    int h = (int) Math.round(oldImage.getHeight() * 1.2);
+
+                    blurredLayoutParams = new LinearLayout.LayoutParams(w, h);
+
+                }
+
+                if(ImageZoom) {
+                    itemImage.setLayoutParams(blurredLayoutParams);
                 }
                 itemImage.setImageBitmap(blurredImage);
                 blurred = true;
