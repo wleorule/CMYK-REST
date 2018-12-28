@@ -2,6 +2,9 @@ package com.cmykui.framework.cmykui.layout;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,6 +22,10 @@ public class ImageLayoutItem extends RelativeLayout {
 
     private OnClick<Void> metoda;
     private Boolean override = false;
+
+    private Boolean blurred = false;
+    private Bitmap  oldImage;
+    private Bitmap  blurredImage;
 
 
     public ImageLayoutItem(Context context) {
@@ -39,9 +46,8 @@ public class ImageLayoutItem extends RelativeLayout {
     public void init(Context context){
         inflate(getContext(), R.layout.image_item, this);
 
-        itemImage = findViewById(R.id.LayoutInboxImage);
-        itemArrow = findViewById(R.id.LayoutInboxAction);
-        itemTitle = findViewById(R.id.LayoutInboxTitle);
+        itemImage = findViewById(R.id.LayoutImageImage);
+        itemTitle = findViewById(R.id.LayoutImageTitle);
 
         setOnClickListener(localOnClick);
     }
@@ -57,8 +63,23 @@ public class ImageLayoutItem extends RelativeLayout {
         @Override
         public void onClick(View v) {
 
-            //TODO: Blur
+            //Bluranje
+            if(oldImage == null){
+                itemImage.buildDrawingCache();
+                oldImage = itemImage.getDrawingCache();
+            }
 
+            if(blurred){
+                itemImage.setImageBitmap(oldImage);
+                blurred = false;
+            }
+            else {
+                if(blurredImage == null) {
+                    blurredImage = BlurBuilder.blur(v.getContext(), oldImage);
+                }
+                itemImage.setImageBitmap(blurredImage);
+                blurred = true;
+            }
 
             //TODO: Pokaži iteme
 
@@ -78,12 +99,7 @@ public class ImageLayoutItem extends RelativeLayout {
             }
         }
         else {
-            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context);
-            dlgAlert.setMessage("Uspjesno si stisnuo!");
-            dlgAlert.setTitle("Layout");
-            dlgAlert.setPositiveButton("OK", null);
-            dlgAlert.setCancelable(true);
-            dlgAlert.create().show();
+
         }
     }
 
