@@ -57,7 +57,12 @@ public class ImageLayoutItem extends RelativeLayout {
         @Override
         public void onClick(View v) {
 
-            //TODO: sto se lokalno dogada!
+            //TODO: Blur
+
+
+            //TODO: Pokaži iteme
+
+
             ImageLayoutItem.this.onClick(v.getContext());
         }
     };
