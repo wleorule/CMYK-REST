@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FloatingActionButton">
+        <attr name="color" format="color"/>
+        <attr name="color_pressed" format="color"/>
+        <attr name="icon" format="reference"/>
+        <attr name="h" format="integer"/>
+        <attr name="w" value="integer"/>
+    </declare-styleable>
+</resources>
