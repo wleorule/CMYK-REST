@@ -12,15 +12,20 @@ import android.os.Bundle;
 import com.cmykui.framework.cmykui.base.OnClick;
 import com.cmykui.framework.cmykui.component.ButtonComponent;
 import com.cmykui.framework.cmykui.component.FloatLabelText;
+import com.cmykui.framework.cmykui.layout.ImageLayoutItem;
+import com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem;
 import com.cmykui.framework.cmykui.layout.InboxViewItem;
 
 
 public class MainActivity extends AppCompatActivity {
 
 
-    InboxViewItem JerkoPlaygroundMenuItem;
-    InboxViewItem MatijaPlaygroundMenuItem;
-    InboxViewItem NikoPlaygroundMenuItem;
+    ImageLayoutItem JerkoPlaygroundMenuItem;
+    ImageLayoutItemMenuItem JerkoPrebaci;
+    ImageLayoutItem MatijaPlaygroundMenuItem;
+    ImageLayoutItemMenuItem MatijaPrebaci;
+    ImageLayoutItem NikoPlaygroundMenuItem;
+    ImageLayoutItemMenuItem NikoPrebaci;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +33,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         JerkoPlaygroundMenuItem = findViewById(R.id.JerkoPlayground);
+        JerkoPrebaci = findViewById(R.id.PrebaciJerko);
         MatijaPlaygroundMenuItem = findViewById(R.id.MatijaPlayground);
+        MatijaPrebaci = findViewById(R.id.PrebaciMatija);
         NikoPlaygroundMenuItem = findViewById(R.id.NikoPlayground);
+        NikoPrebaci = findViewById(R.id.PrebaciNiko);
 
         // JerkoPlaygroundMenuItem
         JerkoPlaygroundMenuItem.setTitle("Jerko playgorund");
-        JerkoPlaygroundMenuItem.setOnClickListener(new OnClick<Void>() {
+        JerkoPrebaci.setOnClickListener(new OnClick<Void>() {
             @Override
             public Void onClick() throws Exception {
                 Intent transfer = new Intent(MainActivity.this, JerkoPlayground.class);
@@ -46,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         // MatijaPlaygroundMenuItem
         MatijaPlaygroundMenuItem.setTitle("Matija playgorund");
-        MatijaPlaygroundMenuItem.setOnClickListener(new OnClick<Void>() {
+        MatijaPrebaci.setOnClickListener(new OnClick<Void>() {
             @Override
             public Void onClick() throws Exception {
                 Intent transfer = new Intent(MainActivity.this, MatijaPlayground.class);
@@ -59,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         // NikoPlaygroundMenuItem
         NikoPlaygroundMenuItem.setTitle("Niko playgorund");
-        NikoPlaygroundMenuItem.setOnClickListener(new OnClick<Void>() {
+        NikoPrebaci.setOnClickListener(new OnClick<Void>() {
             @Override
             public Void onClick() throws Exception {
                 Intent transfer = new Intent(MainActivity.this, NikoPlayground.class);

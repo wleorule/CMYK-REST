@@ -49,6 +49,8 @@ public class ImageLayoutItem extends RelativeLayout {
         itemImage = findViewById(R.id.LayoutImageImage);
         itemTitle = findViewById(R.id.LayoutImageTitle);
 
+
+
         setOnClickListener(localOnClick);
     }
 
@@ -82,11 +84,35 @@ public class ImageLayoutItem extends RelativeLayout {
             }
 
             //TODO: Pokaži iteme
+            toogleAllChilds();
 
 
             ImageLayoutItem.this.onClick(v.getContext());
         }
     };
+
+
+
+    public void toogleAllChilds() {
+
+        final int count = getChildCount();
+
+
+        for (int i = 0; i < count; i++) {
+            View temp = getChildAt(i);
+
+            if (temp instanceof ImageLayoutItemMenuItem) {
+                ImageLayoutItemMenuItem child = (ImageLayoutItemMenuItem) getChildAt(i);
+
+                if (blurred) {
+                    child.setVisibility(View.VISIBLE);
+                } else {
+                    child.setVisibility(View.GONE);
+                }
+            }
+        }
+
+    }
 
     public void onClick(Context context){
 
