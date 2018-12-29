@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MatijaPlayground">
 
+    <com.cmykui.framework.cmykui.graph.BarChart
+        android:id="@+id/barChart3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints" />
 </android.support.constraint.ConstraintLayout>
