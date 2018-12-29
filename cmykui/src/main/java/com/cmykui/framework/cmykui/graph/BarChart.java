@@ -7,12 +7,15 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.Random;
+
 public class BarChart extends View {
 
 
     private Paint paint;
     private int width, height, padding;
     private boolean isInit = false;
+
 
     public float[] Data = new float[7];
 
@@ -40,7 +43,7 @@ public class BarChart extends View {
         isInit = true;
 
         Data[0] = 15.5f;
-        Data[1] = 50.5f;
+        Data[1] = 20.5f;
         Data[2] = 3.5f;
         Data[3] = 8.5f;
         Data[4] = 25.5f;
@@ -64,36 +67,30 @@ public class BarChart extends View {
 
     private void drawShapes(Canvas canvas) {
         paint.reset();
-        paint.setColor(Color.RED);
+
         paint.setStyle(Paint.Style.FILL);
         paint.setAntiAlias(true);
 
-        // Izracun
-        float max = -999;
-        for(int i = 0; i < Data.length; i++) {
-            if(max < Data[i]){
-                max = Data[i];
-            }
-        }
 
-        int razmak = padding;
-        int maxWidth = (width-padding*2) / Data.length - (razmak);
+        int maxWidth = (width-padding*2) / Data.length - (padding);
         int currentX = padding * 2;
-        float broj = ((height - padding) / max);
+        float broj = ((height - padding) / maxVisina());
 
         for(int i = 0; i < Data.length; i++) {
+
+
+            paint.setColor(randomColor());
 
             float data = 0;
 
-
-            if(Data[i] == max) {
+            if(Data[i] == maxVisina()) {
                 data = padding;
             }
             else {
-                data = (max - Data[i]) * broj;
+                data = (maxVisina() - Data[i]) * broj;
             }
 
-            drawShape(canvas, data,max, maxWidth, currentX, paint);
+            drawShape(canvas, data,maxVisina(), maxWidth, currentX, paint);
             currentX += padding + maxWidth;
         }
     }
@@ -110,15 +107,15 @@ public class BarChart extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
 
-        int pomicanje = 20;
+        int pomicanje = (int)Math.ceil(maxVisina());
 
-        //int broj_linijaX = (int)Math.floor((width - 100) / pomicanje); // 10 je ramak izmedu linija
-        int broj_linijaY = (int)Math.floor((height - padding*2) / pomicanje); // 10 je ramak izmedu linija
+        //int broj_linijaX = (int)Math.floor((width - padding*2) / pomicanje); // 10 je ramak izmedu linija
+        int broj_linijaY = (int)Math.round((height - padding) / pomicanje); // 10 je ramak izmedu linija
 
         // po X
         /*for(int i = 1; i <= broj_linijaX; i++){
-            int x = 50 + (pomicanje * i);
-            int sY = height - 40; // sjeti se da je dole - 50;
+            int x = padding + (pomicanje * i);
+            int sY = height - padding; // sjeti se da je dole - 50;
             int eY = height - 60;
             canvas.drawLine(x, sY, x, eY, paint);
         }*/
@@ -152,5 +149,22 @@ public class BarChart extends View {
         canvas.drawLine(startX, startY, endX, startY, paint);
         canvas.drawLine(startX, startY, startX, endY, paint);
 
+    }
+    private int randomColor(){
+        Random rnd = new Random();
+        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        return color;
+    }
+
+    private float maxVisina(){
+        // Izracun
+        float max = -999;
+
+        for(int i = 0; i < Data.length; i++) {
+            if(max < Data[i]){
+                max = Data[i];
+            }
+        }
+        return max;
     }
 }
