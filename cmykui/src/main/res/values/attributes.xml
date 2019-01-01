@@ -7,4 +7,11 @@
         <attr name="h" format="integer"/>
         <attr name="w" value="integer"/>
     </declare-styleable>
+    <declare-styleable name="FloatingActionsMenu">
+        <attr name="color_menu" format="color"/>
+        <attr name="color_pressed_menu" format="color"/>
+    </declare-styleable>
+    <declare-styleable name="ImageLayoutItemMenuItem">
+        <attr name="text" format="string"/>
+    </declare-styleable>
 </resources>
