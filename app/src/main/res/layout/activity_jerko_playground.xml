@@ -25,7 +25,7 @@
         </com.cmykui.framework.cmykui.component.FloatLabelText>
     </com.cmykui.framework.cmykui.component.ButtonComponent>
 
-    <com.cmykui.framework.cmykui.component.WaveLoadingComponent
+    <com.cmykui.framework.cmykui.component.LoadingComponent
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 android:layout_marginTop="200dp"

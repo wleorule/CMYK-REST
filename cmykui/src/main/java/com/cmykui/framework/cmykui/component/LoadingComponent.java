@@ -11,27 +11,27 @@ import android.view.animation.OvershootInterpolator;
 import com.cmykui.framework.cmykui.R;
 import com.cmykui.framework.cmykui.base.ComponentInterface;
 
-public class WaveLoadingComponent extends LinearLayout implements ComponentInterface {
+public class LoadingComponent extends LinearLayout implements ComponentInterface {
 
-    public WaveLoadingComponent(Context context) {
+    public LoadingComponent(Context context) {
         super(context);init(context);
     }
 
-    public WaveLoadingComponent(Context context, AttributeSet attrs) {
+    public LoadingComponent(Context context, AttributeSet attrs) {
         super(context, attrs);init(context);
     }
 
-    public WaveLoadingComponent(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LoadingComponent(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);init(context);
     }
 
-    public WaveLoadingComponent(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public LoadingComponent(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);init(context);
     }
 
     public void init(Context context){
 
-        inflate(getContext(), R.layout.wave_loading_component, this);
+        inflate(getContext(), R.layout.loading_component, this);
     onStart();
     }
 
@@ -44,7 +44,7 @@ public class WaveLoadingComponent extends LinearLayout implements ComponentInter
 
         ImageView imgView=findViewById(R.id.imageview);
 
-        set = (AnimatorSet) AnimatorInflater.loadAnimator(getContext(),R.animator.wave);
+        set = (AnimatorSet) AnimatorInflater.loadAnimator(getContext(),R.animator.load_animation);
         set.setTarget(imgView);
         set.setInterpolator(new OvershootInterpolator(5));
         set.start();

@@ -5,11 +5,11 @@
 
     <ImageView
         android:id="@+id/imageview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-        android:src="@android:drawable/ic_dialog_alert"
-        android:background="@android:color/holo_blue_bright"
+        android:src="@mipmap/ic_loader2"
+
         />
 
 </LinearLayout>
