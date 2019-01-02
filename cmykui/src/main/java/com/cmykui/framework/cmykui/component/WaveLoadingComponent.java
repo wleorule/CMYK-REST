@@ -3,12 +3,10 @@ package com.cmykui.framework.cmykui.component;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Context;
-import android.os.Bundle;
 import android.util.AttributeSet;
-import android.view.Menu;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.view.animation.OvershootInterpolator;
 
 import com.cmykui.framework.cmykui.R;
 import com.cmykui.framework.cmykui.base.ComponentInterface;
@@ -38,15 +36,17 @@ public class WaveLoadingComponent extends LinearLayout implements ComponentInter
     }
 
     AnimatorSet set;
-    ImageView imgView;
+
 
 
 
     public void onStart(){
 
-        ImageView imgView=(ImageView)findViewById(R.id.imageview);
+        ImageView imgView=findViewById(R.id.imageview);
+
         set = (AnimatorSet) AnimatorInflater.loadAnimator(getContext(),R.animator.wave);
         set.setTarget(imgView);
+        set.setInterpolator(new OvershootInterpolator(5));
         set.start();
 
     }
