@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 
@@ -14,8 +16,11 @@ public class LineChart extends View {
     private Paint paint;
     private int width, height, padding;
     private boolean isInit = false;
+    private Rect rect = new Rect();
+    private int fontSize;
 
     public float[] Data = new float[7];
+    public String[] label = new String[7];
 
     public LineChart(Context context) {
         super(context);
@@ -35,7 +40,8 @@ public class LineChart extends View {
 
         width = getWidth();
         height = getHeight();
-        padding = 20;
+        padding = 30;
+        fontSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 13, getResources().getDisplayMetrics());
 
         isInit = true;
 
@@ -46,6 +52,14 @@ public class LineChart extends View {
         Data[4] = 25.5f;
         Data[5] = 8.5f;
         Data[6] = 25.5f;
+
+        label [0] = "prvi";
+        label [1] = "drugi";
+        label [2] = "treci";
+        label [3] = "cetvrti";
+        label [4] = "peti";
+        label [5] = "sesti";
+        label [6] = "sedmi";
 
     }
 
@@ -59,6 +73,23 @@ public class LineChart extends View {
 
         drawOsi(canvas);
         drawLine(canvas);
+        drawLabel(canvas);
+    }
+
+    private void drawLabel(Canvas canvas) {
+        paint.setTextSize(fontSize);
+        paint.setTextAlign(Paint.Align.CENTER);
+
+        float x = padding;
+        float y = height - 5;
+        int maxWidth = (width-padding*2) / Data.length - (padding);
+        for (int i = 0; i < Data.length; i++){
+            paint.getTextBounds(label[i],0,label[i].length(),rect);
+
+            canvas.drawText(label[i],x,y,paint);
+
+            x += padding + maxWidth;
+        }
     }
 
     private void drawLine(Canvas canvas) {
@@ -71,11 +102,12 @@ public class LineChart extends View {
         float startY = height - padding;
         int maxWidth = (width-padding*2) / Data.length - (padding);
         int currentX = padding;
+        float currentY = 0;
         float broj = ((height - padding) / maxVisina());
 
         for(int i = 0; i < Data.length; i++) {
 
-            float currentY = 0;
+            currentY = 0;
 
             if(Data[i] == maxVisina()) {
                 currentY = padding;

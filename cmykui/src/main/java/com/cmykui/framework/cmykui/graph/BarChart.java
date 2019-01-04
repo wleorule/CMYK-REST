@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+
 import java.util.Random;
 
 public class BarChart extends View {
@@ -16,10 +17,7 @@ public class BarChart extends View {
     private int width, height, padding;
     private boolean isInit = false;
 
-
     public float[] Data = new float[7];
-
-
 
     public BarChart(Context context) {
         super(context);
@@ -33,6 +31,8 @@ public class BarChart extends View {
         super(context, attrs, defStyleAttr);
     }
 
+
+
     private void init() {
         paint = new Paint();
 
@@ -42,13 +42,14 @@ public class BarChart extends View {
 
         isInit = true;
 
+
         Data[0] = 15.5f;
         Data[1] = 20.5f;
         Data[2] = 3.5f;
         Data[3] = 8.5f;
         Data[4] = 25.5f;
-        Data[5] = 30.5f;
-        Data[6] = 15.5f;
+        Data[5] = 8.5f;
+        Data[6] = 25.5f;
 
     }
 
