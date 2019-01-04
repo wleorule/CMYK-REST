@@ -80,6 +80,7 @@ public class BarChart extends View {
         drawLines(canvas);
         drawShapes(canvas);
         drawLabel(canvas);
+        drawNumerals(canvas);
     }
 
     private void drawShapes(Canvas canvas) {
@@ -137,6 +138,27 @@ public class BarChart extends View {
             canvas.drawLine(sX, y, eX, y, paint);
         }
 
+    }
+
+
+    private void drawNumerals(Canvas canvas) {
+        paint.setTextSize(fontSize);
+        paint.setTextAlign(Paint.Align.CENTER);
+
+        float x = padding / 2;
+        float y;
+        int br = (int)Math.floor(maxVisina());
+        int pomicanje = Math.round((height - padding) / br);
+        String temp;
+        for (int i = 1; i < br; i++){
+            temp = String.valueOf(i);
+            paint.getTextBounds(temp,0,temp.length(),rect);
+            y = (height - padding) - (pomicanje * i) + (fontSize / 2);
+            if(i%5==0){
+                canvas.drawText(temp,x,y,paint);
+            }
+
+        }
     }
 
     private void drawOsi(Canvas canvas) {

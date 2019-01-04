@@ -73,7 +73,29 @@ public class LineChart extends View {
 
         drawOsi(canvas);
         drawLine(canvas);
+        drawLines(canvas);
         drawLabel(canvas);
+        drawNumerals(canvas);
+
+    }
+
+    private void drawNumerals(Canvas canvas) {
+        paint.setTextSize(fontSize);
+
+        float x = padding / 2;
+        float y;
+        int br = (int)Math.floor(maxVisina());
+        int pomicanje = Math.round((height - padding) / br);
+        String temp;
+        for (int i = 1; i < br; i++){
+            temp = String.valueOf(i);
+            paint.getTextBounds(temp,0,temp.length(),rect);
+            y = (height - padding) - (pomicanje * i) + (fontSize / 2);
+            if(i%5==0){
+                canvas.drawText(temp,x,y,paint);
+            }
+
+        }
     }
 
     private void drawLabel(Canvas canvas) {
@@ -121,6 +143,29 @@ public class LineChart extends View {
             startY = currentY;
             currentX += padding + maxWidth;
         }
+    }
+
+    private void drawLines(Canvas canvas) {
+
+        paint.reset();
+        paint.setColor(Color.WHITE);
+        paint.setStrokeWidth(2);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setAntiAlias(true);
+
+        int broj_linijaY = (int)Math.floor(maxVisina());
+
+        int pomicanje = Math.round((height - padding) / broj_linijaY);
+
+        // po Y
+        for(int i = 1; i < broj_linijaY; i++){
+            int y = (height - padding) - (pomicanje * i);
+            int sX = padding;
+            int eX = padding + 10;
+
+            canvas.drawLine(sX, y, eX, y, paint);
+        }
+
     }
 
     private void drawOsi(Canvas canvas) {
