@@ -5,11 +5,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.provider.ContactsContract;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
 
+import com.cmykui.framework.cmykui.base.DataSource;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class BarChart extends View {
@@ -21,8 +26,9 @@ public class BarChart extends View {
     private Rect rect = new Rect();
     private int fontSize;
 
-    public float[] Data = new float[7];
-    public String[] label = new String[7];
+    //public float[] Data = new float[7];
+    //public String[] label = new String[7];
+    public List<DataSource> DataSource = new ArrayList<DataSource>();
 
     public BarChart(Context context) {
         super(context);
@@ -49,21 +55,30 @@ public class BarChart extends View {
         fontSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 13, getResources().getDisplayMetrics());
 
 
-        Data[0] = 15.5f;
-        Data[1] = 20.5f;
-        Data[2] = 3.5f;
-        Data[3] = 8.5f;
-        Data[4] = 25.5f;
-        Data[5] = 8.5f;
-        Data[6] = 25.5f;
+        DataSource temp = new DataSource("prvi", 15.5f);
+        this.DataSource.add(temp);
 
-        label [0] = "prvi";
-        label [1] = "drugi";
-        label [2] = "treci";
-        label [3] = "cetvrti";
-        label [4] = "peti";
-        label [5] = "sesti";
-        label [6] = "sedmi";
+        temp = new DataSource("drugi", 20.5f);
+        this.DataSource.add(temp);
+
+        temp = new DataSource("treci", 3.5f);
+        this.DataSource.add(temp);
+
+        //Data[0] = 15.5f;
+        //Data[1] = 20.5f;
+        //Data[2] = 3.5f;
+        //Data[3] = 8.5f;
+        //Data[4] = 25.5f;
+        //Data[5] = 8.5f;
+        //Data[6] = 25.5f;
+
+        //label [0] = "prvi";
+        //label [1] = "drugi";
+        //label [2] = "treci";
+        //label [3] = "cetvrti";
+        //label [4] = "peti";
+        //label [5] = "sesti";
+        //label [6] = "sedmi";
 
 
     }
@@ -90,22 +105,22 @@ public class BarChart extends View {
         paint.setAntiAlias(true);
 
 
-        int maxWidth = (width-padding*2) / Data.length - (padding);
+        int maxWidth = (width-padding*2) / DataSource.size() - (padding);
         int currentX = padding * 2;
-        float broj = ((height - padding) / maxVisina());
+        double broj = ((height - padding) / maxVisina());
 
-        for(int i = 0; i < Data.length; i++) {
+        for(int i = 0; i < DataSource.size(); i++) {
 
 
             paint.setColor(randomColor());
 
-            float data = 0;
+            double data = 0;
 
-            if(Data[i] == maxVisina()) {
+            if(DataSource.get(i).Value == maxVisina()) {
                 data = padding;
             }
             else {
-                data = (maxVisina() - Data[i]) * broj;
+                data = (maxVisina() - DataSource.get(i).Value) * broj;
             }
 
             drawShape(canvas, data,maxVisina(), maxWidth, currentX, paint);
@@ -113,8 +128,8 @@ public class BarChart extends View {
         }
     }
 
-    private void drawShape(Canvas canvas, float data, float max, int maxWidth, int currentX, Paint paint) {
-        canvas.drawRect(currentX, data, (currentX + maxWidth),(height - padding), paint);
+    private void drawShape(Canvas canvas, double data, double max, double maxWidth, double currentX, Paint paint) {
+        canvas.drawRect((float)currentX, (float) data, (float)(currentX + maxWidth),(height - padding), paint);
     }
 
     private void drawLines(Canvas canvas) {
@@ -187,11 +202,11 @@ public class BarChart extends View {
 
         float x = padding * 2;
         float y = height - 5;
-        int maxWidth = (width-padding*2) / Data.length - (padding);
-        for (int i = 0; i < Data.length; i++){
-            paint.getTextBounds(label[i],0,label[i].length(),rect);
+        int maxWidth = (width-padding*2) / DataSource.size() - (padding);
+        for (int i = 0; i < DataSource.size(); i++){
+            paint.getTextBounds(DataSource.get(i).Name,0,DataSource.get(i).Name.length(),rect);
 
-            canvas.drawText(label[i],x,y,paint);
+            canvas.drawText(DataSource.get(i).Name,x,y,paint);
 
             x += padding + maxWidth;
         }
@@ -203,13 +218,13 @@ public class BarChart extends View {
         return color;
     }
 
-    private float maxVisina(){
+    private double maxVisina(){
         // Izracun
-        float max = -999;
+        double max = -999;
 
-        for(int i = 0; i < Data.length; i++) {
-            if(max < Data[i]){
-                max = Data[i];
+        for(int i = 0; i < DataSource.size(); i++) {
+            if(max < DataSource.get(i).Value){
+                max = DataSource.get(i).Value;
             }
         }
         return max;
