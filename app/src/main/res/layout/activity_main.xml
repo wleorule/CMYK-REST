@@ -7,56 +7,64 @@
     android:orientation="vertical"
     android:background="#dddddd">
 
-    <com.cmykui.framework.cmykui.layout.ImageLayoutItem
+    <com.cmykui.framework.cmykui.layout.ImageLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:id="@+id/JerkoPlayground"
-        android:background="#ffffff">
-        <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
-            android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.cmykui.framework.cmykui.layout.ImageLayoutItem
+            android:id="@+id/MatijaPlayground"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="45dp"
-            android:id="@+id/PrebaciJerko"
-            app:text="Pogledaj >"/>
+            android:layout_marginTop="3dp"
+            android:background="#ffffff"
+            >
 
-    </com.cmykui.framework.cmykui.layout.ImageLayoutItem>
+            <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
+                android:id="@+id/PrebaciMatija"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="45dp"
+                app:text="Pogledaj >" />
 
-    <com.cmykui.framework.cmykui.layout.ImageLayoutItem
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:id="@+id/MatijaPlayground"
-        android:background="#ffffff"
-        android:layout_marginTop="3dp">
+        </com.cmykui.framework.cmykui.layout.ImageLayoutItem>
 
-        <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
-            android:layout_width="wrap_content"
+        <com.cmykui.framework.cmykui.layout.ImageLayoutItem
+            android:id="@+id/JerkoPlayground"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="45dp"
-            android:id="@+id/PrebaciMatija"
-            app:text="Pogledaj >"/>
+            android:background="#ffffff">
 
-    </com.cmykui.framework.cmykui.layout.ImageLayoutItem>
+            <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
+                android:id="@+id/PrebaciJerko"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="45dp"
+                app:text="Pogledaj >" />
 
-    <com.cmykui.framework.cmykui.layout.ImageLayoutItem
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:id="@+id/NikoPlayground"
-        android:background="#ffffff"
-        android:layout_marginTop="3dp">
+        </com.cmykui.framework.cmykui.layout.ImageLayoutItem>
 
-        <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
-            android:layout_width="wrap_content"
+
+
+        <com.cmykui.framework.cmykui.layout.ImageLayoutItem
+            android:id="@+id/NikoPlayground"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="45dp"
-            android:id="@+id/PrebaciNiko"
-            app:text="Pogledaj >"/>
+            android:layout_marginTop="3dp"
+            android:background="#ffffff">
 
-    </com.cmykui.framework.cmykui.layout.ImageLayoutItem>
+            <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
+                android:id="@+id/PrebaciNiko"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="45dp"
+                app:text="Pogledaj >" />
+
+        </com.cmykui.framework.cmykui.layout.ImageLayoutItem>
+    </com.cmykui.framework.cmykui.layout.ImageLayout>
+
 
 </LinearLayout>

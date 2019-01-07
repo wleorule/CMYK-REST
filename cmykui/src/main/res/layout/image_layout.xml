@@ -1,25 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/CMYKUI">
 
 
-    <TextView
-        android:id="@+id/TitleText"
+
+
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/FilterLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/TitleText"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:text="Layout title"
+                android:textSize="16dp"
+                app:layout_widthPercent="95%" />
+
+            <ImageView
+                android:id="@+id/FilterButton"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/TitleText"
+                app:layout_widthPercent="5%"
+                app:srcCompat="@drawable/ic_filter_list_black_24dp" />
+
+        </android.support.percent.PercentRelativeLayout>
+
+<!--
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Layout title" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="100">
 
-    <TextView
-        android:id="@+id/SearchText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:gravity="right"
-        android:paddingBottom="50dp"
-        android:text="..." />
+        <TextView
+            android:id="@+id/TitleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="90"
+            android:layout_alignParentTop="true"
+            android:text="Layout title"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/FilterButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:layout_toRightOf="@id/TitleText"
+            app:srcCompat="@drawable/ic_filter_list_black_24dp" />
+
+    </LinearLayout>
+    -->
 
     <EditText
         android:id="@+id/SearchInput"

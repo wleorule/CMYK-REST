@@ -4,8 +4,10 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+
 import android.graphics.RectF;
 import android.util.AttributeSet;
+
 
 public class PieChart extends BaseChart {
 
@@ -32,6 +34,7 @@ public class PieChart extends BaseChart {
 
     }
 
+
     private void drawLegend(Canvas canvas) {
         paint.reset();
         paint.setTextSize(fontSize);
@@ -51,12 +54,22 @@ public class PieChart extends BaseChart {
                 x += padding * 3;
                 y = (height - (height- width));
             }
+
         }
+
+    }
+
+    private int randomColor(){
+        Random rnd = new Random();
+        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        return color;
     }
 
     private void drawPie(Canvas canvas) {
         paint.reset();
+
         float angle = 0;
+
 
         RectF oval = new RectF();
         oval.top = padding;
@@ -75,12 +88,14 @@ public class PieChart extends BaseChart {
         }
     }
 
+
     private double sum(){
         float sum = 0;
 
         for(int i = 0; i < DataSource.size(); i++) {
             sum += DataSource.get(i).Value;
         }
+
         return sum;
     }
 }
