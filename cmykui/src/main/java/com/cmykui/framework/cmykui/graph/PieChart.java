@@ -5,8 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+
+import java.util.Random;
 
 
 public class PieChart extends View {
@@ -65,12 +68,41 @@ public class PieChart extends View {
     }
 
     private void drawLines(Canvas canvas) {
-        double angle = 0;
+        float angle = 0;
+        double angle2 = 0;
+
+        RectF oval = new RectF();
+        oval.top = padding;
+        oval.bottom = width - padding;
+        oval.left = padding;
+        oval.right = width - padding;
+        //canvas.drawArc(oval, 0, 180, true,paint);
+        paint.setColor(Color.GREEN);
+        paint.setStyle(Paint.Style.FILL);
+        //canvas.drawArc(oval, 180, 180, true,paint);
 
         for(int i = 0; i < Data.length; i++) {
-            angle += Math.PI * (share()*Data[i]);
-            canvas.drawLine(width/2, height/2, (float)(width / 2 + Math.cos(angle) * radius),(float)(height / 2 + Math.sin(angle) * radius), paint);
+
+            paint.setColor(randomColor());
+            float sweep = (float)(360 * (Data[i]) / share());
+            canvas.drawArc(oval, angle, sweep, true,paint);
+            angle += sweep;
+
         }
+    }
+
+    private void drawFill(double angle, double angle2, Canvas canvas) {
+
+        for(double i = angle; i < angle2; i = i + 0.01f) {
+            canvas.drawLine(width/2, height/2, (float)(width / 2 + Math.cos(i) * radius),(float)(height / 2 + Math.sin(i) * radius), paint);
+        }
+
+    }
+
+    private int randomColor(){
+        Random rnd = new Random();
+        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        return color;
     }
 
 
@@ -80,17 +112,17 @@ public class PieChart extends View {
         paint.setStrokeWidth(5);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
-        canvas.drawCircle(width / 2, height /2, radius , paint);
+        //canvas.drawCircle(width / 2, height /2, radius , paint);
 
     }
 
     private double share(){
-        float sum = -360;
+        float sum = 0;
 
         for(int i = 0; i < Data.length; i++) {
-            sum =+ Data[i];
+            sum += Data[i];
         }
-        double s = Math.PI / sum;
-        return s;
+        //double s = sum / Data.length;
+        return sum;
     }
 }
