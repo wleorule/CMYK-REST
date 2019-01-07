@@ -4,23 +4,24 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.cmykui.framework.cmykui.base.DataSource;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
 public class PieChart extends View {
     private Paint paint;
     private int width, height, padding;
-    private Rect rect = new Rect();
 
     private boolean isInit = false;
 
-
-    public float[] Data = new float[7];
+    public List<DataSource> DataSource = new ArrayList<DataSource>();
 
     public PieChart(Context context) {
         super(context);
@@ -41,15 +42,14 @@ public class PieChart extends View {
         paint = new Paint();
         isInit = true;
 
+        DataSource temp = new DataSource("prvi", 15.5f, Color.RED);
+        this.DataSource.add(temp);
 
-        Data[0] = 20.5f;
-        Data[1] = 10.5f;
-        Data[2] = 5.5f;
-        Data[3] = 10.5f;
-        Data[4] = 30.5f;
-        Data[5] = 10.5f;
-        Data[6] = 10.5f;
+        temp = new DataSource("drugi", 20.5f, Color.BLUE);
+        this.DataSource.add(temp);
 
+        temp = new DataSource("treci", 3.5f);
+        this.DataSource.add(temp);
     }
 
     @Override
@@ -72,28 +72,21 @@ public class PieChart extends View {
         oval.right = width - padding;
         paint.setStyle(Paint.Style.FILL);
 
-        for(int i = 0; i < Data.length; i++) {
+        for(int i = 0; i < DataSource.size(); i++) {
 
-            paint.setColor(randomColor());
-            float sweep = (float)(360 * (Data[i]) / sum());
+            paint.setColor(DataSource.get(i).Color);
+            float sweep = (float)(360 * (DataSource.get(i).Value) / sum());
             canvas.drawArc(oval, angle, sweep, true,paint);
             angle += sweep;
 
         }
     }
 
-    private int randomColor(){
-        Random rnd = new Random();
-        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-        return color;
-    }
-
-
     private double sum(){
         float sum = 0;
 
-        for(int i = 0; i < Data.length; i++) {
-            sum += Data[i];
+        for(int i = 0; i < DataSource.size(); i++) {
+            sum += DataSource.get(i).Value;
         }
         return sum;
     }
