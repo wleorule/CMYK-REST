@@ -38,8 +38,6 @@ public class LoadingComponent extends LinearLayout implements ComponentInterface
     AnimatorSet set;
 
 
-
-
     public void onStart(){
 
         ImageView imgView=findViewById(R.id.imageview);
