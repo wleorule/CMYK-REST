@@ -12,6 +12,11 @@ import android.view.View;
 
 import android.view.View;
 
+import com.cmykui.framework.cmykui.base.DataSource;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class LineChart extends View {
     private Paint paint;
     private int width, height, padding;
@@ -19,8 +24,9 @@ public class LineChart extends View {
     private Rect rect = new Rect();
     private int fontSize;
 
-    public float[] Data = new float[7];
-    public String[] label = new String[7];
+    //public float[] Data = new float[7];
+    //public String[] label = new String[7];
+    public List<DataSource> DataSource = new ArrayList<DataSource>();
 
     public LineChart(Context context) {
         super(context);
@@ -45,7 +51,7 @@ public class LineChart extends View {
 
         isInit = true;
 
-        Data[0] = 15.5f;
+        /*Data[0] = 15.5f;
         Data[1] = 20.5f;
         Data[2] = 3.5f;
         Data[3] = 8.5f;
@@ -59,7 +65,16 @@ public class LineChart extends View {
         label [3] = "cetvrti";
         label [4] = "peti";
         label [5] = "sesti";
-        label [6] = "sedmi";
+        label [6] = "sedmi";*/
+
+        DataSource temp = new DataSource("prvi", 15.5f);
+        this.DataSource.add(temp);
+
+        temp = new DataSource("drugi", 20.5f);
+        this.DataSource.add(temp);
+
+        temp = new DataSource("treci", 3.5f);
+        this.DataSource.add(temp);
 
     }
 
@@ -73,9 +88,31 @@ public class LineChart extends View {
 
         drawOsi(canvas);
         drawLine(canvas);
-        drawLines(canvas);
+        drawLinesY(canvas);
+        drawLinesX(canvas);
         drawLabel(canvas);
         drawNumerals(canvas);
+
+    }
+
+    private void drawLinesX(Canvas canvas) {
+        paint.reset();
+        paint.setColor(Color.WHITE);
+        paint.setStrokeWidth(2);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setAntiAlias(true);
+
+        float x = padding;
+        float sY = height - padding;
+        float eY = height - padding - 10;
+        int maxWidth = (width-padding*2) / DataSource.size() - (padding);
+        for (int i = 0; i < DataSource.size(); i++){
+
+            x += padding + maxWidth;
+
+            canvas.drawLine(x, sY, x, eY, paint);
+
+        }
 
     }
 
@@ -104,11 +141,11 @@ public class LineChart extends View {
 
         float x = padding;
         float y = height - 5;
-        int maxWidth = (width-padding*2) / Data.length - (padding);
-        for (int i = 0; i < Data.length; i++){
-            paint.getTextBounds(label[i],0,label[i].length(),rect);
+        int maxWidth = (width-padding*2) / DataSource.size() - (padding);
+        for (int i = 0; i < DataSource.size(); i++){
+            paint.getTextBounds(DataSource.get(i).Name,0,DataSource.get(i).Name.length(),rect);
 
-            canvas.drawText(label[i],x,y,paint);
+            canvas.drawText(DataSource.get(i).Name,x,y,paint);
 
             x += padding + maxWidth;
         }
@@ -122,20 +159,20 @@ public class LineChart extends View {
 
         float startX = padding;
         float startY = height - padding;
-        int maxWidth = (width-padding*2) / Data.length - (padding);
+        int maxWidth = (width-padding*2) / DataSource.size() - (padding);
         int currentX = padding;
         float currentY = 0;
         float broj = ((height - padding) / maxVisina());
 
-        for(int i = 0; i < Data.length; i++) {
+        for(int i = 0; i < DataSource.size(); i++) {
 
             currentY = 0;
 
-            if(Data[i] == maxVisina()) {
+            if(DataSource.get(i).Value == maxVisina()) {
                 currentY = padding;
             }
             else {
-                currentY = (maxVisina() - Data[i]) * broj;
+                currentY = (maxVisina() - (float)DataSource.get(i).Value) * broj;
             }
 
             canvas.drawLine(startX, startY, currentX , currentY, paint);
@@ -145,7 +182,7 @@ public class LineChart extends View {
         }
     }
 
-    private void drawLines(Canvas canvas) {
+    private void drawLinesY(Canvas canvas) {
 
         paint.reset();
         paint.setColor(Color.WHITE);
@@ -192,9 +229,9 @@ public class LineChart extends View {
         // Izracun
         float max = -999;
 
-        for(int i = 0; i < Data.length; i++) {
-            if(max < Data[i]){
-                max = Data[i];
+        for(int i = 0; i < DataSource.size(); i++) {
+            if(max < DataSource.get(i).Value){
+                max = (float)DataSource.get(i).Value;
             }
         }
         return max;
