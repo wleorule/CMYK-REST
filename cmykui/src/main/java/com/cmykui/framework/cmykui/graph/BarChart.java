@@ -4,28 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.provider.ContactsContract;
 import android.util.AttributeSet;
-import android.util.TypedValue;
-import android.view.View;
 
-
-import com.cmykui.framework.cmykui.base.DataSource;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-public class BarChart extends View {
-
-    private Paint paint;
-    private int width, height, padding;
-    private boolean isInit = false;
-    private Rect rect = new Rect();
-    private int fontSize;
-
-    public List<DataSource> DataSource = new ArrayList<DataSource>();
+public class BarChart extends BaseChart{
 
     public BarChart(Context context) {
         super(context);
@@ -39,30 +20,10 @@ public class BarChart extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    private void init() {
-        paint = new Paint();
-
-        width = getWidth();
-        height = getHeight();
-        padding = 30;
-
-        isInit = true;
-        fontSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 13, getResources().getDisplayMetrics());
-
-        DataSource temp = new DataSource("prvi", 15.5f, Color.RED);
-        this.DataSource.add(temp);
-
-        temp = new DataSource("drugi", 20.5f, Color.BLUE);
-        this.DataSource.add(temp);
-
-        temp = new DataSource("treci", 3.5f);
-        this.DataSource.add(temp);
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         if(!isInit){
-            init();
+            this.init();
         }
 
         canvas.drawColor(Color.BLACK);
@@ -180,7 +141,6 @@ public class BarChart extends View {
     }
 
     private double maxVisina(){
-        // Izracun
         double max = -999;
 
         for(int i = 0; i < DataSource.size(); i++) {

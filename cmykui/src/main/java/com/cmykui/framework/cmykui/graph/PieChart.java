@@ -6,22 +6,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.view.View;
 
-import com.cmykui.framework.cmykui.base.DataSource;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-
-public class PieChart extends View {
-    private Paint paint;
-    private int width, height, padding;
-
-    private boolean isInit = false;
-
-    public List<DataSource> DataSource = new ArrayList<DataSource>();
+public class PieChart extends BaseChart {
 
     public PieChart(Context context) {
         super(context);
@@ -35,27 +21,10 @@ public class PieChart extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    private void init(){
-        height = getHeight();
-        width = getWidth();
-        padding = 50;
-        paint = new Paint();
-        isInit = true;
-
-        DataSource temp = new DataSource("prvi", 15.5f, Color.RED);
-        this.DataSource.add(temp);
-
-        temp = new DataSource("drugi", 20.5f, Color.BLUE);
-        this.DataSource.add(temp);
-
-        temp = new DataSource("treci", 3.5f);
-        this.DataSource.add(temp);
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         if(!isInit){
-            init();
+            this.init();
         }
         canvas.drawColor(Color.BLACK);
         drawPie(canvas);
