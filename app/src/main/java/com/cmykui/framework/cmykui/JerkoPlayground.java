@@ -13,6 +13,7 @@ public class JerkoPlayground extends AppCompatActivity {
 
     ButtonComponent button;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +21,13 @@ public class JerkoPlayground extends AppCompatActivity {
 
         button = findViewById(R.id.button);
 
+
         FloatLabelText text = new FloatLabelText(this);
         String pomocni="string";
+        button.setButtonText("Gumb");
+        button.setButtonSuccessText("Uspijeh");
+        button.setButtonErrorText("Pogreška");
+        button.textLoading=false;
 
 
 
@@ -34,18 +40,22 @@ public class JerkoPlayground extends AppCompatActivity {
                 return null;
             }
         });
+
+
     }
 
+
+
     public Void mojaMetoda(Context ctx){
-        //
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                button.setActionSuccess();
+                button.setActionError();
+
             }
-        }, 2000);
+        }, 5000);
         return null;
     }
 }
