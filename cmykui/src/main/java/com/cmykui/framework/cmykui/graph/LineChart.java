@@ -4,29 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.TypedValue;
-import android.view.View;
 
-
-import android.view.View;
-
-import com.cmykui.framework.cmykui.base.DataSource;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class LineChart extends View {
-    private Paint paint;
-    private int width, height, padding;
-    private boolean isInit = false;
-    private Rect rect = new Rect();
-    private int fontSize;
-
-    //public float[] Data = new float[7];
-    //public String[] label = new String[7];
-    public List<DataSource> DataSource = new ArrayList<DataSource>();
+public class LineChart extends BaseChart {
 
     public LineChart(Context context) {
         super(context);
@@ -40,48 +20,10 @@ public class LineChart extends View {
         super(context, attrs, defStyleAttr);
     }
 
-
-    private void init() {
-        paint = new Paint();
-
-        width = getWidth();
-        height = getHeight();
-        padding = 30;
-        fontSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 13, getResources().getDisplayMetrics());
-
-        isInit = true;
-
-        /*Data[0] = 15.5f;
-        Data[1] = 20.5f;
-        Data[2] = 3.5f;
-        Data[3] = 8.5f;
-        Data[4] = 25.5f;
-        Data[5] = 8.5f;
-        Data[6] = 25.5f;
-
-        label [0] = "prvi";
-        label [1] = "drugi";
-        label [2] = "treci";
-        label [3] = "cetvrti";
-        label [4] = "peti";
-        label [5] = "sesti";
-        label [6] = "sedmi";*/
-
-        DataSource temp = new DataSource("prvi", 15.5f);
-        this.DataSource.add(temp);
-
-        temp = new DataSource("drugi", 20.5f);
-        this.DataSource.add(temp);
-
-        temp = new DataSource("treci", 3.5f);
-        this.DataSource.add(temp);
-
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         if(!isInit){
-            init();
+            this.init();
         }
 
         canvas.drawColor(Color.BLACK);
@@ -111,9 +53,7 @@ public class LineChart extends View {
             x += padding + maxWidth;
 
             canvas.drawLine(x, sY, x, eY, paint);
-
         }
-
     }
 
     private void drawNumerals(Canvas canvas) {
@@ -131,7 +71,6 @@ public class LineChart extends View {
             if(i%5==0){
                 canvas.drawText(temp,x,y,paint);
             }
-
         }
     }
 
@@ -194,7 +133,6 @@ public class LineChart extends View {
 
         int pomicanje = Math.round((height - padding) / broj_linijaY);
 
-        // po Y
         for(int i = 1; i < broj_linijaY; i++){
             int y = (height - padding) - (pomicanje * i);
             int sX = padding;
@@ -206,17 +144,14 @@ public class LineChart extends View {
     }
 
     private void drawOsi(Canvas canvas) {
-
-        //Postavljam sve za boju u te drekove
         paint.reset();
         paint.setColor(Color.WHITE);
         paint.setStrokeWidth(2);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
 
-        // Racunam gdje kako sta
-        float startX = padding; // neka krene malo u lijevo
-        float startY = height - padding; //neka krene malo manje od kraja
+        float startX = padding;
+        float startY = height - padding;
         float endX = width - padding;
         float endY = padding;
 
@@ -226,7 +161,6 @@ public class LineChart extends View {
     }
 
     private float maxVisina(){
-        // Izracun
         float max = -999;
 
         for(int i = 0; i < DataSource.size(); i++) {
@@ -236,6 +170,5 @@ public class LineChart extends View {
         }
         return max;
     }
-    
-    
+
 }
