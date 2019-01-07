@@ -59,11 +59,6 @@ public class PieChart extends BaseChart {
 
     }
 
-    private int randomColor(){
-        Random rnd = new Random();
-        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-        return color;
-    }
 
     private void drawPie(Canvas canvas) {
         paint.reset();
