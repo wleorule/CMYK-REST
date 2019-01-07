@@ -1,7 +1,3 @@
 <resources>
     <string name="app_name">CMYK UI</string>
-    <string name="hint_Email">Email</string>
-    <string name="hint_Password">Password</string>
-    <string name="hint_Username">Username</string>
-    <string name="hint_Name">Name</string>
 </resources>
