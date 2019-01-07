@@ -4,31 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.provider.ContactsContract;
 import android.util.AttributeSet;
-import android.util.TypedValue;
-import android.view.View;
 
-
-import com.cmykui.framework.cmykui.base.DataSource;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-public class BarChart extends View {
-
-
-    private Paint paint;
-    private int width, height, padding;
-    private boolean isInit = false;
-    private Rect rect = new Rect();
-    private int fontSize;
-
-    //public float[] Data = new float[7];
-    //public String[] label = new String[7];
-    public List<DataSource> DataSource = new ArrayList<DataSource>();
+public class BarChart extends BaseChart{
 
     public BarChart(Context context) {
         super(context);
@@ -42,51 +20,10 @@ public class BarChart extends View {
         super(context, attrs, defStyleAttr);
     }
 
-
-
-    private void init() {
-        paint = new Paint();
-
-        width = getWidth();
-        height = getHeight();
-        padding = 30;
-
-        isInit = true;
-        fontSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 13, getResources().getDisplayMetrics());
-
-
-        DataSource temp = new DataSource("prvi", 15.5f);
-        this.DataSource.add(temp);
-
-        temp = new DataSource("drugi", 20.5f);
-        this.DataSource.add(temp);
-
-        temp = new DataSource("treci", 3.5f);
-        this.DataSource.add(temp);
-
-        //Data[0] = 15.5f;
-        //Data[1] = 20.5f;
-        //Data[2] = 3.5f;
-        //Data[3] = 8.5f;
-        //Data[4] = 25.5f;
-        //Data[5] = 8.5f;
-        //Data[6] = 25.5f;
-
-        //label [0] = "prvi";
-        //label [1] = "drugi";
-        //label [2] = "treci";
-        //label [3] = "cetvrti";
-        //label [4] = "peti";
-        //label [5] = "sesti";
-        //label [6] = "sedmi";
-
-
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         if(!isInit){
-            init();
+            this.init();
         }
 
         canvas.drawColor(Color.BLACK);
@@ -100,10 +37,8 @@ public class BarChart extends View {
 
     private void drawShapes(Canvas canvas) {
         paint.reset();
-
         paint.setStyle(Paint.Style.FILL);
         paint.setAntiAlias(true);
-
 
         int maxWidth = (width-padding*2) / DataSource.size() - (padding);
         int currentX = padding * 2;
@@ -111,8 +46,7 @@ public class BarChart extends View {
 
         for(int i = 0; i < DataSource.size(); i++) {
 
-
-            paint.setColor(randomColor());
+            paint.setColor(DataSource.get(i).Color);
 
             double data = 0;
 
@@ -152,9 +86,7 @@ public class BarChart extends View {
 
             canvas.drawLine(sX, y, eX, y, paint);
         }
-
     }
-
 
     private void drawNumerals(Canvas canvas) {
         paint.setTextSize(fontSize);
@@ -172,22 +104,18 @@ public class BarChart extends View {
             if(i%5==0){
                 canvas.drawText(temp,x,y,paint);
             }
-
         }
     }
 
     private void drawOsi(Canvas canvas) {
-
-        //Postavljam sve za boju u te drekove
         paint.reset();
         paint.setColor(Color.WHITE);
-        paint.setStrokeWidth(2);
+        paint.setStrokeWidth(3);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
 
-        // Racunam gdje kako sta
-        float startX = padding; // neka krene malo u lijevo
-        float startY = height - padding; //neka krene malo manje od kraja
+        float startX = padding;
+        float startY = height - padding;
         float endX = width - padding;
         float endY = padding;
 
@@ -212,14 +140,7 @@ public class BarChart extends View {
         }
     }
 
-    private int randomColor(){
-        Random rnd = new Random();
-        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-        return color;
-    }
-
     private double maxVisina(){
-        // Izracun
         double max = -999;
 
         for(int i = 0; i < DataSource.size(); i++) {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <Button
         android:id="@+id/Component_button"
@@ -10,23 +10,28 @@
         android:layout_height="wrap_content"
         android:text="Button" />
 
+    <Button
+        android:id="@+id/Component_buttonSuccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:backgroundTint="#55ff55"
+        android:text="Success" />
+
+    <Button
+        android:id="@+id/Component_buttonError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ff5555"
+        android:text="Error" />
+
     <TextView
         android:id="@+id/Component_textView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="TextView" />
 
-    <TextView
-        android:id="@+id/Component_textError"
+    <com.cmykui.framework.cmykui.component.LoadingComponent
+        android:id="@+id/Component_loader"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Error"
-        android:textColor="#FF0000" />
-
-    <TextView
-        android:id="@+id/Component_textSuccess"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Success"
-        android:textColor="#FF0000" />
+        android:layout_height="match_parent" />
 </LinearLayout>
