@@ -5,21 +5,22 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+
+import java.util.Random;
 
 
 public class PieChart extends View {
     private Paint paint;
-    private int width, height, padding, radius;
+    private int width, height, padding;
     private Rect rect = new Rect();
 
     private boolean isInit = false;
 
 
     public float[] Data = new float[7];
-
-
 
     public PieChart(Context context) {
         super(context);
@@ -37,8 +38,6 @@ public class PieChart extends View {
         height = getHeight();
         width = getWidth();
         padding = 50;
-        int min = Math.min(height,width);
-        radius = min /2 - padding;
         paint = new Paint();
         isInit = true;
 
@@ -59,38 +58,43 @@ public class PieChart extends View {
             init();
         }
         canvas.drawColor(Color.BLACK);
-        drawCircle(canvas);
-        drawLines(canvas);
+        drawPie(canvas);
 
     }
 
-    private void drawLines(Canvas canvas) {
-        double angle = 0;
+    private void drawPie(Canvas canvas) {
+        float angle = 0;
+
+        RectF oval = new RectF();
+        oval.top = padding;
+        oval.bottom = width - padding;
+        oval.left = padding;
+        oval.right = width - padding;
+        paint.setStyle(Paint.Style.FILL);
 
         for(int i = 0; i < Data.length; i++) {
-            angle += Math.PI * (share()*Data[i]);
-            canvas.drawLine(width/2, height/2, (float)(width / 2 + Math.cos(angle) * radius),(float)(height / 2 + Math.sin(angle) * radius), paint);
+
+            paint.setColor(randomColor());
+            float sweep = (float)(360 * (Data[i]) / sum());
+            canvas.drawArc(oval, angle, sweep, true,paint);
+            angle += sweep;
+
         }
     }
 
-
-    private void drawCircle(Canvas canvas) {
-        paint.reset();
-        paint.setColor(getResources().getColor(android.R.color.white));
-        paint.setStrokeWidth(5);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setAntiAlias(true);
-        canvas.drawCircle(width / 2, height /2, radius , paint);
-
+    private int randomColor(){
+        Random rnd = new Random();
+        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        return color;
     }
 
-    private double share(){
-        float sum = -360;
+
+    private double sum(){
+        float sum = 0;
 
         for(int i = 0; i < Data.length; i++) {
-            sum =+ Data[i];
+            sum += Data[i];
         }
-        double s = Math.PI / sum;
-        return s;
+        return sum;
     }
 }
