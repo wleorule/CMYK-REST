@@ -110,7 +110,7 @@ public class BarChart extends BaseChart{
     private void drawOsi(Canvas canvas) {
         paint.reset();
         paint.setColor(Color.WHITE);
-        paint.setStrokeWidth(2);
+        paint.setStrokeWidth(3);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
 

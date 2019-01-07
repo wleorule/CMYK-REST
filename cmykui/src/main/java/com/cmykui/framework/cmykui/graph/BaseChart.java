@@ -40,7 +40,7 @@ public class BaseChart extends View {
 
         width = getWidth();
         height = getHeight();
-        padding = 30;
+        padding = 50;
 
         isInit = true;
         fontSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 13, getResources().getDisplayMetrics());
@@ -52,6 +52,12 @@ public class BaseChart extends View {
         this.DataSource.add(temp);
 
         temp = new DataSource("treci", 3.5f);
+        this.DataSource.add(temp);
+
+        temp = new DataSource("cetvrti", 10.0f);
+        this.DataSource.add(temp);
+
+        temp = new DataSource("peti", 16f);
         this.DataSource.add(temp);
     }
 

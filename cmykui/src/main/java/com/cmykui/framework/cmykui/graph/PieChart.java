@@ -28,10 +28,34 @@ public class PieChart extends BaseChart {
         }
         canvas.drawColor(Color.BLACK);
         drawPie(canvas);
+        drawLegend(canvas);
 
     }
 
+    private void drawLegend(Canvas canvas) {
+        paint.reset();
+        paint.setTextSize(fontSize);
+        paint.setTextAlign(Paint.Align.LEFT);
+        paint.setColor(Color.WHITE);
+
+        float x = padding * 2;
+        float y = (height - (height- width));
+        int pomicanje = fontSize*2;
+        String temp;
+        for (int i = 0; i <= DataSource.size(); i++){
+            temp = String.valueOf(DataSource.get(i).Name);
+            paint.getTextBounds(temp,0,temp.length(),rect);
+            y += pomicanje;
+            canvas.drawText(temp,x,y,paint);
+            if((i+1) % 3 == 0){
+                x += padding * 3;
+                y = (height - (height- width));
+            }
+        }
+    }
+
     private void drawPie(Canvas canvas) {
+        paint.reset();
         float angle = 0;
 
         RectF oval = new RectF();
