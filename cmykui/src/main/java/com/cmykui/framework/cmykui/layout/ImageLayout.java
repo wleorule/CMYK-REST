@@ -51,10 +51,6 @@ public class ImageLayout extends ViewGroup implements LayoutInterface {
         //
         inflate(getContext(), R.layout.image_layout, this);
 
-        //LinearLayout filter = findViewById(R.id.FilterLayout);
-        //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
-
-        //filter.setLayoutParams(params);
 
         TitleText = findViewById(R.id.TitleText);
         SearchText = findViewById(R.id.FilterButton);
@@ -95,8 +91,8 @@ public class ImageLayout extends ViewGroup implements LayoutInterface {
         for(int i = 0; i < count; i++){
             View temp = getChildAt(i);
 
-            if(temp instanceof InboxViewItem){
-                InboxViewItem child = (InboxViewItem) getChildAt(i);
+            if(temp instanceof ImageLayoutItem){
+                ImageLayoutItem child = (ImageLayoutItem) getChildAt(i);
 
                 if(!child.getTitle().toLowerCase().contains(seachText.toLowerCase())){
                     child.setVisibility(View.GONE);
@@ -104,6 +100,8 @@ public class ImageLayout extends ViewGroup implements LayoutInterface {
                 else{
                     child.setVisibility(View.VISIBLE);
                 }
+
+                child.getMeasuredState();
             }
         }
 
@@ -164,6 +162,8 @@ public class ImageLayout extends ViewGroup implements LayoutInterface {
         }
     }
 
+
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int count = getChildCount();
@@ -204,4 +204,31 @@ public class ImageLayout extends ViewGroup implements LayoutInterface {
         setMeasuredDimension(resolveSizeAndState(maxWidth, widthMeasureSpec, childState),
                 resolveSizeAndState(maxHeight, heightMeasureSpec, childState << MEASURED_HEIGHT_STATE_SHIFT));
     }
+
+    /*
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int count = getChildCount();
+        // Measurement will ultimately be computing these values.
+        int maxHeight = 50 * count;
+        int maxWidth = LayoutParams.MATCH_PARENT;
+        int childState = 0;
+        int mLeftWidth = 0;
+        int rowCount = 0;
+        // Iterate through all children, measuring them and computing our dimensions
+        // from their size.
+        for (int i = 0; i < count; i++) {
+            final View child = getChildAt(i);
+            if (child.getVisibility() == GONE)
+                continue;
+
+            childState = combineMeasuredStates(childState, child.getMeasuredState());
+        }
+        // Check against our minimum height and width
+        maxHeight = Math.max(maxHeight, getSuggestedMinimumHeight());
+        maxWidth = Math.max(maxWidth, getSuggestedMinimumWidth());
+        // Report our final dimensions.
+        setMeasuredDimension(resolveSizeAndState(maxWidth, widthMeasureSpec, childState),
+                resolveSizeAndState(maxHeight, heightMeasureSpec, childState << MEASURED_HEIGHT_STATE_SHIFT));
+    }*/
 }

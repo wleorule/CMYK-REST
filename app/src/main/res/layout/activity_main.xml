@@ -12,31 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-        <com.cmykui.framework.cmykui.layout.ImageLayoutItem
-            android:id="@+id/JerkoPlayground"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:gravity="center">
-
-            <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
-                android:id="@+id/PrebaciJerko"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="170dp"
-                android:layout_marginTop="45dp"
-                app:text="Pogledaj >" />
-
-        </com.cmykui.framework.cmykui.layout.ImageLayoutItem>
-
         <com.cmykui.framework.cmykui.layout.ImageLayoutItem
             android:id="@+id/MatijaPlayground"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:background="#ffffff"
-            android:gravity="center">
+            >
 
             <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
                 android:id="@+id/PrebaciMatija"
@@ -49,12 +31,29 @@
         </com.cmykui.framework.cmykui.layout.ImageLayoutItem>
 
         <com.cmykui.framework.cmykui.layout.ImageLayoutItem
+            android:id="@+id/JerkoPlayground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff">
+
+            <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
+                android:id="@+id/PrebaciJerko"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="45dp"
+                app:text="Pogledaj >" />
+
+        </com.cmykui.framework.cmykui.layout.ImageLayoutItem>
+
+
+
+        <com.cmykui.framework.cmykui.layout.ImageLayoutItem
             android:id="@+id/NikoPlayground"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:background="#ffffff"
-            android:gravity="center">
+            android:background="#ffffff">
 
             <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
                 android:id="@+id/PrebaciNiko"
