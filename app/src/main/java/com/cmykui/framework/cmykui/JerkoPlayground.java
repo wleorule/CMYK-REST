@@ -1,5 +1,8 @@
 package com.cmykui.framework.cmykui;
 
+import android.animation.Animator;
+import android.animation.TimeInterpolator;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +15,7 @@ import com.cmykui.framework.cmykui.component.FloatLabelText;
 public class JerkoPlayground extends AppCompatActivity {
 
     ButtonComponent button;
+    FloatLabelText floatLabel;
 
 
     @Override
@@ -20,14 +24,18 @@ public class JerkoPlayground extends AppCompatActivity {
         setContentView(R.layout.activity_jerko_playground);
 
         button = findViewById(R.id.button);
+        floatLabel=findViewById(R.id.floatLabel);
 
 
-        FloatLabelText text = new FloatLabelText(this);
-        String pomocni="string";
         button.setButtonText("Gumb");
         button.setButtonSuccessText("Uspijeh");
         button.setButtonErrorText("Pogreška");
+        floatLabel.setHintAndLabel("pokusaj");
+
+
         button.textLoading=false;
+
+
 
 
 
@@ -48,10 +56,21 @@ public class JerkoPlayground extends AppCompatActivity {
 
     public Void mojaMetoda(Context ctx){
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.setView(R.layout.dialog_component).create();
+
+     dialog.show();
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme; //style id
+
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+
+
+
+
                 button.setActionError();
 
             }
