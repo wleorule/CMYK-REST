@@ -19,9 +19,7 @@ public class PieChart extends BaseChart {
         super(context, attrs);
     }
 
-    public PieChart(Context context,  AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
+    public PieChart(Context context,  AttributeSet attrs, int defStyleAttr) { super(context, attrs, defStyleAttr); }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -32,8 +30,6 @@ public class PieChart extends BaseChart {
         drawPie(canvas);
         drawLegendColor(canvas);
         drawLegendText(canvas);
-
-
     }
 
     private void drawLegendColor(Canvas canvas) {
@@ -44,7 +40,7 @@ public class PieChart extends BaseChart {
         float x = padding * 2;
         float y = (height - (height- width));
         float size = fontSize;
-        int pomicanje = fontSize*2;
+        int pomicanje = fontSize * 2;
 
         for(int i = 0; i < DataSource.size(); i++) {
 
@@ -59,7 +55,6 @@ public class PieChart extends BaseChart {
         }
     }
 
-
     private void drawLegendText(Canvas canvas) {
         paint.reset();
         paint.setTextSize(fontSize);
@@ -67,11 +62,11 @@ public class PieChart extends BaseChart {
         paint.setAntiAlias(true);
         paint.setColor(Color.WHITE);
 
-        float x = (padding * 2) + (2*fontSize);
-        float y = (height - (height- width));
-        int pomicanje = fontSize*2;
+        float x = (padding * 2) + (2 * fontSize);
+        float y = (height - (height - width));
+        int pomicanje = fontSize * 2;
         String temp;
-        for (int i = 0; i <= DataSource.size(); i++){
+        for (int i = 0; i < DataSource.size(); i++){
             temp = String.valueOf(DataSource.get(i).Name);
             paint.getTextBounds(temp,0,temp.length(),rect);
             y += pomicanje;
@@ -80,17 +75,13 @@ public class PieChart extends BaseChart {
                 x += padding * 3;
                 y = (height - (height- width));
             }
-
         }
-
     }
-
 
     private void drawPie(Canvas canvas) {
         paint.reset();
         paint.setAntiAlias(true);
         float angle = 0;
-
 
         RectF oval = new RectF();
         oval.top = padding;
@@ -109,14 +100,12 @@ public class PieChart extends BaseChart {
         }
     }
 
-
     private double sum(){
         float sum = 0;
 
         for(int i = 0; i < DataSource.size(); i++) {
             sum += DataSource.get(i).Value;
         }
-
         return sum;
     }
 }

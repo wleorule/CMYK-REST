@@ -7,8 +7,8 @@
     tools:context=".MatijaPlayground">
 
 
-    <com.cmykui.framework.cmykui.graph.LineChart
-        android:id="@+id/lineChart"
+    <com.cmykui.framework.cmykui.graph.PieChart
+        android:id="@+id/piechart"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
