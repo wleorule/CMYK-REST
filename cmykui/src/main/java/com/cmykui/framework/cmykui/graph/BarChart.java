@@ -72,7 +72,7 @@ public class BarChart extends AxisBaseChart{
         paint.setAntiAlias(true);
 
         float x = padding * 2;
-        float y = height - (fontSize /2);
+        float y = height - padding + (fontSize);
         int maxWidth = (width-padding*2) / DataSource.size() - (padding);
         for (int i = 0; i < DataSource.size(); i++){
             paint.getTextBounds(DataSource.get(i).Name,0,DataSource.get(i).Name.length(),rect);
