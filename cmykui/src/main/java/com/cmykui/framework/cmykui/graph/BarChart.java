@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 
-public class BarChart extends BaseChart{
+public class BarChart extends AxisBaseChart{
 
     public BarChart(Context context) {
         super(context);
@@ -16,9 +16,7 @@ public class BarChart extends BaseChart{
         super(context, attrs);
     }
 
-    public BarChart(Context context,  AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
+    public BarChart(Context context,  AttributeSet attrs, int defStyleAttr) { super(context, attrs, defStyleAttr); }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -29,10 +27,10 @@ public class BarChart extends BaseChart{
         canvas.drawColor(Color.BLACK);
 
         drawShapes(canvas);
-        drawOsi(canvas);
-        drawLines(canvas);
+        this.drawOsi(canvas);
+        this.drawLinesY(canvas);
         drawLabel(canvas);
-        drawNumerals(canvas);
+        this.drawNumerals(canvas);
     }
 
     private void drawShapes(Canvas canvas) {
@@ -66,66 +64,6 @@ public class BarChart extends BaseChart{
         canvas.drawRect((float)currentX, (float) data, (float)(currentX + maxWidth),(height - padding), paint);
     }
 
-    private void drawLines(Canvas canvas) {
-        paint.reset();
-        paint.setColor(Color.WHITE);
-        paint.setStrokeWidth(2);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setAntiAlias(true);
-
-        int broj_linijaY = (int)Math.floor(maxVisina());
-
-        int pomicanje = Math.round((height - padding) / broj_linijaY);
-
-        // po Y
-        for(int i = 1; i < broj_linijaY; i++){
-            int y = (height - padding) - (pomicanje * i);
-            int sX = padding;
-            int eX = padding + 10;
-
-            canvas.drawLine(sX, y, eX, y, paint);
-        }
-    }
-
-    private void drawNumerals(Canvas canvas) {
-        paint.reset();
-        paint.setColor(Color.WHITE);
-        paint.setTextSize(fontSize);
-        paint.setTextAlign(Paint.Align.CENTER);
-        paint.setAntiAlias(true);
-
-        float x = padding / 2;
-        float y;
-        int br = (int)Math.floor(maxVisina());
-        int pomicanje = Math.round((height - padding) / br);
-        String temp;
-        for (int i = 1; i < br; i++){
-            temp = String.valueOf(i);
-            paint.getTextBounds(temp,0,temp.length(),rect);
-            y = (height - padding) - (pomicanje * i) + (fontSize / 2);
-            if(i%5==0){
-                canvas.drawText(temp,x,y,paint);
-            }
-        }
-    }
-
-    private void drawOsi(Canvas canvas) {
-        paint.reset();
-        paint.setColor(Color.WHITE);
-        paint.setStrokeWidth(3);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setAntiAlias(true);
-
-        float startX = padding;
-        float startY = height - padding;
-        float endX = width - padding;
-        float endY = padding;
-
-        canvas.drawLine(startX, startY, endX, startY, paint);
-        canvas.drawLine(startX, startY, startX, endY, paint);
-
-    }
-
     private void drawLabel(Canvas canvas) {
         paint.reset();
         paint.setColor(Color.WHITE);
@@ -143,16 +81,5 @@ public class BarChart extends BaseChart{
 
             x += padding + maxWidth;
         }
-    }
-
-    private double maxVisina(){
-        double max = -999;
-
-        for(int i = 0; i < DataSource.size(); i++) {
-            if(max < DataSource.get(i).Value){
-                max = DataSource.get(i).Value;
-            }
-        }
-        return max;
     }
 }
