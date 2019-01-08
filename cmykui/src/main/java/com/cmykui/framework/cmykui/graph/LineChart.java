@@ -82,6 +82,7 @@ public class LineChart extends AxisBaseChart {
         paint.setColor(Color.GREEN);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(5);
+        paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setAntiAlias(true);
 
         float startX = padding;
