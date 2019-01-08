@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 
-public class LineChart extends BaseChart {
+public class LineChart extends AxisBaseChart {
 
     public LineChart(Context context) {
         super(context);
@@ -16,9 +16,7 @@ public class LineChart extends BaseChart {
         super(context, attrs);
     }
 
-    public LineChart(Context context,  AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
+    public LineChart(Context context,  AttributeSet attrs, int defStyleAttr) { super(context, attrs, defStyleAttr); }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -28,12 +26,12 @@ public class LineChart extends BaseChart {
 
         canvas.drawColor(Color.BLACK);
 
-        drawOsi(canvas);
+        this.drawOsi(canvas);
         drawLine(canvas);
-        drawLinesY(canvas);
+        this.drawLinesY(canvas);
         drawLinesX(canvas);
         drawLabel(canvas);
-        drawNumerals(canvas);
+        this.drawNumerals(canvas);
 
     }
 
@@ -50,36 +48,25 @@ public class LineChart extends BaseChart {
         int maxWidth = (width-padding*2) / DataSource.size() - (padding);
         for (int i = 0; i < DataSource.size(); i++){
 
-            x += padding + maxWidth;
-
+            if(i == 0){
+                x = padding;
+            }
+            else{
+                x += padding + maxWidth;
+            }
             canvas.drawLine(x, sY, x, eY, paint);
         }
     }
 
-    private void drawNumerals(Canvas canvas) {
-        paint.setTextSize(fontSize);
-
-        float x = padding / 2;
-        float y;
-        int br = (int)Math.floor(maxVisina());
-        int pomicanje = Math.round((height - padding) / br);
-        String temp;
-        for (int i = 1; i < br; i++){
-            temp = String.valueOf(i);
-            paint.getTextBounds(temp,0,temp.length(),rect);
-            y = (height - padding) - (pomicanje * i) + (fontSize / 2);
-            if(i%5==0){
-                canvas.drawText(temp,x,y,paint);
-            }
-        }
-    }
-
     private void drawLabel(Canvas canvas) {
-        paint.setTextSize(fontSize);
+        paint.reset();
+        paint.setColor(Color.WHITE);
         paint.setTextAlign(Paint.Align.CENTER);
+        paint.setTextSize(fontSize);
+        paint.setAntiAlias(true);
 
         float x = padding;
-        float y = height - 5;
+        float y = height - padding + (fontSize);
         int maxWidth = (width-padding*2) / DataSource.size() - (padding);
         for (int i = 0; i < DataSource.size(); i++){
             paint.getTextBounds(DataSource.get(i).Name,0,DataSource.get(i).Name.length(),rect);
@@ -92,8 +79,10 @@ public class LineChart extends BaseChart {
 
     private void drawLine(Canvas canvas) {
         paint.reset();
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.GREEN);
         paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(5);
+        paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setAntiAlias(true);
 
         float startX = padding;
@@ -105,7 +94,9 @@ public class LineChart extends BaseChart {
 
         for(int i = 0; i < DataSource.size(); i++) {
 
-            currentY = 0;
+            if(i == 0){
+            startY = (maxVisina() - (float)DataSource.get(i).Value) * broj;
+            }
 
             if(DataSource.get(i).Value == maxVisina()) {
                 currentY = padding;
@@ -120,55 +111,4 @@ public class LineChart extends BaseChart {
             currentX += padding + maxWidth;
         }
     }
-
-    private void drawLinesY(Canvas canvas) {
-
-        paint.reset();
-        paint.setColor(Color.WHITE);
-        paint.setStrokeWidth(2);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setAntiAlias(true);
-
-        int broj_linijaY = (int)Math.floor(maxVisina());
-
-        int pomicanje = Math.round((height - padding) / broj_linijaY);
-
-        for(int i = 1; i < broj_linijaY; i++){
-            int y = (height - padding) - (pomicanje * i);
-            int sX = padding;
-            int eX = padding + 10;
-
-            canvas.drawLine(sX, y, eX, y, paint);
-        }
-
-    }
-
-    private void drawOsi(Canvas canvas) {
-        paint.reset();
-        paint.setColor(Color.WHITE);
-        paint.setStrokeWidth(2);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setAntiAlias(true);
-
-        float startX = padding;
-        float startY = height - padding;
-        float endX = width - padding;
-        float endY = padding;
-
-        canvas.drawLine(startX, startY, endX, startY, paint);
-        canvas.drawLine(startX, startY, startX, endY, paint);
-
-    }
-
-    private float maxVisina(){
-        float max = -999;
-
-        for(int i = 0; i < DataSource.size(); i++) {
-            if(max < DataSource.get(i).Value){
-                max = (float)DataSource.get(i).Value;
-            }
-        }
-        return max;
-    }
-
 }
