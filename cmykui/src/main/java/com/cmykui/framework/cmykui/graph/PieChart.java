@@ -30,18 +30,44 @@ public class PieChart extends BaseChart {
         }
         canvas.drawColor(Color.BLACK);
         drawPie(canvas);
-        drawLegend(canvas);
+        drawLegendColor(canvas);
+        drawLegendText(canvas);
+
 
     }
 
+    private void drawLegendColor(Canvas canvas) {
+        paint.reset();
+        paint.setStyle(Paint.Style.FILL);
+        paint.setAntiAlias(true);
 
-    private void drawLegend(Canvas canvas) {
+        float x = padding * 2;
+        float y = (height - (height- width));
+        float size = fontSize;
+        int pomicanje = fontSize*2;
+
+        for(int i = 0; i < DataSource.size(); i++) {
+
+            paint.setColor(DataSource.get(i).Color);
+
+            y += pomicanje;
+            canvas.drawRect(x,y-size,x+size,y,paint);
+            if((i+1) % 3 == 0){
+                x += padding * 3;
+                y = (height - (height- width));
+            }
+        }
+    }
+
+
+    private void drawLegendText(Canvas canvas) {
         paint.reset();
         paint.setTextSize(fontSize);
         paint.setTextAlign(Paint.Align.LEFT);
+        paint.setAntiAlias(true);
         paint.setColor(Color.WHITE);
 
-        float x = padding * 2;
+        float x = (padding * 2) + (2*fontSize);
         float y = (height - (height- width));
         int pomicanje = fontSize*2;
         String temp;
@@ -62,7 +88,7 @@ public class PieChart extends BaseChart {
 
     private void drawPie(Canvas canvas) {
         paint.reset();
-
+        paint.setAntiAlias(true);
         float angle = 0;
 
 
