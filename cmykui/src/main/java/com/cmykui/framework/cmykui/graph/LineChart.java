@@ -56,7 +56,7 @@ public class LineChart extends BaseChart {
             else{
                 x += padding + maxWidth;
             }
-            
+
             canvas.drawLine(x, sY, x, eY, paint);
         }
     }

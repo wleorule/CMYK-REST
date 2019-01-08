@@ -28,9 +28,9 @@ public class BarChart extends BaseChart{
 
         canvas.drawColor(Color.BLACK);
 
+        drawShapes(canvas);
         drawOsi(canvas);
         drawLines(canvas);
-        drawShapes(canvas);
         drawLabel(canvas);
         drawNumerals(canvas);
     }
@@ -67,7 +67,6 @@ public class BarChart extends BaseChart{
     }
 
     private void drawLines(Canvas canvas) {
-
         paint.reset();
         paint.setColor(Color.WHITE);
         paint.setStrokeWidth(2);
@@ -89,8 +88,11 @@ public class BarChart extends BaseChart{
     }
 
     private void drawNumerals(Canvas canvas) {
+        paint.reset();
+        paint.setColor(Color.WHITE);
         paint.setTextSize(fontSize);
         paint.setTextAlign(Paint.Align.CENTER);
+        paint.setAntiAlias(true);
 
         float x = padding / 2;
         float y;
@@ -125,11 +127,14 @@ public class BarChart extends BaseChart{
     }
 
     private void drawLabel(Canvas canvas) {
-        paint.setTextSize(fontSize);
+        paint.reset();
         paint.setColor(Color.WHITE);
+        paint.setTextSize(fontSize);
+        paint.setTextAlign(Paint.Align.LEFT);
+        paint.setAntiAlias(true);
 
         float x = padding * 2;
-        float y = height - 5;
+        float y = height - (fontSize /2);
         int maxWidth = (width-padding*2) / DataSource.size() - (padding);
         for (int i = 0; i < DataSource.size(); i++){
             paint.getTextBounds(DataSource.get(i).Name,0,DataSource.get(i).Name.length(),rect);
