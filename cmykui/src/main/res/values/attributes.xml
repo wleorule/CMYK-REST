@@ -11,6 +11,9 @@
         <attr name="color_menu" format="color"/>
         <attr name="color_pressed_menu" format="color"/>
     </declare-styleable>
+    <declare-styleable name="Toolbar">
+        <attr name="color_toolbar" format="color"/>
+    </declare-styleable>
     <declare-styleable name="ImageLayoutItemMenuItem">
         <attr name="text" format="string"/>
     </declare-styleable>

@@ -13,10 +13,12 @@ import android.view.ViewGroup;
 import com.cmykui.framework.cmykui.R;
 import com.cmykui.framework.cmykui.base.FABInterface;
 
-public class FABComponent extends android.support.v7.widget.AppCompatTextView implements FABInterface {
+public class FABComponent extends android.support.v7.widget.AppCompatImageView implements FABInterface {
 
     int ncolor;
     int color_pressed;
+
+    Drawable draw = ResourcesCompat.getDrawable(getResources(), R.drawable.fab_drawable, null);
 
     private boolean created;
 
@@ -35,22 +37,20 @@ public class FABComponent extends android.support.v7.widget.AppCompatTextView im
     }
 
     public void init(Context context, AttributeSet attributeSet) {
+
         TypedArray attrs = context.obtainStyledAttributes(attributeSet, R.styleable.FloatingActionButton, 0, 0);
-        ncolor = attrs.getColor(R.styleable.FloatingActionButton_color, ContextCompat.getColor(context, android.R.color.holo_red_dark));
-        color_pressed = attrs.getColor(R.styleable.FloatingActionButton_color, ContextCompat.getColor(context, android.R.color.holo_red_light));
+        setColor(attrs.getColor(R.styleable.FloatingActionButton_color, ContextCompat.getColor(context, android.R.color.holo_red_dark)));
+        color_pressed = attrs.getColor(R.styleable.FloatingActionButton_color_pressed, ContextCompat.getColor(context, android.R.color.holo_red_light));
         attrs.recycle();
     }
 
-    public void updateBG(int color) {
-        Drawable draw = ResourcesCompat.getDrawable(getResources(), R.drawable.fab_drawable, null);
-        draw.setColorFilter(new PorterDuffColorFilter(color,PorterDuff.Mode.MULTIPLY));
+    public void updateBG() {
         setBackground(draw);
     }
 
     private void build() {
-        int color = ContextCompat.getColor(getContext(), android.R.color.holo_red_light);
         created = true;
-        updateBG(color);
+        updateBG();
         setSize();
         }
 
@@ -62,15 +62,13 @@ public class FABComponent extends android.support.v7.widget.AppCompatTextView im
 
     private void setSize() {
         ViewGroup.LayoutParams params = getLayoutParams();
-        params.height = 50;
-        params.width = 50;
+        params.height = 150;
+        params.width = 150;
         this.setLayoutParams(params);
     }
 
     public void setColor(int color) {
-        if (ncolor != color) {
-            updateBG(color);
-        }
+        draw.setColorFilter(new PorterDuffColorFilter(color,PorterDuff.Mode.MULTIPLY));
     }
 
     @Override

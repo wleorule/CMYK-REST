@@ -97,7 +97,7 @@ public class FAMComponent extends FrameLayout implements FAMInterface {
         animating = true;
         for (int i = 1; i < views.size(); i++) {
             final View view = views.get(i);
-            float animationSize = 100f;
+            float animationSize = 200f;
 
             ObjectAnimator viewAnimator = ObjectAnimator.ofFloat(view, "translationY", 0f, i * animationSize);
             viewAnimator.addListener(new AnimatorListenerAdapter() {
@@ -134,7 +134,7 @@ public class FAMComponent extends FrameLayout implements FAMInterface {
         animating = true;
         for (int i = views.size() - 1; i > 0; i--) {
             final View view = views.get(i);
-            float animationSize = 100f;
+            float animationSize = 200f;
 
             ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", i * animationSize, 0f);
             animator.addListener(new AnimatorListenerAdapter() {
