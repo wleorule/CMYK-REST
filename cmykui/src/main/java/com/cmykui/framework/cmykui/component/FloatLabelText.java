@@ -21,7 +21,7 @@ public class FloatLabelText extends LinearLayout implements ComponentInterface {
 
 
 
-    public String hint;
+
     public TextView placeholder;
 
     public TextView LabelLabel;
@@ -50,7 +50,7 @@ public class FloatLabelText extends LinearLayout implements ComponentInterface {
         LabelLabel=this.findViewById(R.id.textView);
         placeholder=this.findViewById(R.id.editText);
         LabelLabel.animate().alpha(0.0f);
-        setHint2();
+
 
 
 
@@ -78,9 +78,15 @@ public class FloatLabelText extends LinearLayout implements ComponentInterface {
 
     }
 
-    public void setHint2() {
-        hint = getResources().getString(R.string.hint_Email);
-        placeholder.setHint(hint);
+    public void setHintAndLabel(String hintString) {
+        LabelLabel.setText(hintString);
+        placeholder.setHint(hintString);
+    }
+    public void setHint(String hintString) {
+        placeholder.setHint(hintString);
+    }
+    public void setLabel(String hintString) {
+        LabelLabel.setText(hintString);
     }
 
 
