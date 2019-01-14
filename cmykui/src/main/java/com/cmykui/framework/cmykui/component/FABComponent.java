@@ -15,7 +15,6 @@ import com.cmykui.framework.cmykui.base.FABInterface;
 
 public class FABComponent extends android.support.v7.widget.AppCompatImageView implements FABInterface {
 
-    int ncolor;
     int height;
     int width;
     int color_pressed;

@@ -10,6 +10,10 @@
     <declare-styleable name="FloatingActionsMenu">
         <attr name="color_menu" format="color"/>
         <attr name="color_pressed_menu" format="color"/>
+        <attr name="fab_position" format="enum">
+            <enum name="bottom" value="0" />
+            <enum name="top" value="1" />
+        </attr>
     </declare-styleable>
     <declare-styleable name="Toolbar">
         <attr name="color_toolbar" format="color"/>

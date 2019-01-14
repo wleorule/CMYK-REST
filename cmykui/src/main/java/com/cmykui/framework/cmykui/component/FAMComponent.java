@@ -8,7 +8,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.cmykui.framework.cmykui.R;
@@ -19,7 +21,10 @@ import java.util.ArrayList;
 
 public class FAMComponent extends FrameLayout implements FAMInterface {
 
-    public int color;
+    public static final int menu_bottom = 0;
+    public static final int menu_top = 1;
+
+    public int childPosition;
     private OnMenuExpandedListener onMenuExpandedListener;
     private boolean created;
     private boolean expanded;
@@ -43,9 +48,9 @@ public class FAMComponent extends FrameLayout implements FAMInterface {
 
     private void init(Context context, AttributeSet attributeSet) {
 
-        TypedArray attr = context.obtainStyledAttributes(attributeSet, R.styleable.FloatingActionsMenu, 0, 0);
-        color = attr.getColor(R.styleable.FloatingActionsMenu_color_menu, ContextCompat.getColor(context, android.R.color.holo_red_dark));
-        attr.recycle();
+        TypedArray attrs = context.obtainStyledAttributes(attributeSet, R.styleable.FloatingActionsMenu, 0, 0);
+        childPosition = attrs.getInteger(R.styleable.FloatingActionsMenu_fab_position, menu_bottom);
+        attrs.recycle();
     }
 
     private void build() {
@@ -61,7 +66,14 @@ public class FAMComponent extends FrameLayout implements FAMInterface {
     private void numChildren(){
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
-            child.setLayoutParams(generateDefaultLayoutParams());
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            if(childPosition == menu_bottom){
+                params.gravity = Gravity.BOTTOM;
+            }
+            else if (childPosition == menu_top){
+                params.gravity = Gravity.TOP;
+            }
+            child.setLayoutParams(params);
             views.add(child);
         }
     }
@@ -82,17 +94,25 @@ public class FAMComponent extends FrameLayout implements FAMInterface {
                 if (animating) {
                     return;
                 }
-
-                if (expanded) {
-                    collapse();
-                } else {
-                    expand();
+                else if(childPosition == menu_bottom){
+                    if (expanded) {
+                        collapseUp();
+                    } else {
+                        expandUp();
+                    }
+                }
+                if(childPosition == menu_top) {
+                    if (expanded) {
+                        collapseDown();
+                    } else {
+                        expandDown();
+                    }
                 }
             }
         });
     }
 
-    private void expand() {
+    private void expandDown() {
         ArrayList<Animator> animators = new ArrayList<>();
         animating = true;
         for (int i = 1; i < views.size(); i++) {
@@ -129,7 +149,7 @@ public class FAMComponent extends FrameLayout implements FAMInterface {
         set.start();
     }
 
-    private void collapse() {
+    private void collapseDown() {
         ArrayList<Animator> animators = new ArrayList<>();
         animating = true;
         for (int i = views.size() - 1; i > 0; i--) {
@@ -166,6 +186,79 @@ public class FAMComponent extends FrameLayout implements FAMInterface {
         set.start();
     }
 
+    private void expandUp() {
+        ArrayList<Animator> animators = new ArrayList<>();
+        animating = true;
+        for (int i = 1; i < views.size(); i++) {
+            final View view = views.get(i);
+            float animationSize = 200f;
+
+            ObjectAnimator viewAnimator = ObjectAnimator.ofFloat(view, "translationY", 0f, -i * animationSize);
+            viewAnimator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+                    super.onAnimationStart(animation);
+                    view.setVisibility(VISIBLE);
+                }
+            });
+            animators.add(viewAnimator);
+        }
+
+        AnimatorSet set = new AnimatorSet();
+        set.playSequentially(animators);
+
+        set.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+
+                animating = false;
+                expanded = !expanded;
+                if (onMenuExpandedListener != null) {
+                    onMenuExpandedListener.onMenuExpanded();
+                }
+            }
+        });
+
+        set.start();
+    }
+
+    private void collapseUp() {
+        ArrayList<Animator> animators = new ArrayList<>();
+        animating = true;
+        for (int i = views.size() - 1; i > 0; i--) {
+            final View view = views.get(i);
+            float animationSize = 200f;
+
+            ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", -i * animationSize, 0f);
+            animator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    view.setVisibility(GONE);
+                }
+            });
+            animators.add(animator);
+        }
+
+        AnimatorSet set = new AnimatorSet();
+        set.playSequentially(animators);
+
+        set.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+
+                animating = false;
+                expanded = !expanded;
+                if (onMenuExpandedListener != null) {
+                    onMenuExpandedListener.onMenuCollapsed();
+                }
+            }
+        });
+
+        set.start();
+    }
 
     public interface OnMenuExpandedListener {
         void onMenuExpanded();
