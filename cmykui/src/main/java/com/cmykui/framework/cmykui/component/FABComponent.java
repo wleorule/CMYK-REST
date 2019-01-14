@@ -16,6 +16,8 @@ import com.cmykui.framework.cmykui.base.FABInterface;
 public class FABComponent extends android.support.v7.widget.AppCompatImageView implements FABInterface {
 
     int ncolor;
+    int height;
+    int width;
     int color_pressed;
 
     Drawable draw = ResourcesCompat.getDrawable(getResources(), R.drawable.fab_drawable, null);
@@ -41,6 +43,8 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView i
         TypedArray attrs = context.obtainStyledAttributes(attributeSet, R.styleable.FloatingActionButton, 0, 0);
         setColor(attrs.getColor(R.styleable.FloatingActionButton_color, ContextCompat.getColor(context, android.R.color.holo_red_dark)));
         color_pressed = attrs.getColor(R.styleable.FloatingActionButton_color_pressed, ContextCompat.getColor(context, android.R.color.holo_red_light));
+        height = attrs.getInteger(R.styleable.FloatingActionButton_fab_height,100);
+        width = attrs.getInteger(R.styleable.FloatingActionButton_fab_width,100);
         attrs.recycle();
     }
 
@@ -62,8 +66,8 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView i
 
     private void setSize() {
         ViewGroup.LayoutParams params = getLayoutParams();
-        params.height = 150;
-        params.width = 150;
+        params.height = height;
+        params.width = width;
         this.setLayoutParams(params);
     }
 

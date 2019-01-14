@@ -4,8 +4,8 @@
         <attr name="color" format="color"/>
         <attr name="color_pressed" format="color"/>
         <attr name="icon" format="reference"/>
-        <attr name="h" format="integer"/>
-        <attr name="w" value="integer"/>
+        <attr name="fab_height" format="integer"/>
+        <attr name="fab_width" value="integer"/>
     </declare-styleable>
     <declare-styleable name="FloatingActionsMenu">
         <attr name="color_menu" format="color"/>

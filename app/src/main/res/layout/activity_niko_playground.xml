@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:fab_toolbar="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NikoPlayground">
 
     <com.cmykui.framework.cmykui.component.FABComponent
         android:id="@+id/toolbar_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginRight="35dp"
         android:layout_marginBottom="56dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         fab:color="@color/design_default_color_primary"
         fab:color_pressed="@color/colorAccent"
+        fab:fab_height="150"
+        fab:fab_width="150"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
@@ -25,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        fab:color_toolbar="@color/design_default_color_primary">
+        fab_toolbar:color_toolbar="@color/design_default_color_primary">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -96,28 +98,34 @@
 
         <com.cmykui.framework.cmykui.component.FABComponent
             android:id="@+id/menu_button1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             fab:color="@color/colorAccent"
             fab:color_pressed="@color/colorPrimary"
+            fab:fab_height="150"
+            fab:fab_width="150"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
 
         <com.cmykui.framework.cmykui.component.FABComponent
             android:id="@+id/menu_button2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             fab:color="@color/colorAccent"
             fab:color_pressed="@color/colorPrimary"
+            fab:fab_height="150"
+            fab:fab_width="150"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
 
         <com.cmykui.framework.cmykui.component.FABComponent
             android:id="@+id/menu_button3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             fab:color="@color/colorAccent"
             fab:color_pressed="@color/colorPrimary"
+            fab:fab_height="150"
+            fab:fab_width="150"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
     </com.cmykui.framework.cmykui.component.FAMComponent>
