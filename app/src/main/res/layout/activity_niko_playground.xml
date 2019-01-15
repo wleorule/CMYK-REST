@@ -37,64 +37,10 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        fab_toolbar:color_toolbar="@color/design_default_color_primary">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="56dp">
-            <LinearLayout
-                android:layout_centerVertical="true"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-            <RelativeLayout
-                android:id="@+id/prvi"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <ImageView
-                    android:id="@+id/first_button"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_centerHorizontal="true"
-                    android:scaleType="center"
-                    android:src="@drawable/phone_b_24dp"
-                    />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/drugi"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:id="@+id/second_button"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_centerHorizontal="true"
-                    android:scaleType="center"
-                    android:src="@drawable/build_b_24dp"
-                    />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/treci"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <ImageView
-                    android:id="@+id/third_button"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_centerHorizontal="true"
-                    android:scaleType="center"
-                    android:src="@drawable/done_b_24dp"
-                    />
-            </RelativeLayout>
-            </LinearLayout>
-        </RelativeLayout>
+        fab_toolbar:color_toolbar="@color/design_default_color_primary"
+        fab_toolbar:firstIcon="@drawable/phone_b_24dp"
+        fab_toolbar:secondIcon="@drawable/settings_b_24dp"
+        fab_toolbar:thirdIcon="@drawable/done_b_24dp">
     </com.cmykui.framework.cmykui.component.FABToolbar>
 
     <com.cmykui.framework.cmykui.component.FAMComponent

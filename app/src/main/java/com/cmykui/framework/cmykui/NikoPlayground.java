@@ -31,9 +31,9 @@ public class NikoPlayground extends AppCompatActivity implements View.OnClickLis
         base = (RelativeLayout) findViewById(R.id.base_layout);
         textView = (TextView) findViewById(R.id.ispis);
 
-        call = (ImageView) findViewById(R.id.first_button);
-        settings = (ImageView) findViewById(R.id.second_button);
-        confirm = (ImageView) findViewById(R.id.third_button);
+        settings = FabToolbar.firstButton;
+        call = FabToolbar.secondButton;
+        confirm = FabToolbar.thirdButton;
 
         base.setOnClickListener(this);
         Fab.setOnClickListener(this);

@@ -17,6 +17,9 @@
     </declare-styleable>
     <declare-styleable name="Toolbar">
         <attr name="color_toolbar" format="color"/>
+        <attr name="firstIcon" format="integer" />
+        <attr name="secondIcon" format="integer" />
+        <attr name="thirdIcon" format="integer" />
     </declare-styleable>
     <declare-styleable name="ImageLayoutItemMenuItem">
         <attr name="text" format="string"/>

@@ -1,12 +1,14 @@
 package com.cmykui.framework.cmykui.component;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.cmykui.framework.cmykui.R;
@@ -16,6 +18,8 @@ public class FABToolbar extends FrameLayout {
     private LinearLayout FabToolbar;
     private FABComponent Fab;
     private boolean isExpanded;
+    public ImageView firstButton,secondButton,thirdButton;
+    public Drawable firstIcon,secondIcon,thirdIcon;
 
     public FABToolbar(Context context) {
         super(context);
@@ -37,11 +41,23 @@ public class FABToolbar extends FrameLayout {
     private void init() {
         inflate(getContext(), R.layout.fab_toolbar, this);
         FabToolbar = (LinearLayout) findViewById(R.id.container);
+
+        firstButton = (ImageView) findViewById(R.id.first_button);
+        secondButton = (ImageView) findViewById(R.id.second_button);
+        thirdButton = (ImageView) findViewById(R.id.third_button);
     }
 
     private void loadAttributes(Context context, AttributeSet attributeSet) {
         TypedArray attrs = getContext().getTheme().obtainStyledAttributes(attributeSet, R.styleable.Toolbar, 0, 0);
+        firstIcon = attrs.getDrawable(R.styleable.Toolbar_firstIcon);
+        secondIcon = attrs.getDrawable(R.styleable.Toolbar_secondIcon);
+        thirdIcon = attrs.getDrawable(R.styleable.Toolbar_thirdIcon);
         setColor(attrs.getColor(R.styleable.Toolbar_color_toolbar, ContextCompat.getColor(context, android.R.color.holo_red_dark)));
+
+        firstButton.setImageDrawable(firstIcon);
+        secondButton.setImageDrawable(secondIcon);
+        thirdButton.setImageDrawable(thirdIcon);
+
         attrs.recycle();
     }
 
