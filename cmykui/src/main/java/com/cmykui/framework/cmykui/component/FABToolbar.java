@@ -5,6 +5,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -14,6 +15,7 @@ public class FABToolbar extends FrameLayout {
 
     private LinearLayout FabToolbar;
     private FABComponent Fab;
+    private boolean isExpanded;
 
     public FABToolbar(Context context) {
         super(context);
@@ -64,12 +66,35 @@ public class FABToolbar extends FrameLayout {
     }
 
     public void expandFab() {
+
+        TranslateAnimation toolAnim = new TranslateAnimation(0,0,500,0);
+        toolAnim.setDuration(400);
+        FabToolbar.startAnimation(toolAnim);
         FabToolbar.setVisibility(View.VISIBLE);
+
+        TranslateAnimation fabAnim = new TranslateAnimation(0,500,0,0);
+        fabAnim.setDuration(400);
+        Fab.startAnimation(fabAnim);
         Fab.setVisibility(View.INVISIBLE);
+
+        isExpanded = true;
+
     }
 
     public void contractFab() {
-        Fab.setVisibility(View.VISIBLE);
-        FabToolbar.setVisibility(View.INVISIBLE);
+        if (isExpanded) {
+
+            Fab.setVisibility(View.VISIBLE);
+            TranslateAnimation anim = new TranslateAnimation(500, 0, 0, 0);
+            anim.setDuration(400);
+            Fab.startAnimation(anim);
+
+            TranslateAnimation toolAnim = new TranslateAnimation(0,0,0,500);
+            toolAnim.setDuration(400);
+            FabToolbar.startAnimation(toolAnim);
+            FabToolbar.setVisibility(View.INVISIBLE);
+
+            isExpanded = false;
+        }
     }
 }

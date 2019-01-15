@@ -66,6 +66,9 @@ public class FAMComponent extends FrameLayout implements FAMInterface {
     private void numChildren(){
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
+            if(i>0){
+                child.setVisibility(GONE);
+            }
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
             if(childPosition == menu_bottom){
                 params.gravity = Gravity.BOTTOM;
