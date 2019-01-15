@@ -66,6 +66,9 @@ public class FAMComponent extends FrameLayout implements FAMInterface {
     private void numChildren(){
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
+            if(i==0){
+                child.setElevation(10);
+            }
             if(i>0){
                 child.setVisibility(GONE);
             }

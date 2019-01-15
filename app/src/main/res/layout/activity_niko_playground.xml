@@ -9,6 +9,13 @@
     android:layout_height="match_parent"
     tools:context=".NikoPlayground">
 
+    <TextView
+        android:id="@+id/ispis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"/>
+
     <com.cmykui.framework.cmykui.component.FABComponent
         android:id="@+id/toolbar_button"
         android:layout_width="wrap_content"
@@ -17,6 +24,7 @@
         android:layout_marginBottom="56dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:src="@drawable/add"
         fab:color="@color/design_default_color_primary"
         fab:color_pressed="@color/colorAccent"
         fab:fab_height="150"
@@ -103,6 +111,7 @@
             android:id="@+id/menu_button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/add"
             fab:color="@color/colorAccent"
             fab:color_pressed="@color/colorPrimary"
             fab:fab_height="150"
@@ -114,6 +123,7 @@
             android:id="@+id/menu_button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/add"
             fab:color="@color/colorAccent"
             fab:color_pressed="@color/colorPrimary"
             fab:fab_height="150"
@@ -125,6 +135,7 @@
             android:id="@+id/menu_button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/add"
             fab:color="@color/colorAccent"
             fab:color_pressed="@color/colorPrimary"
             fab:fab_height="150"
