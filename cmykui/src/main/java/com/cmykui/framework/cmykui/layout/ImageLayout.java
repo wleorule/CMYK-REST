@@ -11,17 +11,14 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cmykui.framework.cmykui.R;
-import com.cmykui.framework.cmykui.base.LayoutInterface;
 
-public class ImageLayout extends ViewGroup implements LayoutInterface {
+public class ImageLayout extends ViewGroup {
 
     int deviceWidth;
     int deviceHeight;
-    int maxHeight = 0;
 
     TextView TitleText;
     ImageView SearchText;

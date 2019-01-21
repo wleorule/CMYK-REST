@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 
-public class BarChart extends AxisBaseChart{
+public class BarChart extends AxisBaseChart {
 
     public BarChart(Context context) {
         super(context);

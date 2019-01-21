@@ -3,20 +3,13 @@ package com.cmykui.framework.cmykui.layout;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cmykui.framework.cmykui.R;
-import com.cmykui.framework.cmykui.base.LayoutInterface;
 import com.cmykui.framework.cmykui.base.OnClick;
-
-import java.util.concurrent.Callable;
 
 public class InboxViewItem extends RelativeLayout {
 

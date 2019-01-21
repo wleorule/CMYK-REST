@@ -17,14 +17,11 @@ public class ImageLayoutItemMenuItem extends RelativeLayout {
 
     public ImageView itemImage;
     public TextView itemTitle;
-    public ImageView itemArrow;
 
     private OnClick<Void> metoda;
     private Boolean override = false;
 
-    private Boolean blurred = false;
-    private Bitmap  oldImage;
-    private Bitmap  blurredImage;
+
 
 
     public ImageLayoutItemMenuItem(Context context) {

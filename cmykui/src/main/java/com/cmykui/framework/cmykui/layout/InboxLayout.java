@@ -13,9 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.cmykui.framework.cmykui.R;
-import com.cmykui.framework.cmykui.base.LayoutInterface;
 
-public class InboxLayout extends ViewGroup implements LayoutInterface {
+public class InboxLayout extends ViewGroup {
 
     int deviceWidth;
     int deviceHeight;

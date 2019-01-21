@@ -6,7 +6,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -14,12 +13,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.cmykui.framework.cmykui.R;
-import com.cmykui.framework.cmykui.base.FAMInterface;
 
 import java.util.ArrayList;
 
 
-public class FAMComponent extends FrameLayout implements FAMInterface {
+public class FAMComponent extends FrameLayout {
 
     public static final int menu_bottom = 0;
     public static final int menu_top = 1;

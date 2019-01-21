@@ -11,9 +11,8 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 
 import com.cmykui.framework.cmykui.R;
-import com.cmykui.framework.cmykui.base.FABInterface;
 
-public class FABComponent extends android.support.v7.widget.AppCompatImageView implements FABInterface {
+public class FABComponent extends android.support.v7.widget.AppCompatImageView {
 
     int height;
     int width;

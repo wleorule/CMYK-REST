@@ -19,7 +19,6 @@ public class ImageLayoutItem extends RelativeLayout {
 
     public ImageView itemImage;
     public TextView itemTitle;
-    public ImageView itemArrow;
     public Boolean ImageZoom = true;
 
     private OnClick<Void> metoda;
