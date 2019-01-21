@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 import android.graphics.RectF;
+import android.provider.ContactsContract;
 import android.util.AttributeSet;
 
 
@@ -26,7 +27,7 @@ public class PieChart extends BaseChart {
         if(!isInit){
             this.init();
         }
-        canvas.drawColor(Color.BLACK);
+        canvas.drawColor(this.parameters.backgroundColor);
         drawPie(canvas);
         drawLegendColor(canvas);
         drawLegendText(canvas);
@@ -39,41 +40,51 @@ public class PieChart extends BaseChart {
 
         float x = padding * 2;
         float y = (height - (height- width));
-        float size = fontSize;
-        int pomicanje = fontSize * 2;
+        float size = this.parameters.fontSize;
+        int pomicanje = this.parameters.fontSize * 2;
+        int duljinaTeksta = 0;
 
         for(int i = 0; i < DataSource.size(); i++) {
 
             paint.setColor(DataSource.get(i).Color);
+            if(duljinaTeksta <   DataSource.get(i).Name.length()){
+                duljinaTeksta = DataSource.get(i).Name.length();
+            }
 
             y += pomicanje;
             canvas.drawRect(x,y-size,x+size,y,paint);
             if((i+1) % 3 == 0){
-                x += padding * 3;
+                x += padding + (duljinaTeksta * parameters.fontSize);
                 y = (height - (height- width));
+                duljinaTeksta= 0;
             }
         }
     }
 
     private void drawLegendText(Canvas canvas) {
         paint.reset();
-        paint.setTextSize(fontSize);
+        paint.setTextSize(this.parameters.fontSize);
         paint.setTextAlign(Paint.Align.LEFT);
         paint.setAntiAlias(true);
-        paint.setColor(Color.WHITE);
+        paint.setColor(this.parameters.fontColor);
 
-        float x = (padding * 2) + (2 * fontSize);
+        float x = (padding * 2) + (2 * this.parameters.fontSize);
         float y = (height - (height - width));
-        int pomicanje = fontSize * 2;
+        int pomicanje = this.parameters.fontSize * 2;
+        int duljinaTeksta = 0;
         String temp;
         for (int i = 0; i < DataSource.size(); i++){
             temp = String.valueOf(DataSource.get(i).Name);
             paint.getTextBounds(temp,0,temp.length(),rect);
+            if(duljinaTeksta <   DataSource.get(i).Name.length()) {
+                duljinaTeksta = DataSource.get(i).Name.length();
+            }
             y += pomicanje;
             canvas.drawText(temp,x,y,paint);
             if((i+1) % 3 == 0){
-                x += padding * 3;
+                x += padding + (duljinaTeksta * parameters.fontSize);
                 y = (height - (height- width));
+                duljinaTeksta = 0;
             }
         }
     }

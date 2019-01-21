@@ -24,7 +24,7 @@ public class LineChart extends AxisBaseChart {
             this.init();
         }
 
-        canvas.drawColor(Color.BLACK);
+        canvas.drawColor(this.parameters.backgroundColor);
 
         this.drawOsi(canvas);
         drawLine(canvas);
@@ -37,7 +37,7 @@ public class LineChart extends AxisBaseChart {
 
     private void drawLinesX(Canvas canvas) {
         paint.reset();
-        paint.setColor(Color.WHITE);
+        paint.setColor(this.parameters.lineColor);
         paint.setStrokeWidth(2);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
@@ -60,13 +60,13 @@ public class LineChart extends AxisBaseChart {
 
     private void drawLabel(Canvas canvas) {
         paint.reset();
-        paint.setColor(Color.WHITE);
+        paint.setColor(this.parameters.fontColor);
         paint.setTextAlign(Paint.Align.CENTER);
-        paint.setTextSize(fontSize);
+        paint.setTextSize(this.parameters.fontSize);
         paint.setAntiAlias(true);
 
         float x = padding;
-        float y = height - padding + (fontSize);
+        float y = height - padding + (this.parameters.fontSize);
         int maxWidth = (width-padding*2) / DataSource.size() - (padding);
         for (int i = 0; i < DataSource.size(); i++){
             paint.getTextBounds(DataSource.get(i).Name,0,DataSource.get(i).Name.length(),rect);
