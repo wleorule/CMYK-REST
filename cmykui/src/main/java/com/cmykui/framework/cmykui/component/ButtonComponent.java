@@ -17,13 +17,13 @@ import com.cmykui.framework.cmykui.base.OnClick;
 
 public class ButtonComponent extends RelativeLayout implements ComponentInterface {
 
-    public boolean isButtonLoader = false;
+    public boolean isButtonLoader = true;
    public Button ButtonButton;
    public TextView ButtonTextView;
    public LoadingComponent ButtonLoader;
     public Button ButtonError;
     public Button ButtonSuccess;
-    public boolean textLoading;
+    public boolean TextLoading;
     Animation fadeout = new AlphaAnimation(1.0f, 0.0f);
     Animation fadein = new AlphaAnimation(0.0f, 1.0f);
 
@@ -53,7 +53,7 @@ public class ButtonComponent extends RelativeLayout implements ComponentInterfac
         ButtonSuccess = this.findViewById(R.id.Component_buttonSuccess);
         ButtonLoader = this.findViewById(R.id.Component_loader);
 
-        textLoading=false;
+        TextLoading =false;
 
         ButtonButton.setAlpha(1.0f);
         ButtonTextView.setAlpha(0.0f);
@@ -82,7 +82,7 @@ public class ButtonComponent extends RelativeLayout implements ComponentInterfac
 
 
     private void startLoading() {
-if (textLoading) {
+if (TextLoading) {
     ButtonButton.startAnimation(fadeout);
     ButtonButton.postDelayed(new Runnable() {
         @Override
@@ -126,7 +126,7 @@ if (textLoading) {
 
     public void setActionSuccess(){
 
-        if (textLoading) {
+        if (TextLoading) {
             ButtonTextView.startAnimation(fadeout);
             ButtonTextView.postDelayed(new Runnable() {
                 @Override
@@ -165,7 +165,7 @@ if (textLoading) {
 
     public void setActionError(){
 
-        if (textLoading) {
+        if (TextLoading) {
             ButtonTextView.startAnimation(fadeout);
             ButtonTextView.postDelayed(new Runnable() {
                 @Override
@@ -230,14 +230,7 @@ if (textLoading) {
                 e.printStackTrace();
             }
         }
-        else {
-            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context);
-            dlgAlert.setMessage("Uspjesno si stisnuo!");
-            dlgAlert.setTitle("Layout");
-            dlgAlert.setPositiveButton("OK", null);
-            dlgAlert.setCancelable(true);
-            dlgAlert.create().show();
-        }
+
     }
 
     public void setOnClickListener(OnClick<Void> m){
