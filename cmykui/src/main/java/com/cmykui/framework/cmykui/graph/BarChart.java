@@ -66,13 +66,13 @@ public class BarChart extends AxisBaseChart{
 
     private void drawLabel(Canvas canvas) {
         paint.reset();
-        paint.setColor(Color.WHITE);
-        paint.setTextSize(fontSize);
+        paint.setColor(this.parameters.fontColor);
+        paint.setTextSize(this.parameters.fontSize);
         paint.setTextAlign(Paint.Align.LEFT);
         paint.setAntiAlias(true);
 
         float x = padding * 2;
-        float y = height - padding + (fontSize);
+        float y = height - padding + (this.parameters.fontSize);
         int maxWidth = (width-padding*2) / DataSource.size() - (padding);
         for (int i = 0; i < DataSource.size(); i++){
             paint.getTextBounds(DataSource.get(i).Name,0,DataSource.get(i).Name.length(),rect);

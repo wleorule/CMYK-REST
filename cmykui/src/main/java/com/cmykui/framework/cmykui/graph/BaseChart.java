@@ -20,7 +20,8 @@ public class BaseChart extends View {
     public int width, height, padding;
     public boolean isInit = false;
     public Rect rect = new Rect();
-    public int fontSize;
+
+    public DrawParameters parameters = new DrawParameters();
 
     public List<DataSource> DataSource = new ArrayList<DataSource>();
     public BaseChart(Context context) {
@@ -43,7 +44,6 @@ public class BaseChart extends View {
         padding = 50;
 
         isInit = true;
-        fontSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 13, getResources().getDisplayMetrics());
 
         DataSource temp = new DataSource("prvi", 15.5f, Color.RED);
         this.DataSource.add(temp);

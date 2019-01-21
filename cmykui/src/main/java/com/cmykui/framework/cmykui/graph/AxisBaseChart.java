@@ -16,9 +16,9 @@ public class AxisBaseChart extends BaseChart {
 
     public void drawNumerals(Canvas canvas) {
         paint.reset();
-        paint.setColor(Color.WHITE);
+        paint.setColor(this.parameters.fontColor);
         paint.setTextAlign(Paint.Align.CENTER);
-        paint.setTextSize(fontSize);
+        paint.setTextSize(this.parameters.fontSize);
         paint.setAntiAlias(true);
 
         float x = padding / 2;
@@ -29,7 +29,7 @@ public class AxisBaseChart extends BaseChart {
         for (int i = 1; i < br; i++){
             temp = String.valueOf(i);
             paint.getTextBounds(temp,0,temp.length(),rect);
-            y = (height - padding) - (pomicanje * i) + (fontSize / 2);
+            y = (height - padding) - (pomicanje * i) + (this.parameters.fontSize / 2);
             if(i%5==0){
                 canvas.drawText(temp,x,y,paint);
             }
@@ -38,7 +38,7 @@ public class AxisBaseChart extends BaseChart {
 
     public void drawOsi(Canvas canvas) {
         paint.reset();
-        paint.setColor(Color.WHITE);
+        paint.setColor(this.parameters.lineColor);
         paint.setStrokeWidth(2);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
@@ -55,7 +55,7 @@ public class AxisBaseChart extends BaseChart {
 
     public void drawLinesY(Canvas canvas) {
         paint.reset();
-        paint.setColor(Color.WHITE);
+        paint.setColor(this.parameters.lineColor);
         paint.setStrokeWidth(2);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
