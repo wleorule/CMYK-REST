@@ -4,15 +4,10 @@ import android.graphics.Color;
 
 public class DrawParameters {
 
-    private final int defaultBackgroundColor = Color.BLACK;
-    private final int defaultLineColor = Color.WHITE;
-    private final int defaultFontColor = Color.WHITE;
-    private final int defaultFontSize = 40;
-
-    public int backgroundColor = defaultBackgroundColor;
-    public int lineColor = defaultLineColor;
-    public int fontColor = defaultFontColor;
-    public int fontSize = defaultFontSize;
+    public int backgroundColor = Color.BLACK;
+    public int lineColor = Color.WHITE;
+    public int fontColor = Color.WHITE;
+    public int fontSize = 40;
 
     public DrawParameters(){}
 
@@ -21,5 +16,21 @@ public class DrawParameters {
         this.lineColor = lColor;
         this.fontColor = fColor;
         this.fontSize = fSize;
+    }
+
+    public void setBackgroundColor(int backgroundColor) {
+        this.backgroundColor = backgroundColor;
+    }
+
+    public void setFontColor(int fontColor) {
+        this.fontColor = fontColor;
+    }
+
+    public void setLineColor(int lineColor) {
+        this.lineColor = lineColor;
+    }
+
+    public void setFontSize(int fontSize) {
+        this.fontSize = fontSize;
     }
 }
