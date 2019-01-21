@@ -1,7 +1,5 @@
 package com.cmykui.framework.cmykui;
 
-import android.animation.Animator;
-import android.animation.TimeInterpolator;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Handler;
@@ -33,7 +31,7 @@ public class JerkoPlayground extends AppCompatActivity {
         floatLabel.setHintAndLabel("pokusaj");
 
 
-        button.textLoading=false;
+        button.TextLoading =false;
 
 
 

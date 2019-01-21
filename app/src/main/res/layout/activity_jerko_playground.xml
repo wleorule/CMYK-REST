@@ -17,15 +17,12 @@ android:orientation="vertical"
     <com.cmykui.framework.cmykui.component.FloatLabelText
         android:id="@+id/floatLabel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"       >
-
-    </com.cmykui.framework.cmykui.component.FloatLabelText>
+        android:layout_height="wrap_content" />
 
     <com.cmykui.framework.cmykui.component.LoadingComponent
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-android:layout_marginTop="0dp"
-         >
+        android:layout_marginTop="0dp">
 
     </com.cmykui.framework.cmykui.component.LoadingComponent>
 
