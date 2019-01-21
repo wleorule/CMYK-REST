@@ -1,10 +1,4 @@
 package com.cmykui.framework.cmykui.base;
-
-import android.graphics.Color;
-import android.provider.ContactsContract;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class DataSource {
