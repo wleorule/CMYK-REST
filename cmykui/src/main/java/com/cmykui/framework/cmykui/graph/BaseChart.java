@@ -1,12 +1,10 @@
 package com.cmykui.framework.cmykui.graph;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 
 import com.cmykui.framework.cmykui.base.DataSource;
@@ -24,6 +22,7 @@ public class BaseChart extends View {
     public DrawParameters parameters = new DrawParameters();
 
     public List<DataSource> DataSource = new ArrayList<DataSource>();
+
     public BaseChart(Context context) {
         super(context);
     }
