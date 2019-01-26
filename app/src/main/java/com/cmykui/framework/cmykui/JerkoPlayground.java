@@ -30,14 +30,7 @@ public class JerkoPlayground extends AppCompatActivity {
         button.setButtonErrorText("Pogreška");
         floatLabel.setHintAndLabel("pokusaj");
 
-
         button.TextLoading =false;
-
-
-
-
-
-
         button.isButtonLoader = true;
         button.setOnClickListener(new OnClick<Void>() {
             @Override
@@ -50,24 +43,12 @@ public class JerkoPlayground extends AppCompatActivity {
 
     }
 
-
-
     public Void mojaMetoda(Context ctx){
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final AlertDialog dialog = builder.setView(R.layout.dialog_component).create();
-
-     dialog.show();
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme; //style id
-
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
-
-
 
                 button.setActionError();
 

@@ -15,35 +15,89 @@ import com.cmykui.framework.cmykui.R;
 import com.cmykui.framework.cmykui.base.ComponentInterface;
 import com.cmykui.framework.cmykui.base.OnClick;
 
+/**
+ * The type Button component.
+ */
 public class ButtonComponent extends RelativeLayout implements ComponentInterface {
 
+    /**
+     * The isButtonLoader attribute defines whether we want our button having loading behaviour or just be a simple button.
+     */
     public boolean isButtonLoader = true;
-   public Button ButtonButton;
-   public TextView ButtonTextView;
-   public LoadingComponent ButtonLoader;
+    /**
+     * The Button is the main and the first button in class. It has one onClick functionality.
+     */
+    public Button ButtonButton;
+    /**
+     * ButtonTextView is one of the options that the user can choose if he decides for static text that will replace ButtonLoader.
+     */
+    public TextView ButtonTextView;
+    /**
+     * ButtonLoader is animated component that represents loading or waiting.
+     */
+    public LoadingComponent ButtonLoader;
+    /**
+     * ButtonError is the second button in this class and represents a mistake after loading.
+     */
     public Button ButtonError;
+    /**
+     * ButtonError is the second button in this class and represents a success after loading.
+     */
     public Button ButtonSuccess;
+    /**
+     * TextLoading attribute is in charge of the selection between dynamic components loading or textual static.
+     */
     public boolean TextLoading;
+    /**
+     * The Fadeout.
+     */
     Animation fadeout = new AlphaAnimation(1.0f, 0.0f);
+    /**
+     * The Fadein.
+     */
     Animation fadein = new AlphaAnimation(0.0f, 1.0f);
 
     private OnClick<Void> metoda;
     private Boolean override = false;
 
 
+    /**
+     * Instantiates a new Button component.
+     *
+     * @param context the context
+     */
     public ButtonComponent(Context context) {
         super(context);
         init(context);
     }
 
+    /**
+     * Instantiates a new Button component.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public ButtonComponent(Context context, AttributeSet attrs) {
         super(context, attrs);init(context);
     }
 
+    /**
+     * Instantiates a new Button component.
+     *
+     * @param context      the context
+     * @param attrs        the attrs
+     * @param defStyleAttr the def style attr
+     */
     public ButtonComponent(Context context, AttributeSet attrs, int defStyleAttr) {
+
         super(context, attrs, defStyleAttr);init(context);
     }
 
+    /**
+     * Method init initializes every initial value of attributes, and then calls the method inflate.
+     *
+     * @param context the context
+     */
     public void init(Context context){
 
         inflate(getContext(), R.layout.button_component, this);
@@ -79,9 +133,10 @@ public class ButtonComponent extends RelativeLayout implements ComponentInterfac
     };
 
 
-
-
-    private void startLoading() {
+    /**
+     * Method startLoading is in charge of animating every component in this class. Using attribute TextLoading user can select which components will be animated and shown.
+     */
+    public void startLoading() {
 if (TextLoading) {
     ButtonButton.startAnimation(fadeout);
     ButtonButton.postDelayed(new Runnable() {
@@ -124,6 +179,9 @@ if (TextLoading) {
 }
     }
 
+    /**
+     * The method setActionSuccess animates ButtonTextView or ButtonLoader, depending on the selection. After animations it shows ButtonSuccess button.
+     */
     public void setActionSuccess(){
 
         if (TextLoading) {
@@ -163,6 +221,9 @@ if (TextLoading) {
         }
     }
 
+    /**
+     * The method setActionError animates ButtonTextView or ButtonLoader, depending on the selection. After animations it shows ButtonError button.
+     */
     public void setActionError(){
 
         if (TextLoading) {
@@ -205,21 +266,42 @@ if (TextLoading) {
     }
 
 
+    /**
+     *Sets the text of attribute ButtonButton.
+     *
+     * @param tekst the tekst
+     */
 //Postavljanje tekstova gumbova
     public void setButtonText(String tekst){
 
         ButtonButton.setText(tekst);
     }
 
+    /**
+     * Sets the text of attribute ButtonSuccess.
+     *
+     * @param tekst the tekst
+     */
     public void setButtonSuccessText(String tekst){
 
         ButtonSuccess.setText(tekst);
     }
+
+    /**
+     * Sets the text of attribute ButtonError.
+     *
+     * @param tekst the tekst
+     */
     public void setButtonErrorText(String tekst){
 
         ButtonError.setText(tekst);
     }
 
+    /**
+     *Allows the user to define their own onClick event.
+     *
+     * @param context the context
+     */
     public void onClick(Context context){
 
         if(override == true){
@@ -233,7 +315,14 @@ if (TextLoading) {
 
     }
 
+    /**
+     *
+     * Defines the method that the user transfers as their own onClick event.
+     *
+     * @param m the m
+     */
     public void setOnClickListener(OnClick<Void> m){
+
         override = true;
         metoda = m;
     }
