@@ -12,29 +12,78 @@ import com.cmykui.framework.cmykui.base.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Base chart.
+ */
 public class BaseChart extends View {
 
+    /**
+     *
+     * Paint is an atribute which determines the parameters of things that are currently being drawn.
+     */
     public Paint paint;
-    public int width, height, padding;
+    /**
+     * Width is a background width of a graph.
+     */
+    public int width, /**
+     * height is a background height of a graph .
+     */
+    height, /**
+     * The Padding.
+     */
+    padding;
+    /**
+     * isInit checks if the metho init() has been called.
+     */
     public boolean isInit = false;
+    /**
+     * rect is used for drawing.
+     */
     public Rect rect = new Rect();
 
+    /**
+     * parameters is used for certain parameters of DrawParameters class.
+     */
     public DrawParameters parameters = new DrawParameters();
 
+    /**
+     * DataSource is a list that stores the data for drawing..
+     */
     public List<DataSource> DataSource = new ArrayList<DataSource>();
 
+    /**
+     * Instantiates a new Base chart.
+     *
+     * @param context the context
+     */
     public BaseChart(Context context) {
         super(context);
     }
 
+    /**
+     * Instantiates a new Base chart.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public BaseChart(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+    /**
+     * Instantiates a new Base chart.
+     *
+     * @param context      the context
+     * @param attrs        the attrs
+     * @param defStyleAttr the def style attr
+     */
     public BaseChart(Context context,  AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
+    /**
+     * init method serves for initialization of all values ​​that are needed for drawing a graph.
+     */
     public void init() {
         paint = new Paint();
 

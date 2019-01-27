@@ -10,16 +10,37 @@ import android.provider.ContactsContract;
 import android.util.AttributeSet;
 
 
+/**
+ * The type Pie chart.
+ */
 public class PieChart extends BaseChart {
 
+    /**
+     * Instantiates a new Pie chart.
+     *
+     * @param context the context
+     */
     public PieChart(Context context) {
         super(context);
     }
 
+    /**
+     * Instantiates a new Pie chart.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public PieChart(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+    /**
+     * Instantiates a new Pie chart.
+     *
+     * @param context      the context
+     * @param attrs        the attrs
+     * @param defStyleAttr the def style attr
+     */
     public PieChart(Context context,  AttributeSet attrs, int defStyleAttr) { super(context, attrs, defStyleAttr); }
 
     @Override
