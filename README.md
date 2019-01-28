@@ -85,3 +85,4 @@ First of all we want to thank you for the interest in developing CMKY UI. Since 
 - Jerko Mitrić ([github](https://github.com/jera22), jerkomitric@gmail.com)
 - Niko Pelicarić ([github](https://github.com/Niko135), nikokaptol@gmail.com])
 - Leo Siniša Radošić ([github](https://github.com/wleorule), leo.radosic@gmail.com)
+
