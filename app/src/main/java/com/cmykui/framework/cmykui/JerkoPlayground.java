@@ -22,13 +22,13 @@ public class JerkoPlayground extends AppCompatActivity {
         setContentView(R.layout.activity_jerko_playground);
 
         button = findViewById(R.id.button);
-        floatLabel=findViewById(R.id.floatLabel);
+       floatLabel=findViewById(R.id.floatLabel);
 
 
-        button.setButtonText("Gumb");
-        button.setButtonSuccessText("Uspijeh");
-        button.setButtonErrorText("Pogreška");
-        floatLabel.setHintAndLabel("pokusaj");
+        button.setButtonText("My button");
+        button.setButtonSuccessText("Done!");
+        button.setButtonErrorText("Error!");
+        floatLabel.setHintAndLabel("Placeholder");
 
         button.TextLoading =false;
         button.isButtonLoader = true;
@@ -50,7 +50,7 @@ public class JerkoPlayground extends AppCompatActivity {
             @Override
             public void run() {
 
-                button.setActionError();
+                button.setActionSuccess();
 
             }
         }, 5000);
