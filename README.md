@@ -72,7 +72,7 @@ as you can see before creating onClickListener we changed some properties like:
 after button is clicked we handled it and did some stuff and triggered **.setActionSuccess()** method that showed that action is done successfully.
 Here is gif example of that button: 
 
-![Buttoncomponent gif](https://media.giphy.com/media/YW1xuDelTJxoOKGx6o/giphy.gif)
+![Buttoncomponent gif](https://media.giphy.com/media/lYibSocYE1ItcFs7gR/giphy.gif)
 
 ### Next steps
 If you are interested in using CMYK UI you should take a look into our [wiki](https://github.com/wleorule/CMYK-UI/wiki) page where you can find specific details about all components and a lot more information. If you expirience some issues feel free to report them on [git issue tracker](https://github.com/wleorule/CMYK-UI/issues). You can always join our [gitter](https://gitter.im/cmykui/community) room and talk about CMYK UI project!
