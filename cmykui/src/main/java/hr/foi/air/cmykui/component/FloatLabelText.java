@@ -78,7 +78,7 @@ public class FloatLabelText extends LinearLayout implements ComponentInterface {
         inflate(getContext(), R.layout.floatlabel_component, this);
         LabelLabel=this.findViewById(R.id.textView);
         placeholder=this.findViewById(R.id.editText);
-        LabelLabel.animate().alpha(0.0f);
+
 
 
 
