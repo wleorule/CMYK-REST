@@ -6,16 +6,37 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 
+/**
+ * The type Line chart.
+ */
 public class LineChart extends AxisBaseChart {
 
+    /**
+     * Instantiates a new Line chart.
+     *
+     * @param context the context
+     */
     public LineChart(Context context) {
         super(context);
     }
 
+    /**
+     * Instantiates a new Line chart.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public LineChart(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+    /**
+     * Instantiates a new Line chart.
+     *
+     * @param context      the context
+     * @param attrs        the attrs
+     * @param defStyleAttr the def style attr
+     */
     public LineChart(Context context,  AttributeSet attrs, int defStyleAttr) { super(context, attrs, defStyleAttr); }
 
     @Override

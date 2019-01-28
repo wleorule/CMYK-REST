@@ -5,14 +5,40 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 
+/**
+ * The type Axis base chart.
+ */
 public class AxisBaseChart extends BaseChart {
 
+    /**
+     * Instantiates a new Axis base chart.
+     *
+     * @param context the context
+     */
     public AxisBaseChart(Context context) { super(context); }
 
+    /**
+     * Instantiates a new Axis base chart.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public AxisBaseChart(Context context, AttributeSet attrs) { super(context, attrs); }
 
+    /**
+     * Instantiates a new Axis base chart.
+     *
+     * @param context      the context
+     * @param attrs        the attrs
+     * @param defStyleAttr the def style attr
+     */
     public AxisBaseChart(Context context,  AttributeSet attrs, int defStyleAttr) { super(context, attrs, defStyleAttr); }
 
+    /**
+     * drawNumerals method prints numeric values on Y axis.
+     *
+     * @param canvas the canvas
+     */
     public void drawNumerals(Canvas canvas) {
         paint.reset();
         paint.setColor(this.parameters.fontColor);
@@ -35,6 +61,11 @@ public class AxisBaseChart extends BaseChart {
         }
     }
 
+    /**
+     * drawOsi method draws the X and Y axis on canvas.
+     *
+     * @param canvas the canvas
+     */
     public void drawOsi(Canvas canvas) {
         paint.reset();
         paint.setColor(this.parameters.lineColor);
@@ -52,6 +83,11 @@ public class AxisBaseChart extends BaseChart {
 
     }
 
+    /**
+     * drawLinesY method draws lines along numbers on Y axis.
+     *
+     * @param canvas the canvas
+     */
     public void drawLinesY(Canvas canvas) {
         paint.reset();
         paint.setColor(this.parameters.lineColor);
@@ -71,6 +107,11 @@ public class AxisBaseChart extends BaseChart {
         }
     }
 
+    /**
+     * maxVisina method returns the highest value in the list.
+     *
+     * @return the float
+     */
     public float maxVisina(){
         float max = -999;
 

@@ -6,18 +6,43 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 
+/**
+ * The type Bar chart.
+ */
 public class BarChart extends AxisBaseChart {
 
+    /**
+     * Instantiates a new Bar chart.
+     *
+     * @param context the context
+     */
     public BarChart(Context context) {
         super(context);
     }
 
+    /**
+     * Instantiates a new Bar chart.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public BarChart(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+    /**
+     * Instantiates a new Bar chart.
+     *
+     * @param context      the context
+     * @param attrs        the attrs
+     * @param defStyleAttr the def style attr
+     */
     public BarChart(Context context,  AttributeSet attrs, int defStyleAttr) { super(context, attrs, defStyleAttr); }
-
+    /**
+     * onDraw draws one column.
+     *
+     * @param canvas the canvas
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         if(!isInit){
@@ -33,6 +58,11 @@ public class BarChart extends AxisBaseChart {
         this.drawNumerals(canvas);
     }
 
+    /**
+     * drawShape draws one column.
+     *
+     * @param canvas the canvas
+     */
     private void drawShapes(Canvas canvas) {
         paint.reset();
         paint.setStyle(Paint.Style.FILL);
@@ -60,10 +90,25 @@ public class BarChart extends AxisBaseChart {
         }
     }
 
+    /**
+     * drawShapes draws all columns in graph with help of drawShape method.     *
+     *
+     * @param canvas   the canvas
+     * @param data     the data
+     * @param max      the max
+     * @param maxWidth the max width
+     * @param currentX the current x
+     * @param paint    the paint
+     */
     private void drawShape(Canvas canvas, double data, double max, double maxWidth, double currentX, Paint paint) {
         canvas.drawRect((float)currentX, (float) data, (float)(currentX + maxWidth),(height - padding), paint);
     }
 
+    /**
+     * drawLabel prints labels below the columns on the graph.
+     *
+     * @param canvas the canvas
+     */
     private void drawLabel(Canvas canvas) {
         paint.reset();
         paint.setColor(this.parameters.fontColor);
