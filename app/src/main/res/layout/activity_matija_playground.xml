@@ -7,7 +7,7 @@
     tools:context=".MatijaPlayground">
 
 
-    <com.cmykui.framework.cmykui.graph.PieChart
+    <hr.foi.air.cmykui.graph.PieChart
         android:id="@+id/piechart"
 
         android:layout_width="wrap_content"

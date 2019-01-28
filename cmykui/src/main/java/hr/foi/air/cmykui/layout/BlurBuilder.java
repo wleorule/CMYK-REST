@@ -1,4 +1,4 @@
-package com.cmykui.framework.cmykui.layout;
+package hr.foi.air.cmykui.layout;
 
 import android.content.Context;
 import android.graphics.Bitmap;

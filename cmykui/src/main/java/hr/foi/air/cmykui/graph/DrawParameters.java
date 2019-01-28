@@ -1,4 +1,4 @@
-package com.cmykui.framework.cmykui.graph;
+package hr.foi.air.cmykui.graph;
 
 import android.graphics.Color;
 

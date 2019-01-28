@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.cmykui.framework.cmykui.component.FABComponent;
-import com.cmykui.framework.cmykui.component.FABToolbar;
+import hr.foi.air.cmykui.component.FABComponent;
+import hr.foi.air.cmykui.component.FABToolbar;
 
 public class NikoPlayground extends AppCompatActivity implements View.OnClickListener{
 

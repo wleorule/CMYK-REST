@@ -10,12 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 
 
-import com.cmykui.framework.cmykui.base.OnClick;
-import com.cmykui.framework.cmykui.component.ButtonComponent;
-import com.cmykui.framework.cmykui.component.FloatLabelText;
-import com.cmykui.framework.cmykui.layout.ImageLayoutItem;
-import com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem;
-import com.cmykui.framework.cmykui.layout.InboxViewItem;
+import hr.foi.air.cmykui.base.OnClick;
+import hr.foi.air.cmykui.component.ButtonComponent;
+import hr.foi.air.cmykui.component.FloatLabelText;
+import hr.foi.air.cmykui.layout.ImageLayoutItem;
+import hr.foi.air.cmykui.layout.ImageLayoutItemMenuItem;
+import hr.foi.air.cmykui.layout.InboxViewItem;
 
 
 public class MainActivity extends AppCompatActivity {

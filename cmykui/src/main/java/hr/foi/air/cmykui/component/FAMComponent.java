@@ -1,4 +1,4 @@
-package com.cmykui.framework.cmykui.component;
+package hr.foi.air.cmykui.component;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.cmykui.framework.cmykui.R;
+import hr.foi.air.cmykui.R;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.cmykui.framework.cmykui.graph;
+package hr.foi.air.cmykui.graph;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -7,7 +7,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.cmykui.framework.cmykui.base.DataSource;
+import hr.foi.air.cmykui.base.DataSource;
 
 import java.util.ArrayList;
 import java.util.List;

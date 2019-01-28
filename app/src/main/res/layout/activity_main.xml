@@ -7,14 +7,16 @@
     android:orientation="vertical"
     android:background="#EAEAEA ">
 
-    <com.cmykui.framework.cmykui.layout.ImageLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <hr.foi.air.cmykui.layout.ImageLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
-        <com.cmykui.framework.cmykui.layout.ImageLayoutItem
+
+        <hr.foi.air.cmykui.layout.ImageLayoutItem
             android:id="@+id/MatijaPlayground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +24,7 @@
 
             >
 
-            <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
+            <hr.foi.air.cmykui.layout.ImageLayoutItemMenuItem
                 android:id="@+id/PrebaciMatija"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,14 +32,14 @@
                 android:layout_marginTop="45dp"
                 app:text="Pogledaj >" />
 
-        </com.cmykui.framework.cmykui.layout.ImageLayoutItem>
+        </hr.foi.air.cmykui.layout.ImageLayoutItem>
 
-        <com.cmykui.framework.cmykui.layout.ImageLayoutItem
+        <hr.foi.air.cmykui.layout.ImageLayoutItem
             android:id="@+id/JerkoPlayground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
+            <hr.foi.air.cmykui.layout.ImageLayoutItemMenuItem
                 android:id="@+id/PrebaciJerko"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,17 +47,17 @@
                 android:layout_marginTop="45dp"
                 app:text="Pogledaj >" />
 
-        </com.cmykui.framework.cmykui.layout.ImageLayoutItem>
+        </hr.foi.air.cmykui.layout.ImageLayoutItem>
 
 
 
-        <com.cmykui.framework.cmykui.layout.ImageLayoutItem
+        <hr.foi.air.cmykui.layout.ImageLayoutItem
             android:id="@+id/NikoPlayground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp">
 
-            <com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem
+            <hr.foi.air.cmykui.layout.ImageLayoutItemMenuItem
                 android:id="@+id/PrebaciNiko"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,8 +65,8 @@
                 android:layout_marginTop="45dp"
                 app:text="Pogledaj >" />
 
-        </com.cmykui.framework.cmykui.layout.ImageLayoutItem>
-    </com.cmykui.framework.cmykui.layout.ImageLayout>
+        </hr.foi.air.cmykui.layout.ImageLayoutItem>
+    </hr.foi.air.cmykui.layout.ImageLayout>
 
 
 </LinearLayout>

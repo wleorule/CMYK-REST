@@ -1,4 +1,4 @@
-package com.cmykui.framework.cmykui.component;
+package hr.foi.air.cmykui.component;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,7 +10,7 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 
-import com.cmykui.framework.cmykui.R;
+import hr.foi.air.cmykui.R;
 
 public class FABComponent extends android.support.v7.widget.AppCompatImageView {
 

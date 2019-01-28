@@ -1,4 +1,4 @@
-package com.cmykui.framework.cmykui.component;
+package hr.foi.air.cmykui.component;
 
 import android.content.Context;
 import android.text.Editable;
@@ -7,8 +7,8 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.cmykui.framework.cmykui.R;
-import com.cmykui.framework.cmykui.base.ComponentInterface;
+import hr.foi.air.cmykui.R;
+import hr.foi.air.cmykui.base.ComponentInterface;
 
 /**
  * The type Float label text.

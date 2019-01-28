@@ -30,7 +30,7 @@
         android:layout_height="match_parent"
         android:text="TextView" />
 
-    <com.cmykui.framework.cmykui.component.LoadingComponent
+    <hr.foi.air.cmykui.component.LoadingComponent
         android:id="@+id/Component_loader"
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />

@@ -1,4 +1,4 @@
-package com.cmykui.framework.cmykui.layout;
+package hr.foi.air.cmykui.layout;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.cmykui.framework.cmykui.R;
-import com.cmykui.framework.cmykui.base.OnClick;
+import hr.foi.air.cmykui.R;
+import hr.foi.air.cmykui.base.OnClick;
 
 public class InboxViewItem extends RelativeLayout {
 

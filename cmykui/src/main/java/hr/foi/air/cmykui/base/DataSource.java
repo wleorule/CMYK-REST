@@ -1,4 +1,4 @@
-package com.cmykui.framework.cmykui.base;
+package hr.foi.air.cmykui.base;
 import java.util.Random;
 
 public class DataSource {

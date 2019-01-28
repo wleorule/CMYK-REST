@@ -1,12 +1,10 @@
-package com.cmykui.framework.cmykui.graph;
+package hr.foi.air.cmykui.graph;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 
 import android.graphics.RectF;
-import android.provider.ContactsContract;
 import android.util.AttributeSet;
 
 

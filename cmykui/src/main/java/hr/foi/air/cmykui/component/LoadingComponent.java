@@ -1,4 +1,4 @@
-package com.cmykui.framework.cmykui.component;
+package hr.foi.air.cmykui.component;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.view.animation.OvershootInterpolator;
 
-import com.cmykui.framework.cmykui.R;
-import com.cmykui.framework.cmykui.base.ComponentInterface;
+import hr.foi.air.cmykui.R;
+import hr.foi.air.cmykui.base.ComponentInterface;
 
 /**
  * The type Loading component.

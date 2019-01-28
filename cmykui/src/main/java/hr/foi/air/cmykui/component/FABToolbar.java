@@ -1,4 +1,4 @@
-package com.cmykui.framework.cmykui.component;
+package hr.foi.air.cmykui.component;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -11,7 +11,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.cmykui.framework.cmykui.R;
+import hr.foi.air.cmykui.R;
+
+import hr.foi.air.cmykui.component.FABComponent;
 
 public class FABToolbar extends FrameLayout {
 

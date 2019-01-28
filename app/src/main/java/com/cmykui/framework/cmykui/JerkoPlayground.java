@@ -6,9 +6,9 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.cmykui.framework.cmykui.base.OnClick;
-import com.cmykui.framework.cmykui.component.ButtonComponent;
-import com.cmykui.framework.cmykui.component.FloatLabelText;
+import hr.foi.air.cmykui.base.OnClick;
+import hr.foi.air.cmykui.component.ButtonComponent;
+import hr.foi.air.cmykui.component.FloatLabelText;
 
 public class JerkoPlayground extends AppCompatActivity {
 

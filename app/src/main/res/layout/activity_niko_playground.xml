@@ -16,7 +16,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"/>
 
-    <com.cmykui.framework.cmykui.component.FABComponent
+    <hr.foi.air.cmykui.component.FABComponent
         android:id="@+id/toolbar_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
-    <com.cmykui.framework.cmykui.component.FABToolbar
+    <hr.foi.air.cmykui.component.FABToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -41,9 +41,9 @@
         fab_toolbar:firstIcon="@drawable/phone_b_24dp"
         fab_toolbar:secondIcon="@drawable/settings_b_24dp"
         fab_toolbar:thirdIcon="@drawable/done_b_24dp">
-    </com.cmykui.framework.cmykui.component.FABToolbar>
+    </hr.foi.air.cmykui.component.FABToolbar>
 
-    <com.cmykui.framework.cmykui.component.FAMComponent
+    <hr.foi.air.cmykui.component.FAMComponent
         android:id="@+id/menu"
         android:layout_width="wrap_content"
         android:layout_height="215dp"
@@ -53,7 +53,7 @@
         android:layout_marginTop="0dp"
         fab:fab_position="bottom">
 
-        <com.cmykui.framework.cmykui.component.FABComponent
+        <hr.foi.air.cmykui.component.FABComponent
             android:id="@+id/menu_button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
 
-        <com.cmykui.framework.cmykui.component.FABComponent
+        <hr.foi.air.cmykui.component.FABComponent
             android:id="@+id/menu_button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
 
-        <com.cmykui.framework.cmykui.component.FABComponent
+        <hr.foi.air.cmykui.component.FABComponent
             android:id="@+id/menu_button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,6 +88,6 @@
             fab:fab_width="150"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
-    </com.cmykui.framework.cmykui.component.FAMComponent>
+    </hr.foi.air.cmykui.component.FAMComponent>
 
 </RelativeLayout>

@@ -1,7 +1,6 @@
-package com.cmykui.framework.cmykui.component;
+package hr.foi.air.cmykui.component;
 
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -11,9 +10,10 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.cmykui.framework.cmykui.R;
-import com.cmykui.framework.cmykui.base.ComponentInterface;
-import com.cmykui.framework.cmykui.base.OnClick;
+import hr.foi.air.cmykui.R;
+
+import hr.foi.air.cmykui.base.ComponentInterface;
+import hr.foi.air.cmykui.base.OnClick;
 
 /**
  * The type Button component.
@@ -68,7 +68,9 @@ public class ButtonComponent extends RelativeLayout implements ComponentInterfac
      */
     public ButtonComponent(Context context) {
         super(context);
-        init(context);
+        if(!isInEditMode()) {
+            init(context);
+        }
     }
 
     /**
@@ -78,7 +80,10 @@ public class ButtonComponent extends RelativeLayout implements ComponentInterfac
      * @param attrs   the attrs
      */
     public ButtonComponent(Context context, AttributeSet attrs) {
-        super(context, attrs);init(context);
+        super(context, attrs);
+        if(!isInEditMode()) {
+            init(context);
+        }
     }
 
     /**
@@ -90,7 +95,10 @@ public class ButtonComponent extends RelativeLayout implements ComponentInterfac
      */
     public ButtonComponent(Context context, AttributeSet attrs, int defStyleAttr) {
 
-        super(context, attrs, defStyleAttr);init(context);
+        super(context, attrs, defStyleAttr);
+        if(!isInEditMode()) {
+            init(context);
+        }
     }
 
     /**
@@ -119,6 +127,8 @@ public class ButtonComponent extends RelativeLayout implements ComponentInterfac
         fadein.setDuration(500);
 
         ButtonButton.setOnClickListener(lokalOnClick);
+
+
 
     }
 
@@ -326,5 +336,6 @@ if (TextLoading) {
         override = true;
         metoda = m;
     }
+
 
 }
