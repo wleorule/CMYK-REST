@@ -53,11 +53,11 @@ public class NikoPlayground extends AppCompatActivity implements View.OnClickLis
         switch(v.getId()) {
 
             case R.id.toolbar_button:
-                FabToolbar.expandFab();
+                FabToolbar.expandFab(0,500,0,0);
                 break;
 
             case R.id.base_layout:
-                FabToolbar.contractFab();
+                FabToolbar.contractFab(500,0,0,0);
                 break;
 
             case R.id.menu_button2:
