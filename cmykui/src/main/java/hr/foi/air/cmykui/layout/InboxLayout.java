@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import hr.foi.air.cmykui.R;
+import hr.foi.air.cmykui.component.FloatLabelText;
 
 /**
  * The type Inbox layout.
@@ -39,7 +40,7 @@ public class InboxLayout extends ViewGroup {
     /**
      * The Search input.
      */
-    EditText SearchInput;
+    FloatLabelText SearchInput;
 
     private boolean SearchON = false;
     private float scale = getResources().getDisplayMetrics().density;
@@ -97,7 +98,8 @@ public class InboxLayout extends ViewGroup {
             }
         });
 
-        SearchInput.addTextChangedListener(new TextWatcher() {
+        SearchInput.setHint("Search term");
+        SearchInput.searchTo.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -118,7 +120,7 @@ public class InboxLayout extends ViewGroup {
     private void searchChild() {
 
         final int count = getChildCount();
-        String seachText = SearchInput.getText().toString();
+        String seachText = SearchInput.getText();
 
         for(int i = 0; i < count; i++){
             View temp = getChildAt(i);

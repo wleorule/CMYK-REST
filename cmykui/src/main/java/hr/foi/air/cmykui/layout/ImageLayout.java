@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import hr.foi.air.cmykui.R;
+import hr.foi.air.cmykui.component.FloatLabelText;
 
 /**
  * The type Image layout.
@@ -40,7 +41,7 @@ public class ImageLayout extends ViewGroup {
     /**
      * The Search input.
      */
-    EditText SearchInput;
+     FloatLabelText SearchInput;
 
     private boolean SearchON = false;
     private float scale = getResources().getDisplayMetrics().density;
@@ -98,8 +99,9 @@ public class ImageLayout extends ViewGroup {
                 ToggleShowSearch();
             }
         });
+        SearchInput.setHintAndLabel("Search term");
 
-        SearchInput.addTextChangedListener(new TextWatcher() {
+        SearchInput.searchTo.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -120,7 +122,7 @@ public class ImageLayout extends ViewGroup {
     private void searchChild() {
 
         final int count = getChildCount();
-        String seachText = SearchInput.getText().toString();
+        String seachText = SearchInput.getText();
 
         for(int i = 0; i < count; i++){
             View temp = getChildAt(i);

@@ -65,13 +65,12 @@
     </LinearLayout>
     -->
 
-    <EditText
+    <hr.foi.air.cmykui.component.FloatLabelText
         android:id="@+id/SearchInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:paddingBottom="10dp"
-        android:text="Traži" />
+         />
 
 
 </LinearLayout>
