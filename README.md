@@ -1,3 +1,3 @@
 # CMYK-REST
 
-![Button](https://media.giphy.com/media/f9SjctCi0FBZ4DUYrG/giphy.gif)
+![Button](https://media.giphy.com/media/YW1xuDelTJxoOKGx6o/giphy.gif)
