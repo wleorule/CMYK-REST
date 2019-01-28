@@ -6,7 +6,7 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'cmykui'
 
-    publishedGroupId = 'hr.foi.air2018.cmykui'
+    publishedGroupId = 'hr.foi.air.cmykui'
     libraryName = 'cmykui'
     artifact = 'cmykui'
 
@@ -15,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/wleorule/CMYK-UI'
     gitUrl = 'https://github.com/wleorule/CMYK-UI.git'
 
-    libraryVersion = '0.3.7'
+    libraryVersion = '0.3.8'
 
     developerId = 'cmykui'
     developerName = 'Leo Siniša Radošić'
