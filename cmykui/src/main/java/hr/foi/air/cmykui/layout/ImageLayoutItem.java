@@ -12,10 +12,22 @@ import android.widget.TextView;
 import hr.foi.air.cmykui.R;
 import hr.foi.air.cmykui.base.OnClick;
 
+/**
+ * The type Image layout item.
+ */
 public class ImageLayoutItem extends RelativeLayout {
 
+    /**
+     * The Item image.
+     */
     public ImageView itemImage;
+    /**
+     * The Item title.
+     */
     public TextView itemTitle;
+    /**
+     * The Image zoom.
+     */
     public Boolean ImageZoom = true;
 
     private OnClick<Void> metoda;
@@ -28,21 +40,44 @@ public class ImageLayoutItem extends RelativeLayout {
     private  LinearLayout.LayoutParams oldLayoutParams;
 
 
+    /**
+     * Instantiates a new Image layout item.
+     *
+     * @param context the context
+     */
     public ImageLayoutItem(Context context) {
         super(context);
         init(context);
     }
 
+    /**
+     * Instantiates a new Image layout item.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public ImageLayoutItem(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
+    /**
+     * Instantiates a new Image layout item.
+     *
+     * @param context      the context
+     * @param attrs        the attrs
+     * @param defStyleAttr the def style attr
+     */
     public ImageLayoutItem(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
+    /**
+     * Init.
+     *
+     * @param context the context
+     */
     public void init(Context context){
         inflate(getContext(), R.layout.image_item, this);
 
@@ -54,9 +89,20 @@ public class ImageLayoutItem extends RelativeLayout {
         setOnClickListener(localOnClick);
     }
 
+    /**
+     * Set title.
+     *
+     * @param title the title
+     */
     public void setTitle(String title){
         itemTitle.setText(title);
     }
+
+    /**
+     * Gets title.
+     *
+     * @return the title
+     */
     public String getTitle() { return itemTitle.getText().toString(); }
 
 
@@ -113,7 +159,9 @@ public class ImageLayoutItem extends RelativeLayout {
     };
 
 
-
+    /**
+     * Toogle all childs.
+     */
     public void toogleAllChilds() {
 
         final int count = getChildCount();
@@ -135,6 +183,11 @@ public class ImageLayoutItem extends RelativeLayout {
 
     }
 
+    /**
+     * On click.
+     *
+     * @param context the context
+     */
     public void onClick(Context context){
 
         if(override == true){
@@ -150,6 +203,11 @@ public class ImageLayoutItem extends RelativeLayout {
         }
     }
 
+    /**
+     * Set on click listener.
+     *
+     * @param m the m
+     */
     public void setOnClickListener(OnClick<Void> m){
         override = true;
         metoda = m;

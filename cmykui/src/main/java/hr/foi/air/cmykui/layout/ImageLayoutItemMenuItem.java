@@ -12,22 +12,40 @@ import android.widget.TextView;
 import hr.foi.air.cmykui.R;
 import hr.foi.air.cmykui.base.OnClick;
 
+/**
+ * The type Image layout item menu item.
+ */
 public class ImageLayoutItemMenuItem extends RelativeLayout {
 
+    /**
+     * The Item image.
+     */
     public ImageView itemImage;
+    /**
+     * The Item title.
+     */
     public TextView itemTitle;
 
     private OnClick<Void> metoda;
     private Boolean override = false;
 
 
-
-
+    /**
+     * Instantiates a new Image layout item menu item.
+     *
+     * @param context the context
+     */
     public ImageLayoutItemMenuItem(Context context) {
         super(context);
         init(context, "Menu item");
     }
 
+    /**
+     * Instantiates a new Image layout item menu item.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public ImageLayoutItemMenuItem(Context context, AttributeSet attrs) {
         super(context, attrs);
 
@@ -37,6 +55,13 @@ public class ImageLayoutItemMenuItem extends RelativeLayout {
         init(context, text);
     }
 
+    /**
+     * Instantiates a new Image layout item menu item.
+     *
+     * @param context      the context
+     * @param attrs        the attrs
+     * @param defStyleAttr the def style attr
+     */
     public ImageLayoutItemMenuItem(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
@@ -46,6 +71,12 @@ public class ImageLayoutItemMenuItem extends RelativeLayout {
         init(context, text);
     }
 
+    /**
+     * Init.
+     *
+     * @param context the context
+     * @param text    the text
+     */
     public void init(Context context, String text){
         inflate(getContext(), R.layout.image_layout_item_menu_item, this);
 
@@ -57,9 +88,20 @@ public class ImageLayoutItemMenuItem extends RelativeLayout {
         setOnClickListener(localOnClick);
     }
 
+    /**
+     * Set title.
+     *
+     * @param title the title
+     */
     public void setTitle(String title){
         itemTitle.  setText(title);
     }
+
+    /**
+     * Gets title.
+     *
+     * @return the title
+     */
     public String getTitle() { return itemTitle.getText().toString(); }
 
 
@@ -73,7 +115,11 @@ public class ImageLayoutItemMenuItem extends RelativeLayout {
     };
 
 
-
+    /**
+     * On click.
+     *
+     * @param context the context
+     */
     public void onClick(Context context){
 
         if(override == true){
@@ -94,6 +140,11 @@ public class ImageLayoutItemMenuItem extends RelativeLayout {
         }
     }
 
+    /**
+     * Set on click listener.
+     *
+     * @param m the m
+     */
     public void setOnClickListener(OnClick<Void> m){
         override = true;
         metoda = m;
