@@ -1,4 +1,4 @@
-[![Download](https://api.bintray.com/packages/cmykui/maven/cmykui/images/download.svg?version=0.3.8)](https://bintray.com/cmykui/maven/cmykui/0.3.8/link) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/cmykui/community)
+[![Download](https://api.bintray.com/packages/cmykui/maven/cmykui/images/download.svg?version=0.3.8)](https://bintray.com/cmykui/maven/cmykui/0.3.8/link) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/cmykui/community)
 
 ![Logo](https://i.imgur.com/zVq1DF4.png)
  ### CMYK UI Framework
