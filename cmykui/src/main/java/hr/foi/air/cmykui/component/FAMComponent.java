@@ -17,13 +17,29 @@ import hr.foi.air.cmykui.R;
 import java.util.ArrayList;
 
 
+/**
+ * The type Fam component.
+ */
 public class FAMComponent extends FrameLayout {
 
-    private static final int MENU_BOTTOM = 0;
-    private static final int MENU_TOP = 1;
 
-    private int childPosition;
     private float animationDistance;
+
+
+    /**
+     * The constant menu_bottom.
+     */
+    public static final int MENU_BOTTOM = 0;
+    /**
+     * The constant menu_top.
+     */
+    public static final int MENU_TOP = 1;
+
+    /**
+     * The Child position.
+     */
+    public int childPosition;
+    private OnMenuExpandedListener onMenuExpandedListener;
 
     private boolean created;
     private boolean expanded;
@@ -31,15 +47,33 @@ public class FAMComponent extends FrameLayout {
     private ArrayList<View> views = new ArrayList<>();
 
 
+    /**
+     * Instantiates a new Fam component.
+     *
+     * @param context the context
+     */
     public FAMComponent(Context context) {
         this(context, null);
     }
 
+    /**
+     * Instantiates a new Fam component.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public FAMComponent(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
+    /**
+     * Instantiates a new Fam component.
+     *
+     * @param context  the context
+     * @param attrs    the attrs
+     * @param defStyle the def style
+     */
     public FAMComponent(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context, attrs);
@@ -253,6 +287,7 @@ public class FAMComponent extends FrameLayout {
 
         set.start();
     }
+
 
 
 }

@@ -25,6 +25,11 @@ public class FloatLabelText extends LinearLayout implements ComponentInterface {
     public TextView LabelLabel;
 
     /**
+     * The Edit text
+     */
+    public EditText searchTo;
+
+    /**
      * Instantiates a new Float label text.
      *
      * @param context the context
@@ -78,12 +83,12 @@ public class FloatLabelText extends LinearLayout implements ComponentInterface {
         inflate(getContext(), R.layout.floatlabel_component, this);
         LabelLabel=this.findViewById(R.id.textView);
         placeholder=this.findViewById(R.id.editText);
-        LabelLabel.animate().alpha(0.0f);
 
 
 
 
-        EditText searchTo = (EditText)findViewById(R.id.editText);
+
+        searchTo = (EditText)findViewById(R.id.editText);
         searchTo.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
@@ -105,6 +110,14 @@ public class FloatLabelText extends LinearLayout implements ComponentInterface {
             }
         });
 
+    }
+
+    /***
+     * Gets text from edittext
+     * @return string edittext text
+     */
+    public String getText(){
+        return searchTo.getText().toString();
     }
 
     /**

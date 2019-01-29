@@ -32,6 +32,14 @@
                 android:layout_marginTop="45dp"
                 app:text="Pogledaj >" />
 
+            <hr.foi.air.cmykui.layout.ImageLayoutItemMenuItem
+                android:id="@+id/PrebaciBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="45dp"
+                app:text="BarChart >" />
+
         </hr.foi.air.cmykui.layout.ImageLayoutItem>
 
         <hr.foi.air.cmykui.layout.ImageLayoutItem

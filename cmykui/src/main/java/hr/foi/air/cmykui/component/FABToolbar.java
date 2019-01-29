@@ -11,26 +11,67 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import hr.foi.air.cmykui.R;
+import hr.foi.air.cmykui.component.FABComponent;
 
+/**
+ * The type Fab toolbar.
+ */
 public class FABToolbar extends FrameLayout {
 
     private LinearLayout FabToolbar;
     private FABComponent Fab;
     private boolean isExpanded;
-    public ImageView firstButton,secondButton,thirdButton;
-    private Drawable firstIcon,secondIcon,thirdIcon;
 
+    /**
+     * The First button.
+     */
+    public ImageView firstButton, /**
+     * The Second button.
+     */
+    secondButton, /**
+     * The Third button.
+     */
+    thirdButton;
+    /**
+     * The First icon.
+     */
+    public Drawable firstIcon, /**
+     * The Second icon.
+     */
+    secondIcon, /**
+     * The Third icon.
+     */
+    thirdIcon;
+
+    /**
+     * Instantiates a new Fab toolbar.
+     *
+     * @param context the context
+     */
     public FABToolbar(Context context) {
         super(context);
         init();
     }
 
+    /**
+     * Instantiates a new Fab toolbar.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public FABToolbar(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
         loadAttributes(context, attrs);
     }
 
+    /**
+     * Instantiates a new Fab toolbar.
+     *
+     * @param context  the context
+     * @param attrs    the attrs
+     * @param defStyle the def style
+     */
     public FABToolbar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
@@ -61,15 +102,30 @@ public class FABToolbar extends FrameLayout {
     }
 
 
+    /**
+     * Sets fab.
+     *
+     * @param fabComponent the fab component
+     */
     public void setFab(FABComponent fabComponent) {
         Fab = fabComponent;
     }
 
+    /**
+     * Sets color.
+     *
+     * @param color the color
+     */
     public void setColor(int color) {
         FabToolbar.setBackgroundColor(color);
     }
 
+
+    /**
+     * Expand fab.
+     */
     public void expandFab(int fromX, int toX, int fromY, int toY) {
+
 
         TranslateAnimation toolAnim = new TranslateAnimation(0,0,500,0);
         toolAnim.setDuration(400);
@@ -85,7 +141,12 @@ public class FABToolbar extends FrameLayout {
 
     }
 
+
+    /**
+     * Contract fab.
+     */
     public void contractFab(int fromX, int toX, int fromY, int toY) {
+
         if (isExpanded) {
 
             Fab.setVisibility(View.VISIBLE);

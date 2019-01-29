@@ -14,26 +14,64 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import hr.foi.air.cmykui.R;
+import hr.foi.air.cmykui.component.FloatLabelText;
 
+/**
+ * The type Image layout.
+ */
 public class ImageLayout extends ViewGroup {
 
+    /**
+     * The Device width.
+     */
     int deviceWidth;
+    /**
+     * The Device height.
+     */
     int deviceHeight;
 
+    /**
+     * The Title text.
+     */
     TextView TitleText;
+    /**
+     * The Search text.
+     */
     ImageView SearchText;
-    EditText SearchInput;
+    /**
+     * The Search input.
+     */
+     FloatLabelText SearchInput;
 
     private boolean SearchON = false;
     private float scale = getResources().getDisplayMetrics().density;
 
+    /**
+     * Instantiates a new Image layout.
+     *
+     * @param context the context
+     */
     public ImageLayout(Context context) {
         super(context);
     }
 
+    /**
+     * Instantiates a new Image layout.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public ImageLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
+
+    /**
+     * Instantiates a new Image layout.
+     *
+     * @param context      the context
+     * @param attrs        the attrs
+     * @param defStyleAttr the def style attr
+     */
     public ImageLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
@@ -61,8 +99,9 @@ public class ImageLayout extends ViewGroup {
                 ToggleShowSearch();
             }
         });
+        SearchInput.setHintAndLabel("Search term");
 
-        SearchInput.addTextChangedListener(new TextWatcher() {
+        SearchInput.searchTo.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -83,7 +122,7 @@ public class ImageLayout extends ViewGroup {
     private void searchChild() {
 
         final int count = getChildCount();
-        String seachText = SearchInput.getText().toString();
+        String seachText = SearchInput.getText();
 
         for(int i = 0; i < count; i++){
             View temp = getChildAt(i);
