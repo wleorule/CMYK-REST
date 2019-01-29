@@ -5,14 +5,12 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import hr.foi.air.cmykui.R;
-
 import hr.foi.air.cmykui.component.FABComponent;
 
 /**
@@ -23,6 +21,7 @@ public class FABToolbar extends FrameLayout {
     private LinearLayout FabToolbar;
     private FABComponent Fab;
     private boolean isExpanded;
+
     /**
      * The First button.
      */
@@ -102,17 +101,6 @@ public class FABToolbar extends FrameLayout {
         attrs.recycle();
     }
 
-    @Override public void addView(View child, ViewGroup.LayoutParams params) {
-        if (viewToToolbar()) {
-            FabToolbar.addView(child, params);
-        } else {
-            super.addView(child, params);
-        }
-    }
-    private boolean viewToToolbar() {
-        return FabToolbar != null;
-    }
-
 
     /**
      * Sets fab.
@@ -132,17 +120,19 @@ public class FABToolbar extends FrameLayout {
         FabToolbar.setBackgroundColor(color);
     }
 
+
     /**
      * Expand fab.
      */
-    public void expandFab() {
+    public void expandFab(int fromX, int toX, int fromY, int toY) {
+
 
         TranslateAnimation toolAnim = new TranslateAnimation(0,0,500,0);
         toolAnim.setDuration(400);
         FabToolbar.startAnimation(toolAnim);
         FabToolbar.setVisibility(View.VISIBLE);
 
-        TranslateAnimation fabAnim = new TranslateAnimation(0,500,0,0);
+        TranslateAnimation fabAnim = new TranslateAnimation(fromX,toX,fromY,toY);
         fabAnim.setDuration(400);
         Fab.startAnimation(fabAnim);
         Fab.setVisibility(View.INVISIBLE);
@@ -151,14 +141,16 @@ public class FABToolbar extends FrameLayout {
 
     }
 
+
     /**
      * Contract fab.
      */
-    public void contractFab() {
+    public void contractFab(int fromX, int toX, int fromY, int toY) {
+
         if (isExpanded) {
 
             Fab.setVisibility(View.VISIBLE);
-            TranslateAnimation anim = new TranslateAnimation(500, 0, 0, 0);
+            TranslateAnimation anim = new TranslateAnimation(fromX,toX,fromY,toY);
             anim.setDuration(400);
             Fab.startAnimation(anim);
 

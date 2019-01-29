@@ -22,20 +22,25 @@ import java.util.ArrayList;
  */
 public class FAMComponent extends FrameLayout {
 
+
+    private float animationDistance;
+
+
     /**
      * The constant menu_bottom.
      */
-    public static final int menu_bottom = 0;
+    public static final int MENU_BOTTOM = 0;
     /**
      * The constant menu_top.
      */
-    public static final int menu_top = 1;
+    public static final int MENU_TOP = 1;
 
     /**
      * The Child position.
      */
     public int childPosition;
     private OnMenuExpandedListener onMenuExpandedListener;
+
     private boolean created;
     private boolean expanded;
     private boolean animating = false;
@@ -77,7 +82,8 @@ public class FAMComponent extends FrameLayout {
     private void init(Context context, AttributeSet attributeSet) {
 
         TypedArray attrs = context.obtainStyledAttributes(attributeSet, R.styleable.FloatingActionsMenu, 0, 0);
-        childPosition = attrs.getInteger(R.styleable.FloatingActionsMenu_fab_position, menu_bottom);
+        childPosition = attrs.getInteger(R.styleable.FloatingActionsMenu_fab_position, MENU_BOTTOM);
+        animationDistance = attrs.getFloat(R.styleable.FloatingActionsMenu_animation_distance, 200);
         attrs.recycle();
     }
 
@@ -101,10 +107,10 @@ public class FAMComponent extends FrameLayout {
                 child.setVisibility(GONE);
             }
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-            if(childPosition == menu_bottom){
+            if(childPosition == MENU_BOTTOM){
                 params.gravity = Gravity.BOTTOM;
             }
-            else if (childPosition == menu_top){
+            else if (childPosition == MENU_TOP){
                 params.gravity = Gravity.TOP;
             }
             child.setLayoutParams(params);
@@ -128,14 +134,14 @@ public class FAMComponent extends FrameLayout {
                 if (animating) {
                     return;
                 }
-                else if(childPosition == menu_bottom){
+                else if(childPosition == MENU_BOTTOM){
                     if (expanded) {
                         collapseUp();
                     } else {
                         expandUp();
                     }
                 }
-                if(childPosition == menu_top) {
+                if(childPosition == MENU_TOP) {
                     if (expanded) {
                         collapseDown();
                     } else {
@@ -151,7 +157,7 @@ public class FAMComponent extends FrameLayout {
         animating = true;
         for (int i = 1; i < views.size(); i++) {
             final View view = views.get(i);
-            float animationSize = 200f;
+            float animationSize = animationDistance;
 
             ObjectAnimator viewAnimator = ObjectAnimator.ofFloat(view, "translationY", 0f, i * animationSize);
             viewAnimator.addListener(new AnimatorListenerAdapter() {
@@ -174,9 +180,6 @@ public class FAMComponent extends FrameLayout {
 
                 animating = false;
                 expanded = !expanded;
-                if (onMenuExpandedListener != null) {
-                    onMenuExpandedListener.onMenuExpanded();
-                }
             }
         });
 
@@ -188,7 +191,7 @@ public class FAMComponent extends FrameLayout {
         animating = true;
         for (int i = views.size() - 1; i > 0; i--) {
             final View view = views.get(i);
-            float animationSize = 200f;
+            float animationSize = animationDistance;
 
             ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", i * animationSize, 0f);
             animator.addListener(new AnimatorListenerAdapter() {
@@ -211,9 +214,6 @@ public class FAMComponent extends FrameLayout {
 
                 animating = false;
                 expanded = !expanded;
-                if (onMenuExpandedListener != null) {
-                    onMenuExpandedListener.onMenuCollapsed();
-                }
             }
         });
 
@@ -225,7 +225,7 @@ public class FAMComponent extends FrameLayout {
         animating = true;
         for (int i = 1; i < views.size(); i++) {
             final View view = views.get(i);
-            float animationSize = 200f;
+            float animationSize = animationDistance;
 
             ObjectAnimator viewAnimator = ObjectAnimator.ofFloat(view, "translationY", 0f, -i * animationSize);
             viewAnimator.addListener(new AnimatorListenerAdapter() {
@@ -248,9 +248,6 @@ public class FAMComponent extends FrameLayout {
 
                 animating = false;
                 expanded = !expanded;
-                if (onMenuExpandedListener != null) {
-                    onMenuExpandedListener.onMenuExpanded();
-                }
             }
         });
 
@@ -262,7 +259,7 @@ public class FAMComponent extends FrameLayout {
         animating = true;
         for (int i = views.size() - 1; i > 0; i--) {
             final View view = views.get(i);
-            float animationSize = 200f;
+            float animationSize = animationDistance;
 
             ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", -i * animationSize, 0f);
             animator.addListener(new AnimatorListenerAdapter() {
@@ -285,28 +282,12 @@ public class FAMComponent extends FrameLayout {
 
                 animating = false;
                 expanded = !expanded;
-                if (onMenuExpandedListener != null) {
-                    onMenuExpandedListener.onMenuCollapsed();
-                }
             }
         });
 
         set.start();
     }
 
-    /**
-     * The interface On menu expanded listener.
-     */
-    public interface OnMenuExpandedListener {
-        /**
-         * On menu expanded.
-         */
-        void onMenuExpanded();
 
-        /**
-         * On menu collapsed.
-         */
-        void onMenuCollapsed();
-    }
 
 }

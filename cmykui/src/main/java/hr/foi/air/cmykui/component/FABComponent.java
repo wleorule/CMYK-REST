@@ -17,6 +17,7 @@ import hr.foi.air.cmykui.R;
  */
 public class FABComponent extends android.support.v7.widget.AppCompatImageView {
 
+
     /**
      * The Height.
      */
@@ -34,6 +35,7 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
      * The Draw.
      */
     Drawable draw = ResourcesCompat.getDrawable(getResources(), R.drawable.fab_drawable, null);
+
 
     private boolean created;
 
@@ -69,6 +71,7 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
         init(context, attrs);
     }
 
+
     /**
      * Init.
      *
@@ -79,11 +82,11 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
 
         TypedArray attrs = context.obtainStyledAttributes(attributeSet, R.styleable.FloatingActionButton, 0, 0);
         setColor(attrs.getColor(R.styleable.FloatingActionButton_color, ContextCompat.getColor(context, android.R.color.holo_red_dark)));
-        color_pressed = attrs.getColor(R.styleable.FloatingActionButton_color_pressed, ContextCompat.getColor(context, android.R.color.holo_red_light));
         height = attrs.getInteger(R.styleable.FloatingActionButton_fab_height,100);
         width = attrs.getInteger(R.styleable.FloatingActionButton_fab_width,100);
         attrs.recycle();
     }
+
 
     /**
      * Update bg.
