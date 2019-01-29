@@ -21,20 +21,16 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
     /**
      * The Height.
      */
-    int height;
+    private int height;
     /**
      * The Width.
      */
-    int width;
-    /**
-     * The Color pressed.
-     */
-    int color_pressed;
+    private int width;
 
     /**
      * The Draw.
      */
-    Drawable draw = ResourcesCompat.getDrawable(getResources(), R.drawable.fab_drawable, null);
+    private Drawable draw = ResourcesCompat.getDrawable(getResources(), R.drawable.fab_drawable, null);
 
 
     private boolean created;
@@ -78,7 +74,7 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
      * @param context      the context
      * @param attributeSet the attribute set
      */
-    public void init(Context context, AttributeSet attributeSet) {
+    private void init(Context context, AttributeSet attributeSet) {
 
         TypedArray attrs = context.obtainStyledAttributes(attributeSet, R.styleable.FloatingActionButton, 0, 0);
         setColor(attrs.getColor(R.styleable.FloatingActionButton_color, ContextCompat.getColor(context, android.R.color.holo_red_dark)));
@@ -91,7 +87,7 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
     /**
      * Update bg.
      */
-    public void updateBG() {
+    private void updateBG() {
         setBackground(draw);
     }
 

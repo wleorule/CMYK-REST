@@ -35,7 +35,7 @@ public class FABToolbar extends FrameLayout {
     /**
      * The First icon.
      */
-    public Drawable firstIcon, /**
+    private Drawable firstIcon, /**
      * The Second icon.
      */
     secondIcon, /**
