@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 /**
  * The type Axis base chart.
  */
-public class AxisBaseChart extends BaseChart {
+public abstract class AxisBaseChart extends BaseChart {
 
     /**
      * Instantiates a new Axis base chart.

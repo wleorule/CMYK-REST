@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * The type Base chart.
  */
-public class BaseChart extends View {
+public abstract class BaseChart extends View {
 
     /**
      *
