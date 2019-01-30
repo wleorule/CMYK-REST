@@ -29,17 +29,16 @@ public class FAMComponent extends FrameLayout {
     /**
      * The constant menu_bottom.
      */
-    public static final int MENU_BOTTOM = 0;
+    private static final int MENU_BOTTOM = 0;
     /**
      * The constant menu_top.
      */
-    public static final int MENU_TOP = 1;
+    private static final int MENU_TOP = 1;
 
     /**
      * The Child position.
      */
-    public int childPosition;
-    private OnMenuExpandedListener onMenuExpandedListener;
+    private int childPosition;
 
     private boolean created;
     private boolean expanded;
@@ -134,32 +133,29 @@ public class FAMComponent extends FrameLayout {
                 if (animating) {
                     return;
                 }
-                else if(childPosition == MENU_BOTTOM){
                     if (expanded) {
-                        collapseUp();
+                        collapse();
                     } else {
-                        expandUp();
+                        expand();
                     }
-                }
-                if(childPosition == MENU_TOP) {
-                    if (expanded) {
-                        collapseDown();
-                    } else {
-                        expandDown();
-                    }
-                }
+
             }
         });
     }
 
-    private void expandDown() {
+    private void expand() {
         ArrayList<Animator> animators = new ArrayList<>();
         animating = true;
         for (int i = 1; i < views.size(); i++) {
             final View view = views.get(i);
             float animationSize = animationDistance;
-
-            ObjectAnimator viewAnimator = ObjectAnimator.ofFloat(view, "translationY", 0f, i * animationSize);
+            ObjectAnimator viewAnimator;
+            if(childPosition == MENU_TOP) {
+                viewAnimator = ObjectAnimator.ofFloat(view, "translationY", 0f, i * animationSize);
+            }
+            else{
+                viewAnimator = ObjectAnimator.ofFloat(view, "translationY", 0f, -i * animationSize);
+            }
             viewAnimator.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationStart(Animator animation) {
@@ -186,14 +182,19 @@ public class FAMComponent extends FrameLayout {
         set.start();
     }
 
-    private void collapseDown() {
+    private void collapse() {
         ArrayList<Animator> animators = new ArrayList<>();
         animating = true;
         for (int i = views.size() - 1; i > 0; i--) {
             final View view = views.get(i);
             float animationSize = animationDistance;
-
-            ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", i * animationSize, 0f);
+            ObjectAnimator animator;
+            if(childPosition == MENU_TOP) {
+                animator = ObjectAnimator.ofFloat(view, "translationY", i * animationSize, 0f);
+            }
+            else{
+                animator = ObjectAnimator.ofFloat(view, "translationY", -i * animationSize, 0f);
+            }
             animator.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
@@ -219,75 +220,4 @@ public class FAMComponent extends FrameLayout {
 
         set.start();
     }
-
-    private void expandUp() {
-        ArrayList<Animator> animators = new ArrayList<>();
-        animating = true;
-        for (int i = 1; i < views.size(); i++) {
-            final View view = views.get(i);
-            float animationSize = animationDistance;
-
-            ObjectAnimator viewAnimator = ObjectAnimator.ofFloat(view, "translationY", 0f, -i * animationSize);
-            viewAnimator.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationStart(Animator animation) {
-                    super.onAnimationStart(animation);
-                    view.setVisibility(VISIBLE);
-                }
-            });
-            animators.add(viewAnimator);
-        }
-
-        AnimatorSet set = new AnimatorSet();
-        set.playSequentially(animators);
-
-        set.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-
-                animating = false;
-                expanded = !expanded;
-            }
-        });
-
-        set.start();
-    }
-
-    private void collapseUp() {
-        ArrayList<Animator> animators = new ArrayList<>();
-        animating = true;
-        for (int i = views.size() - 1; i > 0; i--) {
-            final View view = views.get(i);
-            float animationSize = animationDistance;
-
-            ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", -i * animationSize, 0f);
-            animator.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    super.onAnimationEnd(animation);
-                    view.setVisibility(GONE);
-                }
-            });
-            animators.add(animator);
-        }
-
-        AnimatorSet set = new AnimatorSet();
-        set.playSequentially(animators);
-
-        set.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-
-                animating = false;
-                expanded = !expanded;
-            }
-        });
-
-        set.start();
-    }
-
-
-
 }
