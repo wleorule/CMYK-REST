@@ -76,6 +76,11 @@ public class InboxLayout extends ViewGroup {
         init(context);
     }
 
+    /**
+     * Method init initializes every initial value of attributes, and then calls the method inflate.
+     *
+     * @param context the context
+     */
     private void init(Context context) {
         final Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         Point deviceDisplay = new Point();
@@ -117,6 +122,9 @@ public class InboxLayout extends ViewGroup {
         });
     }
 
+    /**
+     * Searches thought childes
+     */
     private void searchChild() {
 
         final int count = getChildCount();
@@ -139,6 +147,9 @@ public class InboxLayout extends ViewGroup {
 
     }
 
+    /**
+     * Toggles search/filter to be visibe or not.
+     */
     private void ToggleShowSearch() {
         if(SearchON){
             SearchON = false;
@@ -152,6 +163,14 @@ public class InboxLayout extends ViewGroup {
         }
     }
 
+    /**
+     * When layout is created.
+     * @param changed
+     * @param l
+     * @param t
+     * @param r
+     * @param b
+     */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         final int count = getChildCount();
@@ -189,6 +208,11 @@ public class InboxLayout extends ViewGroup {
         }
     }
 
+    /**
+     * Default android method that mesures device and sets all mesurments.
+     * @param widthMeasureSpec
+     * @param heightMeasureSpec
+     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int count = getChildCount();

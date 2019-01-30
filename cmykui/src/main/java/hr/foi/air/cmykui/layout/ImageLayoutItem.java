@@ -106,6 +106,9 @@ public class ImageLayoutItem extends RelativeLayout {
     public String getTitle() { return itemTitle.getText().toString(); }
 
 
+    /**
+     * Local onClick listener that handels on user click.
+     */
     private OnClickListener localOnClick = new OnClickListener()
      {
         @Override
