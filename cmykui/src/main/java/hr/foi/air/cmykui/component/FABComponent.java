@@ -17,7 +17,6 @@ import hr.foi.air.cmykui.R;
  */
 public class FABComponent extends android.support.v7.widget.AppCompatImageView {
 
-
     /**
      * The Height of the FABComponent.
      */
@@ -32,11 +31,23 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
      */
     private Drawable draw = ResourcesCompat.getDrawable(getResources(), R.drawable.fab_drawable, null);
 
-
+    /**
+     * The created variable is used to check whether the FABComponent has been created or not.
+     */
     private boolean created;
 
     /**
-     * Instantiates a new Fab component.
+     * The scaler serves to scale up or down the height of the component depending on the screen size
+     */
+    private float scalerH;
+
+    /**
+     * The scaler serves to scale up or down the width of the component depending on the screen size
+     */
+    private float scalerW;
+
+    /**
+     * Instantiates a new FABComponent.
      *
      * @param context the context
      */
@@ -45,10 +56,10 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
     }
 
     /**
-     * Instantiates a new Fab component.
+     * Instantiates a new FABComponent.
      *
      * @param context the context
-     * @param attrs   the attrs
+     * @param attrs   the attribute set
      */
     public FABComponent(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -56,10 +67,10 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
     }
 
     /**
-     * Instantiates a new Fab component.
+     * Instantiates a new FABComponent.
      *
      * @param context      the context
-     * @param attrs        the attrs
+     * @param attrs        the attribute set
      * @param defStyleAttr the def style attr
      */
     public FABComponent(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -80,7 +91,9 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
         TypedArray attrs = context.obtainStyledAttributes(attributeSet, R.styleable.FloatingActionButton, 0, 0);
         setColor(attrs.getColor(R.styleable.FloatingActionButton_color, ContextCompat.getColor(context, android.R.color.holo_red_dark)));
         height = attrs.getInteger(R.styleable.FloatingActionButton_fab_height,100);
+        scalerH = height * getResources().getDisplayMetrics().density;
         width = attrs.getInteger(R.styleable.FloatingActionButton_fab_width,100);
+        scalerW = width * getResources().getDisplayMetrics().density;
         attrs.recycle();
     }
 
@@ -93,16 +106,15 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
     }
 
     /**
-     * The build method calls the methods for creating a background drawable and setting its size.
+     * The build method calls the methods for creating a background drawable and sets that the component is created.
      */
     private void build() {
         created = true;
         updateBG();
-        setSize();
         }
 
     /**
-     * The onMeasure method
+     * The onMeasure method sets the size of the component in regards to the constraints of its parent.
      * @param width the width of the component
      * @param height the height of the component
      */
@@ -117,8 +129,8 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
      */
     private void setSize() {
         ViewGroup.LayoutParams params = getLayoutParams();
-        params.height = height;
-        params.width = width;
+        params.height = Math.round(scalerH);
+        params.width = Math.round(scalerW);
         this.setLayoutParams(params);
     }
 
@@ -132,7 +144,8 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
     }
 
     /**
-     *
+     * Function that is called when the view is attached to the window.
+     * Its used to start building the component.
      */
     @Override
     protected void onAttachedToWindow() {

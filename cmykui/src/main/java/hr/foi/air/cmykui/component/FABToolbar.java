@@ -25,22 +25,27 @@ public class FABToolbar extends FrameLayout {
      * The First button of the toolbar.
      */
     public ImageView firstButton,
+
     /**
      * The Second button of the toolbar.
      */
     secondButton,
+
     /**
      * The Third button of the toolbar.
      */
     thirdButton;
+
     /**
      * The First icon of the toolbar.
      */
     private Drawable firstIcon,
+
     /**
      * The Second icon of the toolbar.
      */
     secondIcon,
+
     /**
      * The Third icon of the toolbar.
      */
@@ -60,7 +65,7 @@ public class FABToolbar extends FrameLayout {
      * Instantiates a new FABToolbar.
      *
      * @param context the context
-     * @param attrs   the attrs
+     * @param attrs   the attribute set
      */
     public FABToolbar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -72,7 +77,7 @@ public class FABToolbar extends FrameLayout {
      * Instantiates a new FABToolbar.
      *
      * @param context  the context
-     * @param attrs    the attrs
+     * @param attrs    the attribute set
      * @param defStyle the def style
      */
     public FABToolbar(Context context, AttributeSet attrs, int defStyle) {
@@ -113,11 +118,10 @@ public class FABToolbar extends FrameLayout {
         attrs.recycle();
     }
 
-
     /**
      * Sets the FAB which controls the expanding and collapsing of the toolbar.
      *
-     * @param fabComponent the fab component
+     * @param fabComponent the FABComponent
      */
     public void setFab(FABComponent fabComponent) {
         Fab = fabComponent;
@@ -132,7 +136,6 @@ public class FABToolbar extends FrameLayout {
         FabToolbar.setBackgroundColor(color);
     }
 
-
     /**
      * Expands the toolbar and conceals the FABComponent tied to it by animating its movement in a given direction.
      * Meant to be used in a way that the button leaves the screen.
@@ -142,7 +145,6 @@ public class FABToolbar extends FrameLayout {
      * @param toY animate to some position from the originalk position using the y axis.
      */
     public void expandFab(int fromX, int toX, int fromY, int toY) {
-
 
         TranslateAnimation toolAnim = new TranslateAnimation(0,0,500,0);
         toolAnim.setDuration(400);
@@ -157,7 +159,6 @@ public class FABToolbar extends FrameLayout {
         isExpanded = true;
 
     }
-
 
     /**
      * Conceals the toolbar and shows the FABComponent by animating its movement.

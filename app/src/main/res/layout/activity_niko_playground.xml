@@ -27,8 +27,8 @@
         android:src="@drawable/add"
         fab:color="@color/design_default_color_primary"
         fab:color_pressed="@color/colorAccent"
-        fab:fab_height="150"
-        fab:fab_width="150"
+        fab:fab_height="50"
+        fab:fab_width="50"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
@@ -60,8 +60,8 @@
             android:src="@drawable/add"
             fab:color="@color/colorAccent"
             fab:color_pressed="@color/colorPrimary"
-            fab:fab_height="150"
-            fab:fab_width="150"
+            fab:fab_height="50"
+            fab:fab_width="50"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
 
@@ -72,8 +72,8 @@
             android:src="@drawable/add"
             fab:color="@color/colorAccent"
             fab:color_pressed="@color/colorPrimary"
-            fab:fab_height="150"
-            fab:fab_width="150"
+            fab:fab_height="50"
+            fab:fab_width="50"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
 
@@ -84,8 +84,8 @@
             android:src="@drawable/add"
             fab:color="@color/colorAccent"
             fab:color_pressed="@color/colorPrimary"
-            fab:fab_height="150"
-            fab:fab_width="150"
+            fab:fab_height="50"
+            fab:fab_width="50"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
     </hr.foi.air.cmykui.component.FAMComponent>

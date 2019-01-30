@@ -105,7 +105,7 @@ public class FAMComponent extends FrameLayout {
 
         TypedArray attrs = context.obtainStyledAttributes(attributeSet, R.styleable.FloatingActionsMenu, 0, 0);
         childPosition = attrs.getInteger(R.styleable.FloatingActionsMenu_fab_position, MENU_BOTTOM);
-        animationDistance = attrs.getFloat(R.styleable.FloatingActionsMenu_animation_distance, 200);
+        animationDistance = attrs.getFloat(R.styleable.FloatingActionsMenu_animation_distance, 75);
         attrs.recycle();
     }
 
@@ -150,7 +150,7 @@ public class FAMComponent extends FrameLayout {
     }
 
     /**
-     * Method onAttachedToWindow
+     * Method onAttachedToWindow builds the component when the view is attached to the window.
      */
     @Override
     protected void onAttachedToWindow() {
@@ -190,13 +190,13 @@ public class FAMComponent extends FrameLayout {
         animating = true;
         for (int i = 1; i < views.size(); i++) {
             final View view = views.get(i);
-            float animationSize = animationDistance;
+            float scaler = animationDistance * getResources().getDisplayMetrics().density;
             ObjectAnimator viewAnimator;
             if(childPosition == MENU_TOP) {
-                viewAnimator = ObjectAnimator.ofFloat(view, "translationY", 0f, i * animationSize);
+                viewAnimator = ObjectAnimator.ofFloat(view, "translationY", 0f, i * scaler);
             }
             else{
-                viewAnimator = ObjectAnimator.ofFloat(view, "translationY", 0f, -i * animationSize);
+                viewAnimator = ObjectAnimator.ofFloat(view, "translationY", 0f, -i * scaler);
             }
             viewAnimator.addListener(new AnimatorListenerAdapter() {
                 @Override
@@ -232,13 +232,13 @@ public class FAMComponent extends FrameLayout {
         animating = true;
         for (int i = views.size() - 1; i > 0; i--) {
             final View view = views.get(i);
-            float animationSize = animationDistance;
+            float scaler = animationDistance * getResources().getDisplayMetrics().density;
             ObjectAnimator animator;
             if(childPosition == MENU_TOP) {
-                animator = ObjectAnimator.ofFloat(view, "translationY", i * animationSize, 0f);
+                animator = ObjectAnimator.ofFloat(view, "translationY", i * scaler, 0f);
             }
             else{
-                animator = ObjectAnimator.ofFloat(view, "translationY", -i * animationSize, 0f);
+                animator = ObjectAnimator.ofFloat(view, "translationY", -i * scaler, 0f);
             }
             animator.addListener(new AnimatorListenerAdapter() {
                 @Override
