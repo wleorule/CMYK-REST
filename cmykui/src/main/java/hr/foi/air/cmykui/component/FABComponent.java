@@ -13,22 +13,22 @@ import android.view.ViewGroup;
 import hr.foi.air.cmykui.R;
 
 /**
- * The type Fab component.
+ * The type FABComponent.
  */
 public class FABComponent extends android.support.v7.widget.AppCompatImageView {
 
 
     /**
-     * The Height.
+     * The Height of the FABComponent.
      */
     private int height;
     /**
-     * The Width.
+     * The Width of the FABComponent.
      */
     private int width;
 
     /**
-     * The Draw.
+     * The Draw which represents the shape of the FABComponent.
      */
     private Drawable draw = ResourcesCompat.getDrawable(getResources(), R.drawable.fab_drawable, null);
 
@@ -69,7 +69,8 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
 
 
     /**
-     * Init.
+     * Init initializes the different given values to the attributes, such as the color, height and width.
+     * If no values are given, default values are used.
      *
      * @param context      the context
      * @param attributeSet the attribute set
@@ -85,24 +86,35 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
 
 
     /**
-     * Update bg.
+     * UpdateBG sets the background drawable for the component.
      */
     private void updateBG() {
         setBackground(draw);
     }
 
+    /**
+     * The build method calls the methods for creating a background drawable and setting its size.
+     */
     private void build() {
         created = true;
         updateBG();
         setSize();
         }
 
+    /**
+     * The onMeasure method
+     * @param width the width of the component
+     * @param height the height of the component
+     */
     @Override
     protected void onMeasure(int width, int height) {
         super.onMeasure(width, height);
         setSize();
     }
 
+    /**
+     * Sets the size of the FABComponent
+     */
     private void setSize() {
         ViewGroup.LayoutParams params = getLayoutParams();
         params.height = height;
@@ -119,6 +131,9 @@ public class FABComponent extends android.support.v7.widget.AppCompatImageView {
         draw.setColorFilter(new PorterDuffColorFilter(color,PorterDuff.Mode.MULTIPLY));
     }
 
+    /**
+     *
+     */
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
