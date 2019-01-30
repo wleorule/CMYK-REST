@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="170dp"
                 android:layout_marginTop="45dp"
-                app:text="Pogledaj >" />
+                app:text="Pie chart" />
 
             <hr.foi.air.cmykui.layout.ImageLayoutItemMenuItem
                 android:id="@+id/PrebaciBar"
@@ -38,7 +38,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="45dp"
-                app:text="BarChart >" />
+                app:text="Bar Chart" />
+
+            <hr.foi.air.cmykui.layout.ImageLayoutItemMenuItem
+                android:id="@+id/PrebaciLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="45dp"
+                app:text="Line chart" />
 
         </hr.foi.air.cmykui.layout.ImageLayoutItem>
 
