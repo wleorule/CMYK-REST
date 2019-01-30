@@ -11,10 +11,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import hr.foi.air.cmykui.R;
-import hr.foi.air.cmykui.component.FABComponent;
 
 /**
- * The type Fab toolbar.
+ * Type of the FABToolbar.
  */
 public class FABToolbar extends FrameLayout {
 
@@ -23,28 +22,37 @@ public class FABToolbar extends FrameLayout {
     private boolean isExpanded;
 
     /**
-     * The First button.
+     * The First button of the toolbar.
      */
-    public ImageView firstButton, /**
-     * The Second button.
+    public ImageView firstButton,
+
+    /**
+     * The Second button of the toolbar.
      */
-    secondButton, /**
-     * The Third button.
+    secondButton,
+
+    /**
+     * The Third button of the toolbar.
      */
     thirdButton;
+
     /**
-     * The First icon.
+     * The First icon of the toolbar.
      */
-    private Drawable firstIcon, /**
-     * The Second icon.
+    private Drawable firstIcon,
+
+    /**
+     * The Second icon of the toolbar.
      */
-    secondIcon, /**
-     * The Third icon.
+    secondIcon,
+
+    /**
+     * The Third icon of the toolbar.
      */
     thirdIcon;
 
     /**
-     * Instantiates a new Fab toolbar.
+     * Instantiates a new FABToolbar.
      *
      * @param context the context
      */
@@ -54,10 +62,10 @@ public class FABToolbar extends FrameLayout {
     }
 
     /**
-     * Instantiates a new Fab toolbar.
+     * Instantiates a new FABToolbar.
      *
      * @param context the context
-     * @param attrs   the attrs
+     * @param attrs   the attribute set
      */
     public FABToolbar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -66,10 +74,10 @@ public class FABToolbar extends FrameLayout {
     }
 
     /**
-     * Instantiates a new Fab toolbar.
+     * Instantiates a new FABToolbar.
      *
      * @param context  the context
-     * @param attrs    the attrs
+     * @param attrs    the attribute set
      * @param defStyle the def style
      */
     public FABToolbar(Context context, AttributeSet attrs, int defStyle) {
@@ -78,15 +86,24 @@ public class FABToolbar extends FrameLayout {
         loadAttributes(context, attrs);
     }
 
+    /**
+     * Init inflates the toolbar and connects the variables and their styleable counterparts.
+     */
     private void init() {
         inflate(getContext(), R.layout.fab_toolbar, this);
-        FabToolbar = (LinearLayout) findViewById(R.id.container);
+        FabToolbar = findViewById(R.id.container);
 
-        firstButton = (ImageView) findViewById(R.id.first_button);
-        secondButton = (ImageView) findViewById(R.id.second_button);
-        thirdButton = (ImageView) findViewById(R.id.third_button);
+        firstButton = findViewById(R.id.first_button);
+        secondButton =  findViewById(R.id.second_button);
+        thirdButton =  findViewById(R.id.third_button);
     }
 
+    /**
+     * The loadAttributes method initializes the different values that are given, such as the icons of the buttons and color of the toolbar.
+     * If no values are given, default values are used.
+     * @param context the context
+     * @param attributeSet the set of attributes
+     */
     private void loadAttributes(Context context, AttributeSet attributeSet) {
         TypedArray attrs = getContext().getTheme().obtainStyledAttributes(attributeSet, R.styleable.Toolbar, 0, 0);
         firstIcon = attrs.getDrawable(R.styleable.Toolbar_firstIcon);
@@ -101,18 +118,17 @@ public class FABToolbar extends FrameLayout {
         attrs.recycle();
     }
 
-
     /**
-     * Sets fab.
+     * Sets the FAB which controls the expanding and collapsing of the toolbar.
      *
-     * @param fabComponent the fab component
+     * @param fabComponent the FABComponent
      */
     public void setFab(FABComponent fabComponent) {
         Fab = fabComponent;
     }
 
     /**
-     * Sets color.
+     * Sets color of the toolbar.
      *
      * @param color the color
      */
@@ -120,12 +136,15 @@ public class FABToolbar extends FrameLayout {
         FabToolbar.setBackgroundColor(color);
     }
 
-
     /**
-     * Expand fab.
+     * Expands the toolbar and conceals the FABComponent tied to it by animating its movement in a given direction.
+     * Meant to be used in a way that the button leaves the screen.
+     * @param fromX animate from some position to the original position using the x axis.
+     * @param toX animate to some position from the originalk position using the x axis.
+     * @param fromY animate from some position to the original position using the y axis.
+     * @param toY animate to some position from the originalk position using the y axis.
      */
     public void expandFab(int fromX, int toX, int fromY, int toY) {
-
 
         TranslateAnimation toolAnim = new TranslateAnimation(0,0,500,0);
         toolAnim.setDuration(400);
@@ -141,9 +160,13 @@ public class FABToolbar extends FrameLayout {
 
     }
 
-
     /**
-     * Contract fab.
+     * Conceals the toolbar and shows the FABComponent by animating its movement.
+     * Meant to be used in a way that the FABComponent reappears by entering the screen from outside.
+     * @param fromX animate from some position to the original position using the x axis.
+     * @param toX animate to some position from the originalk position using the x axis.
+     * @param fromY animate from some position to the original position using the y axis.
+     * @param toY animate to some position from the originalk position using the y axis.
      */
     public void contractFab(int fromX, int toX, int fromY, int toY) {
 
