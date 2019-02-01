@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.cmykui.framework.cmykui.component.FABComponent;
-import com.cmykui.framework.cmykui.component.FABToolbar;
+import hr.foi.air.cmykui.component.FABComponent;
+import hr.foi.air.cmykui.component.FABToolbar;
 
 public class NikoPlayground extends AppCompatActivity implements View.OnClickListener{
 
@@ -53,11 +53,11 @@ public class NikoPlayground extends AppCompatActivity implements View.OnClickLis
         switch(v.getId()) {
 
             case R.id.toolbar_button:
-                FabToolbar.expandFab();
+                FabToolbar.expandFab(0,500,0,0);
                 break;
 
             case R.id.base_layout:
-                FabToolbar.contractFab();
+                FabToolbar.contractFab(500,0,0,0);
                 break;
 
             case R.id.menu_button2:

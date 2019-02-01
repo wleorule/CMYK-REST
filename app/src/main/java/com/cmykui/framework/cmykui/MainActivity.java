@@ -10,12 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 
 
-import com.cmykui.framework.cmykui.base.OnClick;
-import com.cmykui.framework.cmykui.component.ButtonComponent;
-import com.cmykui.framework.cmykui.component.FloatLabelText;
-import com.cmykui.framework.cmykui.layout.ImageLayoutItem;
-import com.cmykui.framework.cmykui.layout.ImageLayoutItemMenuItem;
-import com.cmykui.framework.cmykui.layout.InboxViewItem;
+import hr.foi.air.cmykui.base.OnClick;
+import hr.foi.air.cmykui.component.ButtonComponent;
+import hr.foi.air.cmykui.component.FloatLabelText;
+import hr.foi.air.cmykui.layout.ImageLayoutItem;
+import hr.foi.air.cmykui.layout.ImageLayoutItemMenuItem;
+import hr.foi.air.cmykui.layout.InboxViewItem;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     ImageLayoutItem NikoPlaygroundMenuItem;
     ImageLayoutItemMenuItem NikoPrebaci;
 
+    ImageLayoutItemMenuItem PrebaciBar;
+    ImageLayoutItemMenuItem PrebaciLine;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,28 @@ public class MainActivity extends AppCompatActivity {
         MatijaPrebaci = findViewById(R.id.PrebaciMatija);
         NikoPlaygroundMenuItem = findViewById(R.id.NikoPlayground);
         NikoPrebaci = findViewById(R.id.PrebaciNiko);
+        PrebaciBar = findViewById(R.id.PrebaciBar);
+        PrebaciLine = findViewById(R.id.PrebaciLine);
+
+        PrebaciBar.setOnClickListener(new OnClick<Void>() {
+            @Override
+            public Void onClick() throws Exception {
+                Intent transfer = new Intent(MainActivity.this, Chart2.class);
+                startActivity(transfer);
+
+                return null;
+            }
+        });
+
+        PrebaciLine.setOnClickListener(new OnClick<Void>() {
+            @Override
+            public Void onClick() throws Exception {
+                Intent transfer = new Intent(MainActivity.this, Chart3.class);
+                startActivity(transfer);
+
+                return null;
+            }
+        });
 
         // JerkoPlaygroundMenuItem
         JerkoPlaygroundMenuItem.setTitle("Jerko playgorund");

@@ -9,21 +9,25 @@ android:orientation="vertical"
     tools:context=".MainActivity">
 
 
-    <com.cmykui.framework.cmykui.component.ButtonComponent
+
+
+    <hr.foi.air.cmykui.component.ButtonComponent
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        />
 
-    <com.cmykui.framework.cmykui.component.FloatLabelText
+   <hr.foi.air.cmykui.component.FloatLabelText
         android:id="@+id/floatLabel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+       />
 
-    <com.cmykui.framework.cmykui.component.LoadingComponent
+    <hr.foi.air.cmykui.component.LoadingComponent
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp">
-
-    </com.cmykui.framework.cmykui.component.LoadingComponent>
+        android:layout_marginTop="0dp"
+        >
+    </hr.foi.air.cmykui.component.LoadingComponent>
 
 </LinearLayout>
