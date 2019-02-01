@@ -18,7 +18,12 @@
         </activity>
         <activity android:name=".JerkoPlayground" />
         <activity android:name=".MatijaPlayground" />
-        <activity android:name=".NikoPlayground"></activity>
+        <activity android:name=".NikoPlayground" />
+        <activity
+            android:name=".Chart2"
+            android:label="@string/title_activity_chart2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Chart3"></activity>
     </application>
 
 </manifest>
